@@ -20,7 +20,7 @@
     <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
         <!-- Logo -->
         <a href="{{ route('frontend.index') }}" class="flex items-center">
-            <img src="{{ asset('assets/logo.jpeg') }}" alt="Dar-ul-uloom Logo" class="h-12 w-auto mr-3 rounded-full">
+            <img src="{{ asset('assets/logo.png') }}" alt="Dar-ul-uloom Logo" class="h-12 w-auto mr-3 rounded-full">
             <div>
                 <span class="text-2xl font-bold text-gray-800 tracking-wider">DAR-UL-ULOOM</span>
                 <p class="text-[12px] text-gray-500 uppercase tracking-[4px] -mt-1">Anwaar-e-Mustafa BOR</p>

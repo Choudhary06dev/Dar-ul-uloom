@@ -21,12 +21,12 @@
                 </div>
                 <div>
                     <div class="text-muted small fw-bold text-uppercase tracking-wider">Total Users</div>
-                    <h3 class="fw-bold mb-0">1,240</h3>
+                    <h3 class="fw-bold mb-0">{{ $stats['users'] }}</h3>
                 </div>
             </div>
             <div class="mt-2">
-                <span class="text-success fw-bold"><i class="fa-solid fa-arrow-up me-1"></i> 12%</span>
-                <span class="text-muted small ms-1">since last month</span>
+                <span class="text-success fw-bold"><i class="fa-solid fa-check-circle me-1"></i> Admin</span>
+                <span class="text-muted small ms-1">system access</span>
             </div>
         </div>
     </div>
@@ -38,13 +38,13 @@
                     <i class="fa-solid fa-graduation-cap text-warning fs-4"></i>
                 </div>
                 <div>
-                    <div class="text-muted small fw-bold text-uppercase tracking-wider">Students</div>
-                    <h3 class="fw-bold mb-0">458</h3>
+                    <div class="text-muted small fw-bold text-uppercase tracking-wider">Total Admissions</div>
+                    <h3 class="fw-bold mb-0">{{ $stats['admissions'] }}</h3>
                 </div>
             </div>
             <div class="mt-2">
-                <span class="text-warning fw-bold"><i class="fa-solid fa-circle me-1"></i> Active</span>
-                <span class="text-muted small ms-1">currently enrolled</span>
+                <span class="text-warning fw-bold"><i class="fa-solid fa-clock me-1"></i> {{ $stats['pending_admissions'] }} Pending</span>
+                <span class="text-muted small ms-1">needs review</span>
             </div>
         </div>
     </div>
@@ -53,16 +53,16 @@
         <div class="card stat-card bg-white h-100">
             <div class="d-flex align-items-center mb-3">
                 <div class="rounded-circle bg-primary bg-opacity-10 p-3 me-3">
-                    <i class="fa-solid fa-book-open text-primary fs-4"></i>
+                    <i class="fa-solid fa-user-check text-primary fs-4"></i>
                 </div>
                 <div>
-                    <div class="text-muted small fw-bold text-uppercase tracking-wider">Total Courses</div>
-                    <h3 class="fw-bold mb-0">32</h3>
+                    <div class="text-muted small fw-bold text-uppercase tracking-wider">Approved</div>
+                    <h3 class="fw-bold mb-0">{{ $stats['approved_admissions'] }}</h3>
                 </div>
             </div>
             <div class="mt-2">
-                <span class="text-primary fw-bold"><i class="fa-solid fa-plus me-1"></i> 2 New</span>
-                <span class="text-muted small ms-1">added this week</span>
+                <span class="text-primary fw-bold"><i class="fa-solid fa-check me-1"></i> Admitted</span>
+                <span class="text-muted small ms-1">confirmed students</span>
             </div>
         </div>
     </div>
@@ -75,12 +75,11 @@
                 </div>
                 <div>
                     <div class="text-muted small fw-bold text-uppercase tracking-wider">Revenue</div>
-                    <h3 class="fw-bold mb-0">PKR 85K</h3>
+                    <h3 class="fw-bold mb-0">PKR 0</h3>
                 </div>
             </div>
             <div class="mt-2">
-                <span class="text-danger fw-bold"><i class="fa-solid fa-arrow-down me-1"></i> 5%</span>
-                <span class="text-muted small ms-1">vs last month</span>
+                <span class="text-muted small ms-1">Awaiting data...</span>
             </div>
         </div>
     </div>

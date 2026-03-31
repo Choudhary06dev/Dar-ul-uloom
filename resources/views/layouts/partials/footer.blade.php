@@ -4,7 +4,7 @@
         <!-- Widget 1: About -->
         <div>
             <div class="flex items-center mb-6">
-                <img src="{{ asset('assets/logo.jpeg') }}" alt="Dar-ul-uloom Logo" class="h-10 w-auto mr-3 rounded-full">
+                <img src="{{ asset('assets/logo.png') }}" alt="Dar-ul-uloom Logo" class="h-10 w-auto mr-3 rounded-full">
                 <span class="text-xl font-bold text-white tracking-wider">DAR-UL-ULOOM</span>
             </div>
             <p class="mb-6 leading-relaxed">

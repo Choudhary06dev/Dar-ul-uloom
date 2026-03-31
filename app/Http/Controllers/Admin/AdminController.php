@@ -18,7 +18,13 @@ class AdminController extends Controller
 
     public function dashboard(): View
     {
-        return view('admin.dashboard');
+        $stats = [
+            'users' => \App\Models\User::count(),
+            'admissions' => \App\Models\Admission::count(),
+            'pending_admissions' => \App\Models\Admission::where('status', 'Pending')->count(),
+            'approved_admissions' => \App\Models\Admission::where('status', 'Approved')->count(),
+        ];
+        return view('admin.dashboard', compact('stats'));
     }
 
     /**
@@ -43,7 +49,6 @@ class AdminController extends Controller
      */
     public function editUser(User $user): View
     {
-        $this->authorize('update', $user);
         return view('admin.users.edit', compact('user'));
     }
 
@@ -52,8 +57,6 @@ class AdminController extends Controller
      */
     public function updateUser(Request $request, User $user): RedirectResponse
     {
-        $this->authorize('update', $user);
-
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
@@ -69,8 +72,6 @@ class AdminController extends Controller
      */
     public function destroyUser(User $user): RedirectResponse
     {
-        $this->authorize('delete', $user);
-
         if (auth()->id() === $user->id) {
             return back()->with('error', 'You cannot delete yourself!');
         }

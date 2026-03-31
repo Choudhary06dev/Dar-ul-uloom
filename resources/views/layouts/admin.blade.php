@@ -164,6 +164,11 @@
                     <i class="fa-solid fa-users"></i> Manage Users
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link {{ Route::is('admin.admissions.*') ? 'active' : '' }}" href="{{ route('admin.admissions.index') }}">
+                    <i class="fa-solid fa-file-signature"></i> Admissions
+                </a>
+            </li>
             <li class="nav-item mt-auto mb-4">
                 <a class="nav-link" href="{{ route('frontend.index') }}" target="_blank">
                     <i class="fa-solid fa-globe"></i> Visit Website

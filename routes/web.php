@@ -30,6 +30,11 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::get('/users/{user}/edit', [AdminController::class, 'editUser'])->name('users.edit');
         Route::patch('/users/{user}', [AdminController::class, 'updateUser'])->name('users.update');
         Route::delete('/users/{user}', [AdminController::class, 'destroyUser'])->name('users.destroy');
+        
+        // Admission Routes
+        Route::get('/admissions', [\App\Http\Controllers\Admin\AdmissionController::class, 'index'])->name('admissions.index');
+        Route::get('/admissions/{admission}/edit', [\App\Http\Controllers\Admin\AdmissionController::class, 'edit'])->name('admissions.edit');
+        Route::put('/admissions/{admission}', [\App\Http\Controllers\Admin\AdmissionController::class, 'update'])->name('admissions.update');
     });
 });
 

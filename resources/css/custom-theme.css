@@ -1,0 +1,98 @@
+:root {
+    --primary-gold: #D4AF37;
+    --primary-gold-dark: #B8860B;
+    --secondary-navy: #2C3E50;
+    --dark-bg: #1A1A1A;
+    --light-bg: #F9F9F9;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+.bg-gold {
+    background-color: var(--primary-gold);
+}
+
+.text-gold {
+    color: var(--primary-gold);
+}
+
+.border-gold {
+    border-color: var(--primary-gold);
+}
+
+.bg-navy {
+    background-color: var(--secondary-navy);
+}
+
+/* Islamic Pattern Background */
+.islamic-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l15 15-15 15-15-15zM0 30l15 15-15 15-15-15zM60 30l15 15-15 15-15-15zM30 60l15-15-15-15-15 15z' fill='%23d4af37' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+}
+
+.btn-gold {
+    background-color: var(--primary-gold);
+    color: white;
+    padding: 10px 25px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.btn-gold:hover {
+    background-color: var(--primary-gold-dark);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.header-top {
+    font-size: 0.9rem;
+    padding: 14px 0;
+}
+
+.nav-link-custom {
+    color: var(--secondary-navy);
+    font-weight: 600;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.nav-link-custom::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #10b981; /* bright green */
+    transition: width 0.3s ease;
+}
+
+.nav-link-custom:hover {
+    color: #10b981; /* bright green */
+}
+
+.nav-link-custom:hover::after {
+    width: 100%;
+}
+
+.footer-widget-title {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    position: relative;
+}
+
+.footer-widget-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--primary-gold);
+}

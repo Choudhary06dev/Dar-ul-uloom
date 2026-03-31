@@ -11,8 +11,20 @@ export default {
 
     theme: {
         extend: {
+            colors: {
+                gold: {
+                    DEFAULT: '#D4AF37',
+                    dark: '#B8860B',
+                },
+                navy: {
+                    DEFAULT: '#2C3E50',
+                },
+                dark: {
+                    DEFAULT: '#1A1A1A',
+                }
+            },
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['Poppins', ...defaultTheme.fontFamily.sans],
             },
         },
     },

@@ -35,70 +35,70 @@
             </div>
         @endif
 
-        <form action="{{ route('frontend.admission.store') }}" method="POST" class="bg-white p-8 md:p-12 rounded-xl shadow-lg border-t-4 border-gold">
+        <form action="{{ route('frontend.admission.store') }}" method="POST" class="bg-white p-5 md:p-12 rounded-xl shadow-lg border-t-4 border-gold">
             @csrf
             
             <!-- Section 1: Student Information -->
             <div class="mb-10">
-                <h3 class="text-xl font-bold text-navy mb-6 flex justify-between border-b pb-2">
+                <h3 class="text-xl font-bold text-navy mb-6 flex flex-col sm:flex-row justify-between border-b pb-2 gap-2">
                     <span>Student Information</span>
-                    <span class="font-urdu" dir="rtl">طالب علم کی معلومات</span>
+                    <span class="font-urdu text-base sm:text-lg" dir="rtl">طالب علم کی معلومات</span>
                 </h3>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
                     <div>
-                        <label class="block text-gray-700 font-medium mb-1 flex justify-between">
+                        <label class="block text-gray-700 font-medium mb-1 flex flex-wrap justify-between gap-1 leading-tight">
                             <span>Student Name <span class="text-red-500">*</span></span>
-                            <span class="font-urdu" dir="rtl">طالب علم کا نام</span>
+                            <span class="font-urdu text-sm" dir="rtl">طالب علم کا نام</span>
                         </label>
                         <input type="text" name="student_name" value="{{ old('student_name') }}" required class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-gold focus:border-gold outline-none transition">
                     </div>
                     
                     <div>
-                        <label class="block text-gray-700 font-medium mb-1 flex justify-between">
+                        <label class="block text-gray-700 font-medium mb-1 flex flex-wrap justify-between gap-1 leading-tight">
                             <span>Father Name <span class="text-red-500">*</span></span>
-                            <span class="font-urdu" dir="rtl">والد کا نام</span>
+                            <span class="font-urdu text-sm" dir="rtl">والد کا نام</span>
                         </label>
                         <input type="text" name="father_name" value="{{ old('father_name') }}" required class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-gold focus:border-gold outline-none transition">
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 font-medium mb-1 flex justify-between">
+                        <label class="block text-gray-700 font-medium mb-1 flex flex-wrap justify-between gap-1 leading-tight">
                             <span>Date of Birth <span class="text-red-500">*</span></span>
-                            <span class="font-urdu" dir="rtl">تاریخ پیدائش</span>
+                            <span class="font-urdu text-sm" dir="rtl">تاریخ پیدائش</span>
                         </label>
                         <input type="date" name="dob" value="{{ old('dob') }}" required class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-gold focus:border-gold outline-none transition">
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 font-medium mb-1 flex justify-between">
+                        <label class="block text-gray-700 font-medium mb-1 flex flex-wrap justify-between gap-1 leading-tight">
                             <span>Age <span class="text-red-500">*</span></span>
-                            <span class="font-urdu" dir="rtl">عمر</span>
+                            <span class="font-urdu text-sm" dir="rtl">عمر</span>
                         </label>
                         <input type="number" name="age" value="{{ old('age') }}" required class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-gold focus:border-gold outline-none transition">
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 font-medium mb-2 flex justify-between">
+                        <label class="block text-gray-700 font-medium mb-2 flex flex-wrap justify-between gap-1 leading-tight">
                             <span>Gender <span class="text-red-500">*</span></span>
-                            <span class="font-urdu" dir="rtl">جنس</span>
+                            <span class="font-urdu text-sm" dir="rtl">جنس</span>
                         </label>
-                        <div class="flex space-x-6">
+                        <div class="flex space-x-6 bg-gray-50 p-2 rounded border border-gray-100">
                             <label class="inline-flex items-center">
                                 <input type="radio" name="gender" value="Male" class="text-gold focus:ring-gold" {{ old('gender') == 'Male' ? 'checked' : '' }} required>
-                                <span class="ml-2 mr-2">Male</span> <span class="font-urdu" dir="rtl">مرد</span>
+                                <span class="ml-2 mr-2">Male</span> <span class="font-urdu text-xs" dir="rtl">مرد</span>
                             </label>
                             <label class="inline-flex items-center">
                                 <input type="radio" name="gender" value="Female" class="text-gold focus:ring-gold" {{ old('gender') == 'Female' ? 'checked' : '' }}>
-                                <span class="ml-2 mr-2">Female</span> <span class="font-urdu" dir="rtl">عورت</span>
+                                <span class="ml-2 mr-2">Female</span> <span class="font-urdu text-xs" dir="rtl">عورت</span>
                             </label>
                         </div>
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 font-medium mb-1 flex justify-between">
+                        <label class="block text-gray-700 font-medium mb-1 flex flex-wrap justify-between gap-1 leading-tight">
                             <span>B-Form / Bay Form No</span>
-                            <span class="font-urdu" dir="rtl">ب فارم نمبر</span>
+                            <span class="font-urdu text-sm" dir="rtl">ب فارم نمبر</span>
                         </label>
                         <input type="text" name="b_form" value="{{ old('b_form') }}" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-gold focus:border-gold outline-none transition" placeholder="Optional">
                     </div>
@@ -107,48 +107,48 @@
 
             <!-- Section 2: Contact Information -->
             <div class="mb-10">
-                <h3 class="text-xl font-bold text-navy mb-6 flex justify-between border-b pb-2">
+                <h3 class="text-xl font-bold text-navy mb-6 flex flex-col sm:flex-row justify-between border-b pb-2 gap-2">
                     <span>Contact Information</span>
-                    <span class="font-urdu" dir="rtl">رابطہ معلومات</span>
+                    <span class="font-urdu text-base sm:text-lg" dir="rtl">رابطہ معلومات</span>
                 </h3>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
                     <div class="md:col-span-2">
-                        <label class="block text-gray-700 font-medium mb-1 flex justify-between">
+                        <label class="block text-gray-700 font-medium mb-1 flex flex-wrap justify-between gap-1 leading-tight">
                             <span>Parent/Guardian Name <span class="text-red-500">*</span></span>
-                            <span class="font-urdu" dir="rtl">سرپرست کا نام</span>
+                            <span class="font-urdu text-sm" dir="rtl">سرپرست کا نام</span>
                         </label>
                         <input type="text" name="parent_name" value="{{ old('parent_name') }}" required class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-gold focus:border-gold outline-none transition">
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 font-medium mb-1 flex justify-between">
+                        <label class="block text-gray-700 font-medium mb-1 flex flex-wrap justify-between gap-1 leading-tight">
                             <span>Contact Number <span class="text-red-500">*</span></span>
-                            <span class="font-urdu" dir="rtl">رابطہ نمبر</span>
+                            <span class="font-urdu text-sm" dir="rtl">رابطہ نمبر</span>
                         </label>
                         <input type="text" name="contact_number" value="{{ old('contact_number') }}" required class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-gold focus:border-gold outline-none transition">
                     </div>
 
                     <div>
-                        <label class="block text-gray-700 font-medium mb-1 flex justify-between">
+                        <label class="block text-gray-700 font-medium mb-1 flex flex-wrap justify-between gap-1 leading-tight">
                             <span>Alternate Contact</span>
-                            <span class="font-urdu" dir="rtl">متبادل نمبر</span>
+                            <span class="font-urdu text-sm" dir="rtl">متبادل نمبر</span>
                         </label>
                         <input type="text" name="alternate_number" value="{{ old('alternate_number') }}" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-gold focus:border-gold outline-none transition">
                     </div>
 
                     <div class="md:col-span-2">
-                        <label class="block text-gray-700 font-medium mb-1 flex justify-between">
+                        <label class="block text-gray-700 font-medium mb-1 flex flex-wrap justify-between gap-1 leading-tight">
                             <span>Address <span class="text-red-500">*</span></span>
-                            <span class="font-urdu" dir="rtl">پتہ</span>
+                            <span class="font-urdu text-sm" dir="rtl">پتہ</span>
                         </label>
                         <textarea name="address" required class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-gold focus:border-gold outline-none transition" rows="2">{{ old('address') }}</textarea>
                     </div>
 
-                    <div>
-                        <label class="block text-gray-700 font-medium mb-1 flex justify-between">
+                    <div class="md:col-span-2">
+                        <label class="block text-gray-700 font-medium mb-1 flex flex-wrap justify-between gap-1 leading-tight">
                             <span>City <span class="text-red-500">*</span></span>
-                            <span class="font-urdu" dir="rtl">شہر</span>
+                            <span class="font-urdu text-sm" dir="rtl">شہر</span>
                         </label>
                         <input type="text" name="city" value="{{ old('city') }}" required class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-gold focus:border-gold outline-none transition">
                     </div>
@@ -157,39 +157,39 @@
 
             <!-- Section 3: Education Details -->
             <div class="mb-10">
-                <h3 class="text-xl font-bold text-navy mb-6 flex justify-between border-b pb-2">
+                <h3 class="text-xl font-bold text-navy mb-6 flex flex-col sm:flex-row justify-between border-b pb-2 gap-2">
                     <span>Education Details</span>
-                    <span class="font-urdu" dir="rtl">تعلیمی معلومات</span>
+                    <span class="font-urdu text-base sm:text-lg" dir="rtl">تعلیمی معلومات</span>
                 </h3>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
                     <div>
-                        <label class="block text-gray-700 font-medium mb-1 flex justify-between">
+                        <label class="block text-gray-700 font-medium mb-1 flex flex-wrap justify-between gap-1 leading-tight">
                             <span>Previous School/Madrasa</span>
-                            <span class="font-urdu" dir="rtl">سابقہ مدرسہ یا اسکول</span>
+                            <span class="font-urdu text-sm" dir="rtl">سابقہ مدرسہ یا اسکول</span>
                         </label>
                         <input type="text" name="previous_school" value="{{ old('previous_school') }}" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-gold focus:border-gold outline-none transition">
                     </div>
                     
                     <div>
-                        <label class="block text-gray-700 font-medium mb-1 flex justify-between">
+                        <label class="block text-gray-700 font-medium mb-1 flex flex-wrap justify-between gap-1 leading-tight">
                             <span>Last Class Passed</span>
-                            <span class="font-urdu" dir="rtl">آخری پاس شدہ جماعت</span>
+                            <span class="font-urdu text-sm" dir="rtl">آخری پاس شدہ جماعت</span>
                         </label>
                         <input type="text" name="last_class_passed" value="{{ old('last_class_passed') }}" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-gold focus:border-gold outline-none transition">
                     </div>
 
-                    <div class="flex items-center mt-2">
+                    <div class="flex items-center mt-2 bg-gray-50 p-3 rounded">
                         <input type="checkbox" name="nazra_completed" id="nazra" class="w-5 h-5 text-gold focus:ring-gold border-gray-300 rounded" {{ old('nazra_completed') ? 'checked' : '' }}>
-                        <label for="nazra" class="ml-3 text-gray-700 font-medium flex justify-between w-full">
+                        <label for="nazra" class="ml-3 text-gray-700 font-medium flex justify-between w-full text-sm leading-tight">
                             <span>Nazra Completed?</span>
                             <span class="font-urdu" dir="rtl">کیا ناظرہ مکمل ہے؟</span>
                         </label>
                     </div>
 
-                    <div class="flex items-center mt-2">
+                    <div class="flex items-center mt-2 bg-gray-50 p-3 rounded">
                         <input type="checkbox" name="hifz_completed" id="hifz" class="w-5 h-5 text-gold focus:ring-gold border-gray-300 rounded" {{ old('hifz_completed') ? 'checked' : '' }}>
-                        <label for="hifz" class="ml-3 text-gray-700 font-medium flex justify-between w-full">
+                        <label for="hifz" class="ml-3 text-gray-700 font-medium flex justify-between w-full text-sm leading-tight">
                             <span>Hifz Completed?</span>
                             <span class="font-urdu" dir="rtl">کیا حفظ مکمل ہے؟</span>
                         </label>
@@ -199,15 +199,15 @@
 
             <!-- Section 4: Course Selection -->
             <div class="mb-10">
-                <h3 class="text-xl font-bold text-navy mb-6 flex justify-between border-b pb-2">
+                <h3 class="text-xl font-bold text-navy mb-6 flex flex-col sm:flex-row justify-between border-b pb-2 gap-2">
                     <span>Course Selection <span class="text-red-500">*</span></span>
-                    <span class="font-urdu" dir="rtl">کورس کا انتخاب</span>
+                    <span class="font-urdu text-base sm:text-lg" dir="rtl">کورس کا انتخاب</span>
                 </h3>
                 
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
                     <label class="flex items-center p-3 border rounded-lg hover:bg-gray-50 cursor-pointer transition">
                         <input type="radio" name="course_selection" value="Nazra Quran" required class="text-gold focus:ring-gold w-4 h-4" {{ old('course_selection') == 'Nazra Quran' ? 'checked' : '' }}>
-                        <div class="ml-3 flex-1 flex justify-between items-center text-sm font-medium">
+                        <div class="ml-3 flex-1 flex justify-between items-center text-xs sm:text-sm font-medium">
                             <span>Nazra Quran</span>
                             <span class="font-urdu" dir="rtl">ناظرہ قرآن</span>
                         </div>
@@ -215,7 +215,7 @@
 
                     <label class="flex items-center p-3 border rounded-lg hover:bg-gray-50 cursor-pointer transition">
                         <input type="radio" name="course_selection" value="Hifz-ul-Quran" required class="text-gold focus:ring-gold w-4 h-4" {{ old('course_selection') == 'Hifz-ul-Quran' ? 'checked' : '' }}>
-                        <div class="ml-3 flex-1 flex justify-between items-center text-sm font-medium">
+                        <div class="ml-3 flex-1 flex justify-between items-center text-xs sm:text-sm font-medium">
                             <span>Hifz-ul-Quran</span>
                             <span class="font-urdu" dir="rtl">حفظ القرآن</span>
                         </div>
@@ -223,7 +223,7 @@
 
                     <label class="flex items-center p-3 border rounded-lg hover:bg-gray-50 cursor-pointer transition">
                         <input type="radio" name="course_selection" value="Dars-e-Nizami" required class="text-gold focus:ring-gold w-4 h-4" {{ old('course_selection') == 'Dars-e-Nizami' ? 'checked' : '' }}>
-                        <div class="ml-3 flex-1 flex justify-between items-center text-sm font-medium">
+                        <div class="ml-3 flex-1 flex justify-between items-center text-xs sm:text-sm font-medium">
                             <span>Dars-e-Nizami</span>
                             <span class="font-urdu" dir="rtl">درس نظامی</span>
                         </div>
@@ -231,7 +231,7 @@
 
                     <label class="flex items-center p-3 border rounded-lg hover:bg-gray-50 cursor-pointer transition">
                         <input type="radio" name="course_selection" value="Basic Islamic Education" required class="text-gold focus:ring-gold w-4 h-4" {{ old('course_selection') == 'Basic Islamic Education' ? 'checked' : '' }}>
-                        <div class="ml-3 flex-1 flex justify-between items-center text-sm font-medium">
+                        <div class="ml-3 flex-1 flex justify-between items-center text-xs sm:text-sm font-medium">
                             <span>Basic Islamic Ed.</span>
                             <span class="font-urdu" dir="rtl">بنیادی اسلامی تعلیم</span>
                         </div>
@@ -239,7 +239,7 @@
 
                     <label class="flex items-center p-3 border rounded-lg hover:bg-gray-50 cursor-pointer transition md:col-span-2 lg:col-span-1">
                         <input type="radio" name="course_selection" value="Others" required class="text-gold focus:ring-gold w-4 h-4" {{ old('course_selection') == 'Others' ? 'checked' : '' }} onclick="document.getElementById('other_course_input').focus()">
-                        <div class="ml-3 flex-1 flex justify-between items-center text-sm font-medium">
+                        <div class="ml-3 flex-1 flex justify-between items-center text-xs sm:text-sm font-medium">
                             <span>Others</span>
                             <span class="font-urdu" dir="rtl">دیگر</span>
                         </div>

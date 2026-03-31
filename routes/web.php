@@ -32,6 +32,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         // Admission Routes
         Route::get('/admissions', [\App\Http\Controllers\Admin\AdmissionController::class, 'index'])->name('admissions.index');
         Route::get('/admissions/{admission}/edit', [\App\Http\Controllers\Admin\AdmissionController::class, 'edit'])->name('admissions.edit');
+        Route::get('/admissions/{admission}/print', [\App\Http\Controllers\Admin\AdmissionController::class, 'print'])->name('admissions.print');
         Route::put('/admissions/{admission}', [\App\Http\Controllers\Admin\AdmissionController::class, 'update'])->name('admissions.update');
     });
 });

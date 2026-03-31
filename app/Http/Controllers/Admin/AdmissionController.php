@@ -31,6 +31,11 @@ class AdmissionController extends Controller
 
         $admission->update($validated);
 
-        return redirect()->route('admin.admissions.index')->with('success', 'Admission record updated successfully.');
+        return redirect()->back()->with('success', 'Admission record updated successfully.');
+    }
+
+    public function print(Admission $admission)
+    {
+        return view('admin.admissions.print', compact('admission'));
     }
 }

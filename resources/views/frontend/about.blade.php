@@ -16,29 +16,29 @@
     </div>
 </section>
 
-<section class="py-24 bg-white">
+<section class="py-16 md:py-24 bg-white">
     <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <div>
-                <img src="{{ asset('assets/images/about.png') }}" alt="About" class="rounded-lg shadow-xl mb-8">
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-gold">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+            <div class="order-2 lg:order-1">
+                <img src="{{ asset('assets/images/about_boys.png') }}" alt="About" class="rounded-lg shadow-xl mb-8 w-full h-auto">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-gold shadow-sm">
                         <div class="text-3xl font-bold text-navy mb-2">20+</div>
                         <div class="text-gray-500 text-sm uppercase tracking-wider">Years Experience</div>
                     </div>
-                    <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-gold">
+                    <div class="bg-gray-50 p-6 rounded-lg border-l-4 border-gold shadow-sm">
                         <div class="text-3xl font-bold text-navy mb-2">50+</div>
                         <div class="text-gray-500 text-sm uppercase tracking-wider">Scholar Awards</div>
                     </div>
                 </div>
             </div>
-            <div>
-                <h4 class="text-gold font-semibold tracking-widest uppercase mb-4">Our History</h4>
-                <h2 class="text-4xl font-bold text-navy mb-8">Serving the Community Since 2004</h2>
+            <div class="order-1 lg:order-2">
+                <h4 class="text-gold font-semibold tracking-widest uppercase mb-4 text-sm md:text-base">Our History</h4>
+                <h2 class="text-3xl md:text-4xl font-bold text-navy mb-8 leading-tight">Serving the Community Since 2004</h2>
                 <p class="text-gray-600 mb-6 leading-relaxed">
                     Dar-ul-uloom was established with the noble intention of providing a holistic Islamic environment for both children and adults. Over the years, we have grown into a hub of spiritual rejuvenation and academic excellence.
                 </p>
-                <div class="space-y-6">
+                <div class="space-y-8">
                     <div class="flex items-start">
                         <div class="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold shrink-0 mr-4">
                             <i class="fas fa-eye"></i>

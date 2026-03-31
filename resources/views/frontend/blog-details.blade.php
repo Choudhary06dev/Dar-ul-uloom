@@ -17,9 +17,9 @@
 </div>
 
 <!-- Blog Body Section -->
-<section class="py-16 bg-white">
+<section class="py-12 md:py-16 bg-white">
     <div class="container mx-auto px-4 max-w-4xl">
-        <img src="{{ asset('assets/images/about.png') }}" alt="Blog Image" class="w-full h-96 object-cover rounded-lg shadow-lg mb-10">
+        <img src="{{ asset('assets/images/about.png') }}" alt="Blog Image" class="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg mb-10">
         
         <div class="prose prose-lg max-w-none text-gray-700">
             <p class="mb-6 leading-relaxed">
@@ -47,14 +47,16 @@
         
         <hr class="my-10 border-gray-200">
         
-        <div class="flex justify-between items-center">
-            <div class="flex space-x-3">
+        <div class="flex flex-col sm:flex-row justify-between items-center gap-6">
+            <div class="flex items-center space-x-3">
                 <span class="font-bold text-navy">Share:</span>
-                <a href="#" class="text-gray-400 hover:text-blue-600 transition"><i class="fab fa-facebook-square text-xl"></i></a>
-                <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-twitter-square text-xl"></i></a>
-                <a href="#" class="text-gray-400 hover:text-green-600 transition"><i class="fab fa-whatsapp-square text-xl"></i></a>
+                <div class="flex space-x-3">
+                    <a href="#" class="text-gray-400 hover:text-blue-600 transition"><i class="fab fa-facebook-square text-2xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-blue-400 transition"><i class="fab fa-twitter-square text-2xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-green-600 transition"><i class="fab fa-whatsapp-square text-2xl"></i></a>
+                </div>
             </div>
-            <a href="{{ route('frontend.blog') }}" class="text-gold font-bold uppercase tracking-wider text-sm hover:text-navy transition flex items-center">
+            <a href="{{ route('frontend.blog') }}" class="w-full sm:w-auto text-center px-6 py-2 border border-gold text-gold font-bold uppercase tracking-wider text-xs hover:bg-gold hover:text-white transition flex items-center justify-center">
                 <i class="fas fa-arrow-left mr-2"></i> Back to Blog
             </a>
         </div>

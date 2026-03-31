@@ -20,35 +20,35 @@
     <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
         <!-- Logo -->
         <a href="{{ route('frontend.index') }}" class="flex items-center">
-            <img src="{{ asset('assets/logo.png') }}" alt="Dar-ul-uloom Logo" class="h-12 w-auto mr-3 rounded-full">
+            <img src="{{ asset('assets/logo.png') }}" alt="Dar-ul-uloom Logo" class="h-10 md:h-12 w-auto mr-3 rounded-full shadow-sm">
             <div>
-                <span class="text-2xl font-bold text-gray-800 tracking-wider">DAR-UL-ULOOM</span>
-                <p class="text-[12px] text-gray-500 uppercase tracking-[4px] -mt-1">Anwaar-e-Mustafa BOR</p>
+                <span class="text-xl md:text-2xl font-bold text-gray-800 tracking-wider">DAR-UL-ULOOM</span>
+                <p class="text-[10px] md:text-[12px] text-gray-500 uppercase tracking-[2px] md:tracking-[4px] -mt-1">Anwaar-e-Mustafa BOR</p>
             </div>
         </a>
 
         <!-- Navigation Links -->
         <div class="hidden lg:flex items-center space-x-8">
-            <a href="{{ route('frontend.index') }}" class="nav-link-custom">HOME</a>
-            <a href="{{ route('frontend.about') }}" class="nav-link-custom">ABOUT</a>
-            <a href="{{ route('frontend.blog') }}" class="nav-link-custom">BLOG</a>
-            <a href="{{ route('frontend.admission.create') }}" class="nav-link-custom">ADMISSION</a>
-            <a href="{{ route('frontend.contact') }}" class="nav-link-custom">CONTACT</a>
-            
-            <!-- <a href="#" class="btn-gold ml-4">VISIT US</a> -->
+            <a href="{{ route('frontend.index') }}" class="nav-link-custom {{ Route::is('frontend.index') ? 'active' : '' }}">HOME</a>
+            <a href="{{ route('frontend.about') }}" class="nav-link-custom {{ Route::is('frontend.about') ? 'active' : '' }}">ABOUT</a>
+            <a href="{{ route('frontend.blog') }}" class="nav-link-custom {{ Route::is('frontend.blog*') ? 'active' : '' }}">BLOG</a>
+            <a href="{{ route('frontend.admission.create') }}" class="nav-link-custom {{ Route::is('frontend.admission*') ? 'active' : '' }}">ADMISSION</a>
+            <a href="{{ route('frontend.contact') }}" class="nav-link-custom {{ Route::is('frontend.contact') ? 'active' : '' }}">CONTACT</a>
         </div>
 
         <!-- Mobile Menu Toggle -->
-        <button class="lg:hidden text-gray-800 text-2xl focus:outline-none" onclick="toggleMobileMenu()">
+        <button class="lg:hidden text-gray-800 text-2xl focus:outline-none p-2 hover:bg-gray-50 rounded-lg transition" onclick="toggleMobileMenu()">
             <i class="fas fa-bars"></i>
         </button>
     </nav>
     
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 py-4 px-4 space-y-4">
-        <a href="{{ route('frontend.index') }}" class="block text-gray-800 font-medium border-b py-2">HOME</a>
-        <a href="{{ route('frontend.about') }}" class="block text-gray-800 font-medium border-b py-2">ABOUT</a>
-        <a href="{{ route('frontend.contact') }}" class="block text-gray-800 font-medium border-b py-2">CONTACT</a>
-        <a href="#" class="block btn-gold text-center py-3">VISIT US</a>
+    <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 py-6 px-6 space-y-4 shadow-xl transition-all duration-300">
+        <a href="{{ route('frontend.index') }}" class="block text-gray-800 font-bold border-b border-gray-50 py-3 {{ Route::is('frontend.index') ? 'text-gold' : '' }}">HOME</a>
+        <a href="{{ route('frontend.about') }}" class="block text-gray-800 font-bold border-b border-gray-50 py-3 {{ Route::is('frontend.about') ? 'text-gold' : '' }}">ABOUT</a>
+        <a href="{{ route('frontend.blog') }}" class="block text-gray-800 font-bold border-b border-gray-50 py-3 {{ Route::is('frontend.blog*') ? 'text-gold' : '' }}">BLOG</a>
+        <a href="{{ route('frontend.admission.create') }}" class="block text-gray-800 font-bold border-b border-gray-50 py-3 {{ Route::is('frontend.admission*') ? 'text-gold' : '' }}">ADMISSION</a>
+        <a href="{{ route('frontend.contact') }}" class="block text-gray-800 font-bold border-b border-gray-50 py-3 {{ Route::is('frontend.contact') ? 'text-gold' : '' }}">CONTACT</a>
+        <a href="#" class="block btn-gold text-center py-4 mt-6 rounded-xl shadow-lg">VISIT US</a>
     </div>
 </header>

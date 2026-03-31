@@ -4,18 +4,18 @@
 
 @section('content')
 <!-- Page Header -->
-<div class="bg-navy py-16 text-center text-white islamic-pattern relative">
+<div class="bg-navy py-12 md:py-16 text-center text-white islamic-pattern relative">
     <div class="container mx-auto px-4 relative z-10">
-        <h1 class="text-4xl md:text-5xl font-bold mb-4">Our Blog & Articles</h1>
+        <h1 class="text-3xl md:text-5xl font-bold mb-4">Our Blog & Articles</h1>
         <div class="w-20 h-1 bg-gold mx-auto mb-4"></div>
-        <p class="text-gold uppercase tracking-widest text-sm">Read the latest news and Islamic insights</p>
+        <p class="text-gold uppercase tracking-widest text-xs md:text-sm">Read the latest news and Islamic insights</p>
     </div>
 </div>
 
 <!-- Blog Section -->
-<section class="py-24 bg-gray-50">
+<section class="py-16 md:py-24 bg-gray-50">
     <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
             <!-- Blog Post 1 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden group">
                 <div class="relative overflow-hidden">

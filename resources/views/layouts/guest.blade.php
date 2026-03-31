@@ -60,6 +60,14 @@
                 max-width: 680px; /* Increased width */
                 padding: 24px 32px; /* Decreased internal height */
                 backdrop-filter: blur(8px);
+                transition: all 0.3s ease;
+            }
+
+            @media (max-width: 640px) {
+                .auth-card {
+                    padding: 20px 20px; /* More room for content on mobile */
+                    border-radius: 20px;
+                }
             }
 
             .brand-text {
@@ -93,8 +101,8 @@
         <div class="auth-container">
             <div class="mb-6 text-center"> <!-- Reduced margin -->
                 <a href="/" class="flex flex-col items-center">
-                    <span class="text-3xl brand-text uppercase tracking-widest leading-none">Dar-ul-uloom</span>
-                    <span class="text-[10px] font-bold gold-accent tracking-[0.4em] mt-1">ANWAAR-E-MUSTAFA</span>
+                    <span class="text-2xl md:text-3xl brand-text uppercase md:tracking-widest tracking-wider leading-none">Dar-ul-uloom</span>
+                    <span class="text-[9px] md:text-[10px] font-bold gold-accent tracking-[0.2em] md:tracking-[0.4em] mt-1">ANWAAR-E-MUSTAFA</span>
                 </a>
             </div>
 
@@ -102,7 +110,7 @@
                 {{ $slot }}
             </div>
 
-            <p class="mt-8 text-[10px] text-slate-400 font-bold tracking-[0.3em] uppercase">
+            <p class="mt-8 text-[9px] md:text-[10px] text-slate-400 font-bold tracking-widest uppercase text-center px-4">
                 Knowledge • Faith • Excellence
             </p>
         </div>

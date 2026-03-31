@@ -1,6 +1,6 @@
 <div class="sticky top-0 z-50 shadow-sm transition-all duration-300 overflow-visible">
     <!-- Header Top Bar -->
-    <div class="header-top bg-navy text-white hidden md:block py-3 relative z-[100]">
+    <div class="header-top bg-navy text-white py-3 relative z-[100]">
         <div class="container flex justify-between items-center">
             <div class="flex space-x-4">
                 <a href="#" class="hover:text-gold transition"><i class="fab fa-twitter"></i></a>

@@ -49,7 +49,12 @@
             </button>
         </div>
 
-        {{-- Admin login: no self-registration link --}}
+        <div class="pt-4 text-center">
+            <p class="text-sm text-slate-500 font-medium">
+                Don't have an admin account? 
+                <a href="{{ route('admin.register') }}" class="text-emerald-700 font-bold hover:text-emerald-600 underline-offset-4 hover:underline">Register here</a>
+            </p>
+        </div>
     </form>
 </x-guest-layout>
 

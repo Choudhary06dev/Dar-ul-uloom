@@ -4,7 +4,7 @@
         <p class="text-slate-500 mt-2 font-medium">Join Dar-ul-uloom today</p>
     </div>
 
-    <form method="POST" action="{{ route('register') }}" class="space-y-6">
+    <form method="POST" action="{{ request()->routeIs('admin.*') ? route('admin.register') : route('register') }}" class="space-y-6">
         @csrf
 
         <!-- Name -->

@@ -11,6 +11,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700\u0026family=Playfair+Display:wght@700;800\u0026display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -82,7 +83,11 @@
             }
         </style>
     </head>
-    <body class="antialiased">
+    <body class="antialiased bg-[url('/images/abstract-bg.svg')] bg-cover bg-fixed">
+        @unless(request()->routeIs('admin.*'))
+            @include('layouts.partials.header')
+        @endunless
+
         <div class="auth-watermark"></div>
         
         <div class="auth-container">
@@ -101,6 +106,10 @@
                 Knowledge • Faith • Excellence
             </p>
         </div>
+
+        @unless(request()->routeIs('admin.*'))
+            @include('layouts.partials.footer')
+        @endunless
     </body>
 </html>
 

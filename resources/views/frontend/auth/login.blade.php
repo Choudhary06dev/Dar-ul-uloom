@@ -1,7 +1,7 @@
 <x-guest-layout>
     <div class="mb-10 text-center">
-        <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Welcome back</h2>
-        <p class="text-slate-500 mt-2 font-medium">Please enter your details to sign in</p>
+        <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Welcome to Dar-ul-uloom</h2>
+        <p class="text-slate-500 mt-2 font-medium">Please sign in to continue</p>
     </div>
 
     @if (session('status'))
@@ -10,13 +10,13 @@
         </div>
     @endif
 
-    <form method="POST" action="{{ route('admin.login') }}" class="space-y-6">
+    <form method="POST" action="{{ route('login') }}" class="space-y-6">
         @csrf
 
         <!-- Email Address -->
         <div>
             <label for="email" class="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
-            <input id="email" class="block w-full px-4 py-3 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 transition-all duration-200 outline-none" type="email" name="email" value="{{ old('email') }}" required autofocus placeholder="name@company.com" />
+            <input id="email" class="block w-full px-4 py-3 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 transition-all duration-200 outline-none" type="email" name="email" value="{{ old('email') }}" required autofocus placeholder="your@email.com" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
@@ -24,11 +24,6 @@
         <div>
             <div class="flex items-center justify-between mb-2">
                 <label for="password" class="block text-sm font-semibold text-slate-700">Password</label>
-                @if (Route::has('password.request'))
-                    <a class="text-xs font-bold text-emerald-700 hover:text-emerald-600 transition-colors" href="{{ route('password.request') }}">
-                        Forgot password?
-                    </a>
-                @endif
             </div>
             <input id="password" class="block w-full px-4 py-3 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 transition-all duration-200 outline-none"
                             type="password"
@@ -40,17 +35,20 @@
         <!-- Remember Me -->
         <div class="flex items-center">
             <input id="remember_me" type="checkbox" class="w-5 h-5 rounded-md border-slate-300 text-emerald-600 focus:ring-emerald-600 transition-all cursor-pointer" name="remember">
-            <label for="remember_me" class="ml-3 text-sm font-medium text-slate-600 cursor-pointer select-none">Remember this device</label>
+            <label for="remember_me" class="ml-3 text-sm font-medium text-slate-600 cursor-pointer select-none">Remember me</label>
         </div>
 
         <div>
             <button type="submit" class="w-full flex justify-center items-center px-6 py-4 rounded-xl primary-btn text-sm font-bold shadow-xl active:scale-[0.98]">
-                Sign in to account
+                Sign in
             </button>
         </div>
 
-        {{-- Admin login: no self-registration link --}}
+        <div class="pt-4 text-center">
+            <p class="text-sm text-slate-500 font-medium">
+                Don't have an account? 
+                <a href="{{ route('register') }}" class="text-emerald-700 font-bold hover:text-emerald-600 underline-offset-4 hover:underline">Register here</a>
+            </p>
+        </div>
     </form>
 </x-guest-layout>
-
-

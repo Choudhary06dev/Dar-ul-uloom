@@ -1,5 +1,5 @@
 <!-- Header Top Bar -->
-<div class="header-top bg-navy text-white hidden md:block py-3">
+<div class="header-top bg-navy text-white hidden md:block py-3 relative z-[100]">
     <div class="container mx-auto flex justify-between items-center px-4">
         <div class="flex space-x-4">
             <a href="#" class="hover:text-gold transition"><i class="fab fa-twitter"></i></a>
@@ -11,27 +11,34 @@
             <div class="flex items-center"><i class="fas fa-phone mr-2 text-gold"></i> +22 33 4455 6677</div>
             <div class="flex items-center"><i class="fas fa-envelope mr-2 text-gold"></i> info@dar-ul-uloom.com</div>
             <!-- Account Dropdown -->
-            <div class="relative group z-[100]">
+            <div class="relative group">
                 <button class="hover:text-gold transition flex items-center font-medium focus:outline-none">
                     <i class="fas fa-user-circle text-lg mr-1"></i> Account <i class="fas fa-chevron-down ml-1 text-[10px]"></i>
                 </button>
                 
                 <!-- Dropdown Menu -->
-                <div class="absolute right-0 mt-8 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right border border-gray-100 -translate-y-2 group-hover:translate-y-0" style="top: 100%;">
-                    <div class="py-2">
+                <div class="absolute right-0 mt-0 w-56 bg-white rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right border border-gray-100 -translate-y-2 group-hover:translate-y-0 z-[110]" style="top: 100%;">
+                    <div class="absolute inset-x-0 -top-4 h-4 bg-transparent"></div> <!-- Hover bridge -->
+                    <div class="p-3">
                         @auth
-                            <div class="px-4 py-2 border-b border-gray-50 flex items-center">
-                                <i class="fas fa-user text-gold mr-2 text-sm"></i> 
-                                <span class="text-sm font-semibold text-gray-800 truncate">{{ auth()->user()->name }}</span>
+                            <div class="px-4 py-3 border-b border-gray-50 mb-2">
+                                <div class="text-xs text-gray-500 uppercase tracking-wider mb-1">Welcome</div>
+                                <div class="text-sm font-bold text-gray-800 truncate">{{ auth()->user()->name }}</div>
                             </div>
-                            <a href="{{ route('frontend.profile.edit') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gold transition"><i class="fas fa-user-edit mr-2 w-4 text-center"></i> Profile</a>
+                            <a href="{{ route('frontend.profile.edit') }}" class="flex items-center px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gold rounded-lg transition"><i class="fas fa-user-edit mr-3 w-4 text-center"></i> My Profile</a>
                             <form method="POST" action="{{ route('logout') }}" class="w-full">
                                 @csrf
-                                <button type="submit" class="w-full text-left px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gold transition"><i class="fas fa-sign-out-alt mr-2 w-4 text-center"></i> Logout</button>
+                                <button type="submit" class="flex items-center w-full text-left px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-red-500 rounded-lg transition"><i class="fas fa-sign-out-alt mr-3 w-4 text-center"></i> Logout</button>
                             </form>
                         @else
-                            <a href="{{ route('login') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gold transition"><i class="fas fa-sign-in-alt mr-2 w-4 text-center"></i> Login</a>
-                            <a href="{{ route('register') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gold transition"><i class="fas fa-user-plus mr-2 w-4 text-center"></i> Register</a>
+                            <div class="space-y-2 pt-1">
+                                <a href="{{ route('login') }}" class="flex items-center justify-center w-full px-4 py-3 bg-navy text-white text-sm font-bold rounded-xl hover:bg-gold transition shadow-md">
+                                    <i class="fas fa-sign-in-alt mr-2"></i> LOGIN
+                                </a>
+                                <a href="{{ route('register') }}" class="flex items-center justify-center w-full px-4 py-3 border-2 border-navy text-navy text-sm font-bold rounded-xl hover:bg-navy hover:text-white transition">
+                                    <i class="fas fa-user-plus mr-2"></i> REGISTER
+                                </a>
+                            </div>
                         @endauth
                     </div>
                 </div>

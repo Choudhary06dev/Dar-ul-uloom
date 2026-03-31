@@ -9,7 +9,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700\u0026display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -151,7 +151,6 @@
                 <img src="{{ asset('images/admin-logo.png') }}" alt="Dar-ul-uloom" class="img-fluid" style="max-height: 60px;">
             </a>
         </div>
-        </div>
         
         <ul class="nav flex-column mt-4">
             <li class="nav-item">
@@ -195,7 +194,7 @@
                     </div>
                 </div>
                 <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-3 p-2" style="border-radius: 16px; min-width: 200px">
-                    <li><a class="dropdown-item p-2 px-3 rounded-lg" href="{{ route('admin.profile.edit') }}"><i class="fa-solid fa-user-gear me-2 opacity-50"></i> My Profile</a></li>
+                    <li><a class="dropdown-item p-2 px-3 rounded-lg" href="{{ route('profile.edit') }}"><i class="fa-solid fa-user-gear me-2 opacity-50"></i> My Profile</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li>
                         <form method="POST" action="{{ route('logout') }}">
@@ -225,4 +224,3 @@
     </script>
 </body>
 </html>
-

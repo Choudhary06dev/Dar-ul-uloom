@@ -43,6 +43,7 @@ class AdminController extends Controller
      */
     public function editUser(User $user): View
     {
+        $this->authorize('update', $user);
         return view('admin.users.edit', compact('user'));
     }
 
@@ -51,6 +52,8 @@ class AdminController extends Controller
      */
     public function updateUser(Request $request, User $user): RedirectResponse
     {
+        $this->authorize('update', $user);
+
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
@@ -66,6 +69,8 @@ class AdminController extends Controller
      */
     public function destroyUser(User $user): RedirectResponse
     {
+        $this->authorize('delete', $user);
+
         if (auth()->id() === $user->id) {
             return back()->with('error', 'You cannot delete yourself!');
         }
@@ -75,4 +80,3 @@ class AdminController extends Controller
         return redirect()->route('admin.users')->with('status', 'User deleted successfully!');
     }
 }
-

@@ -21,8 +21,8 @@
 </section>
 
 <!-- About Us Section -->
-<section class="py-24 bg-white islamic-pattern">
-    <div class="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<section class="py-16 bg-white islamic-pattern">
+    <div class="container px-8 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div class="relative">
             <div class="absolute -top-6 -left-6 w-32 h-32 border-t-4 border-l-4 border-gold"></div>
             <img src="{{ asset('assets/images/about_boys.png') }}" alt="About Dar-ul-uloom" class="rounded-lg shadow-2xl relative z-10">
@@ -54,7 +54,7 @@
 </section>
 
 <!-- Stats Section -->
-<section class="py-16 bg-navy text-white">
+<section class="py-12 bg-navy text-white">
     <div class="container mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
         <div>
             <div class="text-4xl font-bold text-gold mb-2">500+</div>
@@ -76,7 +76,7 @@
 </section>
 
 <!-- Scholars Section -->
-<section class="py-24 bg-gray-50">
+<section class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
         <div class="text-center max-w-2xl mx-auto mb-16">
             <h4 class="text-gold font-semibold tracking-widest uppercase mb-4">Meet Our Scholars</h4>
@@ -143,7 +143,7 @@
 </section>
 
 <!-- Newsletter Section -->
-<section class="py-16 bg-gold relative overflow-hidden">
+<section class="py-12 bg-gold relative overflow-hidden">
     <div class="container mx-auto px-4 flex flex-col lg:flex-row items-center justify-between text-white relative z-10">
         <div class="mb-8 lg:mb-0">
             <h2 class="text-3xl font-bold mb-2">Subscribe To Our Newsletter</h2>
@@ -161,7 +161,7 @@
 </section>
 
 <!-- Blog Section -->
-<section class="py-24 bg-white">
+<section class="py-16 bg-white">
     <div class="container mx-auto px-4">
         <div class="flex justify-between items-end mb-16">
             <div>

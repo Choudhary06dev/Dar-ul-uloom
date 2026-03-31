@@ -11,7 +11,7 @@
             <!-- Name -->
             <div>
                 <label for="name" class="block text-sm font-semibold text-slate-700 mb-1">Full Name</label>
-                <input id="name" class="block w-full px-4 py-2.5 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 transition-all duration-200 outline-none" type="text" name="name" value="{{ old('name') }}" required autofocus placeholder="John Doe" />
+                <input id="name" class="block w-full px-4 py-2.5 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 transition-all duration-200 outline-none" type="text" name="name" value="{{ old('name') }}" required autofocus placeholder=" full name" />
                 <x-input-error :messages="$errors->get('name')" class="mt-1" />
             </div>
 

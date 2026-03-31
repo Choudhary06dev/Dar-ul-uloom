@@ -51,11 +51,11 @@
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
                             <label class="block text-gray-700 font-medium mb-2">Full Name</label>
-                            <input type="text" placeholder="John Doe" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-gold focus:ring-0 transition">
+                            <input type="text" placeholder="full name" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-gold focus:ring-0 transition">
                         </div>
                         <div>
                             <label class="block text-gray-700 font-medium mb-2">Email Address</label>
-                            <input type="email" placeholder="john@example.com" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-gold focus:ring-0 transition">
+                            <input type="email" placeholder="name@company.com" class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-gold focus:ring-0 transition">
                         </div>
                     </div>
                     <div>

@@ -45,11 +45,7 @@
                             <div class="fw-bold text-slate-800">{{ $user->created_at->format('M d, Y - h:i A') }}</div>
                         </div>
 
-                        <div class="d-flex gap-3 pt-4">
-                            <a href="{{ route('admin.users.edit', $user) }}" class="btn btn-brand px-4 py-2">
-                                <i class="fa-solid fa-pen-to-square me-2"></i> Edit Account
-                            </a>
-                        </div>
+                        
                     </div>
                 </div>
             </div>

@@ -37,6 +37,36 @@ class AdminController extends Controller
     }
 
     /**
+     * Show the form to create a new user.
+     */
+    public function createUser(): View
+    {
+        return view('admin.users.create');
+    }
+
+    /**
+     * Store a newly created user.
+     */
+    public function storeUser(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8|confirmed',
+            'is_admin' => 'sometimes|boolean',
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password),
+            'is_admin' => $request->has('is_admin') ? (bool) $request->is_admin : false,
+        ]);
+
+        return redirect()->route('admin.users')->with('status', 'New user created successfully.');
+    }
+
+    /**
      * Display a specific user's details.
      */
     public function showUser(User $user): View
@@ -60,9 +90,16 @@ class AdminController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
+            'password' => 'nullable|string|min:8|confirmed',
         ]);
 
-        $user->update($request->only('name', 'email'));
+        $data = $request->only('name', 'email');
+
+        if ($request->filled('password')) {
+            $data['password'] = bcrypt($request->password);
+        }
+
+        $user->update($data);
 
         return redirect()->route('admin.users')->with('status', 'User updated successfully!');
     }

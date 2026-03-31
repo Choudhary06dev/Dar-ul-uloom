@@ -1,16 +1,16 @@
 <div class="sticky top-0 z-50 shadow-sm transition-all duration-300 overflow-visible">
     <!-- Header Top Bar -->
-    <div class="header-top bg-navy text-white py-3 relative z-[100]">
-        <div class="container flex justify-between items-center">
-            <div class="flex space-x-4">
+    <div class="header-top bg-navy text-white py-2 relative z-[100]">
+        <div class="container flex justify-between items-center text-[13px]">
+            <div class="hidden md:flex space-x-4">
                 <a href="#" class="hover:text-gold transition"><i class="fab fa-twitter"></i></a>
                 <a href="#" class="hover:text-gold transition"><i class="fab fa-pinterest"></i></a>
                 <a href="#" class="hover:text-gold transition"><i class="fab fa-facebook-f"></i></a>
                 <a href="#" class="hover:text-gold transition"><i class="fab fa-instagram"></i></a>
             </div>
-            <div class="flex items-center space-x-6">
-                <div class="flex items-center"><i class="fas fa-phone mr-2 text-gold"></i> +22 33 4455 6677</div>
-                <div class="flex items-center"><i class="fas fa-envelope mr-2 text-gold"></i> info@dar-ul-uloom.com</div>
+            <div class="flex items-center space-x-4 md:space-x-6 w-full md:w-auto justify-between md:justify-end">
+                <div class="flex items-center whitespace-nowrap"><i class="fas fa-phone mr-2 text-gold"></i> +22 33 4455 6677</div>
+                <div class="hidden lg:flex items-center"><i class="fas fa-envelope mr-2 text-gold"></i> info@dar-ul-uloom.com</div>
                 <!-- Account Dropdown -->
                 <div class="relative group">
                     <button class="hover:text-gold transition flex items-center font-medium focus:outline-none">

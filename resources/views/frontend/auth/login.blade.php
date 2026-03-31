@@ -1,7 +1,7 @@
 <x-guest-layout>
-    <div class="mb-10 text-center">
+    <div class="mb-6 text-center">
         <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Welcome to Dar-ul-uloom</h2>
-        <p class="text-slate-500 mt-2 font-medium">Please sign in to continue</p>
+        <p class="text-slate-500 mt-1 font-medium">Please sign in to continue</p>
     </div>
 
     @if (session('status'))
@@ -15,21 +15,21 @@
 
         <!-- Email Address -->
         <div>
-            <label for="email" class="block text-sm font-semibold text-slate-700 mb-2">Email Address</label>
-            <input id="email" class="block w-full px-4 py-3 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 transition-all duration-200 outline-none" type="email" name="email" value="{{ old('email') }}" required autofocus placeholder="your@email.com" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+            <label for="email" class="block text-sm font-semibold text-slate-700 mb-1.5">Email Address</label>
+            <input id="email" class="block w-full px-4 py-2.5 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 transition-all duration-200 outline-none" type="email" name="email" value="{{ old('email') }}" required autofocus placeholder="your@email.com" />
+            <x-input-error :messages="$errors->get('email')" class="mt-1.5" />
         </div>
 
         <!-- Password -->
         <div>
-            <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center justify-between mb-1.5">
                 <label for="password" class="block text-sm font-semibold text-slate-700">Password</label>
             </div>
-            <input id="password" class="block w-full px-4 py-3 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 transition-all duration-200 outline-none"
+            <input id="password" class="block w-full px-4 py-2.5 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 transition-all duration-200 outline-none"
                             type="password"
                             name="password"
                             required placeholder="••••••••" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            <x-input-error :messages="$errors->get('password')" class="mt-1.5" />
         </div>
 
         <!-- Remember Me -->
@@ -39,7 +39,7 @@
         </div>
 
         <div>
-            <button type="submit" class="w-full flex justify-center items-center px-6 py-4 rounded-xl primary-btn text-sm font-bold shadow-xl active:scale-[0.98]">
+            <button type="submit" class="w-full flex justify-center items-center px-6 py-3.5 rounded-xl primary-btn text-sm font-bold shadow-xl active:scale-[0.98]">
                 Sign in
             </button>
         </div>

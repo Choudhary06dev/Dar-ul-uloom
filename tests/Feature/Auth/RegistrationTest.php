@@ -25,7 +25,25 @@ class RegistrationTest extends TestCase
             'password_confirmation' => 'password',
         ]);
 
-        $this->assertAuthenticated();
+        $user = \App\Models\User::first();
+
+        $this->assertAuthenticatedAs($user, 'web');
+        $response->assertRedirect(route('frontend.index', absolute: false));
+    }
+
+    public function test_new_admins_can_register_via_admin_route(): void
+    {
+        $response = $this->post('/admin/register', [
+            'name' => 'Admin User',
+            'email' => 'admin@example.com',
+            'password' => 'password',
+            'password_confirmation' => 'password',
+        ]);
+
+        $admin = \App\Models\User::where('email', 'admin@example.com')->first();
+
+        $this->assertTrue($admin->is_admin);
+        $this->assertAuthenticatedAs($admin, 'admin');
         $response->assertRedirect(route('admin.dashboard', absolute: false));
     }
 }

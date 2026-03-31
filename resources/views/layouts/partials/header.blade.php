@@ -10,7 +10,32 @@
         <div class="flex items-center space-x-6">
             <div class="flex items-center"><i class="fas fa-phone mr-2 text-gold"></i> +22 33 4455 6677</div>
             <div class="flex items-center"><i class="fas fa-envelope mr-2 text-gold"></i> info@dar-ul-uloom.com</div>
-            <a href="{{ route('frontend.index') }}" class="hover:text-gold transition"><i class="fas fa-user-circle mr-1"></i> Account</a>
+            <!-- Account Dropdown -->
+            <div class="relative group z-[100]">
+                <button class="hover:text-gold transition flex items-center font-medium focus:outline-none">
+                    <i class="fas fa-user-circle text-lg mr-1"></i> Account <i class="fas fa-chevron-down ml-1 text-[10px]"></i>
+                </button>
+                
+                <!-- Dropdown Menu -->
+                <div class="absolute right-0 mt-8 w-48 bg-white rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-right border border-gray-100 -translate-y-2 group-hover:translate-y-0" style="top: 100%;">
+                    <div class="py-2">
+                        @auth
+                            <div class="px-4 py-2 border-b border-gray-50 flex items-center">
+                                <i class="fas fa-user text-gold mr-2 text-sm"></i> 
+                                <span class="text-sm font-semibold text-gray-800 truncate">{{ auth()->user()->name }}</span>
+                            </div>
+                            <a href="{{ route('frontend.profile.edit') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gold transition"><i class="fas fa-user-edit mr-2 w-4 text-center"></i> Profile</a>
+                            <form method="POST" action="{{ route('logout') }}" class="w-full">
+                                @csrf
+                                <button type="submit" class="w-full text-left px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gold transition"><i class="fas fa-sign-out-alt mr-2 w-4 text-center"></i> Logout</button>
+                            </form>
+                        @else
+                            <a href="{{ route('login') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gold transition"><i class="fas fa-sign-in-alt mr-2 w-4 text-center"></i> Login</a>
+                            <a href="{{ route('register') }}" class="block px-4 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-gold transition"><i class="fas fa-user-plus mr-2 w-4 text-center"></i> Register</a>
+                        @endauth
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -49,6 +74,32 @@
         <a href="{{ route('frontend.blog') }}" class="block text-gray-800 font-bold border-b border-gray-50 py-3 {{ Route::is('frontend.blog*') ? 'text-gold' : '' }}">BLOG</a>
         <a href="{{ route('frontend.admission.create') }}" class="block text-gray-800 font-bold border-b border-gray-50 py-3 {{ Route::is('frontend.admission*') ? 'text-gold' : '' }}">ADMISSION</a>
         <a href="{{ route('frontend.contact') }}" class="block text-gray-800 font-bold border-b border-gray-50 py-3 {{ Route::is('frontend.contact') ? 'text-gold' : '' }}">CONTACT</a>
+        
+        <!-- Mobile Account Links -->
+        <div class="pt-4 border-t border-gray-100">
+            @auth
+                <div class="flex items-center mb-4 px-2">
+                    <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold mr-3">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div>
+                        <div class="text-sm font-bold text-gray-800">{{ auth()->user()->name }}</div>
+                        <div class="text-xs text-gray-500">Student Account</div>
+                    </div>
+                </div>
+                <a href="{{ route('frontend.profile.edit') }}" class="block text-gray-700 font-medium py-2 hover:text-gold transition"><i class="fas fa-user-edit mr-2"></i> Edit Profile</a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="w-full text-left text-gray-700 font-medium py-2 hover:text-gold transition"><i class="fas fa-sign-out-alt mr-2"></i> Logout</button>
+                </form>
+            @else
+                <div class="grid grid-cols-2 gap-4">
+                    <a href="{{ route('login') }}" class="text-center py-2 border border-gold text-gold font-bold rounded-lg hover:bg-gold hover:text-white transition">LOGIN</a>
+                    <a href="{{ route('register') }}" class="text-center py-2 bg-gold text-white font-bold rounded-lg hover:bg-navy transition shadow-sm">REGISTER</a>
+                </div>
+            @endauth
+        </div>
+
         <a href="#" class="block btn-gold text-center py-4 mt-6 rounded-xl shadow-lg">VISIT US</a>
     </div>
 </header>

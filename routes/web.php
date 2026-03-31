@@ -11,30 +11,28 @@ require __DIR__ . '/frontend.php';
 
 
 // Admin Routes with Authentication
-Route::prefix('admin')->name('admin.')->group(function () {
-    Route::get('/dashboard', [AdminController::class, 'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::prefix('admin')->name('admin.')->middleware(['auth:admin', \App\Http\Middleware\AdminMiddleware::class])->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 
-    Route::middleware('auth')->group(function () {
-        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    });
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // Admin specific routes
     Route::get('/', [AdminController::class, 'index'])->name('index');
-    Route::middleware('auth')->group(function () {
-        Route::get('/users', [AdminController::class, 'users'])->name('users');
-        Route::get('/users/{user}', [AdminController::class, 'showUser'])->name('users.show');
-        Route::get('/users/{user}/edit', [AdminController::class, 'editUser'])->name('users.edit');
-        Route::patch('/users/{user}', [AdminController::class, 'updateUser'])->name('users.update');
-        Route::delete('/users/{user}', [AdminController::class, 'destroyUser'])->name('users.destroy');
-        
-        // Admission Routes
-        Route::get('/admissions', [\App\Http\Controllers\Admin\AdmissionController::class, 'index'])->name('admissions.index');
-        Route::get('/admissions/{admission}/edit', [\App\Http\Controllers\Admin\AdmissionController::class, 'edit'])->name('admissions.edit');
-        Route::get('/admissions/{admission}/print', [\App\Http\Controllers\Admin\AdmissionController::class, 'print'])->name('admissions.print');
-        Route::put('/admissions/{admission}', [\App\Http\Controllers\Admin\AdmissionController::class, 'update'])->name('admissions.update');
-    });
+
+    // User management
+    Route::get('/users', [AdminController::class, 'users'])->name('users');
+    Route::get('/users/{user}', [AdminController::class, 'showUser'])->name('users.show');
+    Route::get('/users/{user}/edit', [AdminController::class, 'editUser'])->name('users.edit');
+    Route::patch('/users/{user}', [AdminController::class, 'updateUser'])->name('users.update');
+    Route::delete('/users/{user}', [AdminController::class, 'destroyUser'])->name('users.destroy');
+    
+    // Admission Routes
+    Route::get('/admissions', [\App\Http\Controllers\Admin\AdmissionController::class, 'index'])->name('admissions.index');
+    Route::get('/admissions/{admission}/edit', [\App\Http\Controllers\Admin\AdmissionController::class, 'edit'])->name('admissions.edit');
+    Route::get('/admissions/{admission}/print', [\App\Http\Controllers\Admin\AdmissionController::class, 'print'])->name('admissions.print');
+    Route::put('/admissions/{admission}', [\App\Http\Controllers\Admin\AdmissionController::class, 'update'])->name('admissions.update');
 });
 
 

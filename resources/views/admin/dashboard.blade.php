@@ -7,7 +7,7 @@
     <!-- Welcome Section -->
     <div class="col-12">
         <div class="card border-0 bg-transparent mb-2">
-            <h2 class="fw-bold text-slate-900">Assalam-o-Alaikum, {{ Auth::user()->name }}! 👋</h2>
+            <h2 class="fw-bold text-slate-900">Assalam-o-Alaikum, {{ Auth::guard('admin')->user()->name }}! 👋</h2>
             <p class="text-muted">Here is what's happening with Dar-ul-uloom today.</p>
         </div>
     </div>

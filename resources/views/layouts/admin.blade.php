@@ -142,7 +142,7 @@
     @stack('styles')
 </head>
 <body>
-    @auth
+    @auth('admin')
     <!-- Sidebar -->
     <nav id="sidebar">
         <div class="sidebar-header">
@@ -176,11 +176,11 @@
             </li>
         </ul>
     </nav>
-    @endauth
+    @endauth('admin')
 
     <!-- Page Content -->
     <div id="main-content">
-        @auth
+        @auth('admin')
         <header class="topbar">
             <div class="d-flex align-items-center">
                 <button class="btn d-lg-none" id="sidebar-toggle">
@@ -197,18 +197,18 @@
             <div class="dropdown">
                 <div class="user-dropdown d-flex align-items-center" data-bs-toggle="dropdown">
                     <div class="me-3 text-end d-none d-sm-block">
-                        <div class="fw-bold" style="font-size: 0.9rem">{{ Auth::user()->name }}</div>
+                        <div class="fw-bold" style="font-size: 0.9rem">{{ Auth::guard('admin')->user()->name }}</div>
                         <div class="text-muted" style="font-size: 0.75rem">Administrator</div>
                     </div>
                     <div class="rounded-circle d-flex align-items-center justify-content-center text-white" style="width: 40px; height: 40px; background: var(--accent-gold)">
-                        {{ substr(Auth::user()->name, 0, 1) }}
+                        {{ substr(Auth::guard('admin')->user()->name, 0, 1) }}
                     </div>
                 </div>
                 <ul class="dropdown-menu dropdown-menu-end shadow border-0 mt-3 p-2" style="border-radius: 16px; min-width: 200px">
                     <li><a class="dropdown-item p-2 px-3 rounded-lg" href="{{ route('admin.profile.edit') }}"><i class="fa-solid fa-user-gear me-2 opacity-50"></i> My Profile</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li>
-                        <form method="POST" action="{{ route('logout') }}">
+                        <form method="POST" action="{{ route('admin.logout') }}">
                             @csrf
                             <button type="submit" class="dropdown-item p-2 px-3 rounded-lg text-danger"><i class="fa-solid fa-power-off me-2 opacity-50"></i> Sign Out</button>
                         </form>
@@ -216,7 +216,7 @@
                 </ul>
             </div>
         </header>
-        @endauth
+        @endauth('admin')
 
         <main class="p-4 p-md-5">
             @yield('content')

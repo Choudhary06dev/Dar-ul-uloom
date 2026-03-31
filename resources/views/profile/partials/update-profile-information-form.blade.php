@@ -13,7 +13,7 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ Route::has('admin.profile.update') ? route('admin.profile.update') : (Route::has('frontend.profile.update') ? route('frontend.profile.update') : route('profile.update')) }}" class="mt-6 space-y-6">
         @csrf
         @method('patch')
 

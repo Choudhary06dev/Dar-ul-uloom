@@ -7,6 +7,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Route;
 use Illuminate\View\View;
 
 class ProfileController extends Controller
@@ -32,9 +33,9 @@ class ProfileController extends Controller
             $request->user()->email_verified_at = null;
         }
 
-        $request->user()->save();
+        $redirectRoute = Route::has('admin.profile.edit') ? 'admin.profile.edit' : 'frontend.profile.edit';
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return Redirect::route($redirectRoute)->with('status', 'profile-updated');
     }
 
     /**

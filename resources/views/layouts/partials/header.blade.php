@@ -57,7 +57,7 @@
             <a href="{{ route('frontend.index') }}" class="nav-link-custom">HOME</a>
             <a href="{{ route('frontend.about') }}" class="nav-link-custom">ABOUT</a>
             <a href="{{ route('frontend.blog') }}" class="nav-link-custom">BLOG</a>
-            <!-- <a href="{{ route('frontend.career') }}" class="nav-link-custom">CAREER</a> -->
+
             <a href="{{ route('frontend.admission.create') }}" class="nav-link-custom">ADMISSION</a>
             <a href="{{ route('frontend.contact') }}" class="nav-link-custom">CONTACT</a>
             
@@ -74,7 +74,6 @@
     <div id="mobile-menu" class="hidden lg:hidden bg-white border-t border-gray-100 py-4 px-4 space-y-4">
         <a href="{{ route('frontend.index') }}" class="block text-gray-800 font-medium border-b py-2">HOME</a>
         <a href="{{ route('frontend.about') }}" class="block text-gray-800 font-medium border-b py-2">ABOUT</a>
-        <a href="{{ route('frontend.career') }}" class="block text-gray-800 font-medium border-b py-2">CAREER</a>
         <a href="{{ route('frontend.contact') }}" class="block text-gray-800 font-medium border-b py-2">CONTACT</a>
         <a href="#" class="block btn-gold text-center py-3">VISIT US</a>
     </div>

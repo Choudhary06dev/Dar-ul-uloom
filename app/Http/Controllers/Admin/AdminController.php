@@ -91,12 +91,18 @@ class AdminController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
             'password' => 'nullable|string|min:8|confirmed',
+            'is_admin' => 'sometimes|boolean',
         ]);
 
         $data = $request->only('name', 'email');
 
         if ($request->filled('password')) {
             $data['password'] = bcrypt($request->password);
+        }
+
+        // Handle is_admin update
+        if (auth()->id() !== $user->id) {
+            $data['is_admin'] = $request->has('is_admin');
         }
 
         $user->update($data);

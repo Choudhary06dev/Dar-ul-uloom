@@ -48,6 +48,15 @@
                             <input type="password" name="password_confirmation" id="password_confirmation" class="form-control p-3 border-0 bg-light rounded-3" placeholder="Repeat new password">
                         </div>
                     </div>
+
+                    @if(auth()->id() !== $user->id)
+                    <div class="mb-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="1" id="is_admin" name="is_admin" {{ old('is_admin', $user->is_admin) ? 'checked' : '' }}>
+                            <label class="form-check-label fw-bold text-slate-700" for="is_admin">Admin Privileges</label>
+                        </div>
+                    </div>
+                    @endif
                 </form>
                 <div class="d-flex justify-content-end gap-3">
                     <a href="{{ route('admin.users') }}" class="btn btn-outline-secondary px-4 py-2 rounded-3">

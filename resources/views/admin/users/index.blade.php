@@ -87,6 +87,8 @@
                                             data-id="{{ $user->id }}"
                                             data-name="{{ $user->name }}"
                                             data-email="{{ $user->email }}"
+                                            data-admin="{{ $user->is_admin ? '1' : '0' }}"
+                                            data-self="{{ auth()->id() === $user->id ? '1' : '0' }}"
                                             data-action="{{ route('admin.users.update', $user) }}"
                                             title="Edit User">
                                         <i class="fa-solid fa-pen-to-square text-primary"></i>
@@ -221,6 +223,13 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-12 is-admin-wrapper">
+                    <div class="form-check form-switch p-3 border rounded-4 bg-light bg-opacity-50">
+                        <input class="form-check-input ms-0 me-3 edit-admin" type="checkbox" name="is_admin" value="1" id="edit_is_admin">
+                        <label class="form-check-label fw-bold text-slate-700" for="edit_is_admin">Admin Privileges</label>
+                    </div>
+                </div>
             </div>
             
             <div class="d-grid mt-4">
@@ -265,12 +274,22 @@
                 } else {
                     modalTitle.innerText = 'Edit User Info';
                     const template = document.getElementById('template-edit').content.cloneNode(true);
-                    template.querySelector('#editUserForm').action = action;
-                    template.querySelector('.edit-name').value = name;
-                    template.querySelector('.edit-email').value = email;
+                    const isAdmin = this.getAttribute('data-admin');
+                    const isSelf = this.getAttribute('data-self');
                     
                     modalBody.innerHTML = '';
                     modalBody.appendChild(template);
+                    
+                    const editForm = modalBody.querySelector('#editUserForm');
+                    editForm.action = action;
+                    editForm.querySelector('.edit-name').value = name;
+                    editForm.querySelector('.edit-email').value = email;
+                    
+                    if (isSelf === '1') {
+                        editForm.querySelector('.is-admin-wrapper').style.display = 'none';
+                    } else {
+                        editForm.querySelector('.edit-admin').checked = (isAdmin === '1');
+                    }
                 }
                 
                 userModal.show();

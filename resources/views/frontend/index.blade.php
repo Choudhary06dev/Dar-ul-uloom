@@ -106,7 +106,7 @@
             <!-- Scholar Card 2 -->
             <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:-translate-y-2 transition duration-300">
                 <div class="relative overflow-hidden">
-                    <img src="{{ asset('assets/images/scholar.png') }}" alt="Scholar" class="w-full h-80 object-cover group-hover:scale-110 transition duration-500">
+                    <img src="{{ asset('assets/images/scholar2.png') }}" alt="Scholar" class="w-full h-80 object-cover group-hover:scale-110 transition duration-500">
                     <div class="absolute inset-0 bg-gold/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                         <div class="flex space-x-4 text-white text-xl">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -124,7 +124,7 @@
             <!-- Scholar Card 3 -->
             <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:-translate-y-2 transition duration-300">
                 <div class="relative overflow-hidden">
-                    <img src="{{ asset('assets/images/scholar.png') }}" alt="Scholar" class="w-full h-80 object-cover group-hover:scale-110 transition duration-500">
+                    <img src="{{ asset('assets/images/scholar3.png') }}" alt="Scholar" class="w-full h-80 object-cover group-hover:scale-110 transition duration-500">
                     <div class="absolute inset-0 bg-gold/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                         <div class="flex space-x-4 text-white text-xl">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>

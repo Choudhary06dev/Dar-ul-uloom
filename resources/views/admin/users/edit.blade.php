@@ -12,7 +12,7 @@
                     <p class="text-muted">Update the information for {{ $user->name }}</p>
                 </div>
 
-                <form action="{{ route('admin.users.update', $user) }}" method="POST">
+                <form action="{{ route('admin.users.update', $user) }}" method="POST" id="user-edit-form">
                     @csrf
                     @method('PATCH')
 
@@ -60,26 +60,24 @@
             </div>
         </div>
     </div>
+</div>
 
-    @push('scripts')
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const form = document.querySelector('form');
-            if (!form) return;
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.querySelector('form');
+        if (!form) return;
 
-            const storedScroll = sessionStorage.getItem('adminUserEditScroll');
-            if (storedScroll !== null) {
-                window.scrollTo(0, parseInt(storedScroll, 10));
-                sessionStorage.removeItem('adminUserEditScroll');
-            }
+        const storedScroll = sessionStorage.getItem('adminUserEditScroll');
+        if (storedScroll !== null) {
+            window.scrollTo(0, parseInt(storedScroll, 10));
+            sessionStorage.removeItem('adminUserEditScroll');
+        }
 
-            form.addEventListener('submit', function() {
-                sessionStorage.setItem('adminUserEditScroll', window.scrollY);
-            });
-
-            // Disable page scroll while in edit mode
-            document.body.style.overflow = 'hidden';
+        form.addEventListener('submit', function() {
+            sessionStorage.setItem('adminUserEditScroll', window.scrollY);
         });
-    </script>
-    @endpush
-    @endsection
+    });
+</script>
+@endpush
+@endsection

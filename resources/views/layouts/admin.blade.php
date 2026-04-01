@@ -186,11 +186,6 @@
                 <button class="btn d-lg-none" id="sidebar-toggle">
                     <i class="fa-solid fa-bars-staggered"></i>
                 </button>
-                @if(isset($admission))
-                    <a href="{{ route('admin.admissions.print', $admission) }}" target="_blank" class="btn btn-outline-brand btn-sm px-4 py-2 rounded-pill shadow-sm me-3">
-                        <i class="fa-solid fa-print me-2"></i> Print Application
-                    </a>
-                @endif
                 <h5 class="mb-0 fw-bold d-none d-sm-block">@yield('title')</h5>
             </div>
             
@@ -233,5 +228,6 @@
             });
         }
     </script>
+    @stack('scripts')
 </body>
 </html>

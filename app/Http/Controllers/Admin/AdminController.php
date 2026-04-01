@@ -69,7 +69,7 @@ class AdminController extends Controller
     /**
      * Display a specific user's details.
      */
-    public function showUser(User $user): View
+    public function showUser(Request $request, User $user): View
     {
         return view('admin.users.show', compact('user'));
     }
@@ -77,7 +77,7 @@ class AdminController extends Controller
     /**
      * Show edit form for a specific user.
      */
-    public function editUser(User $user): View
+    public function editUser(Request $request, User $user): View
     {
         return view('admin.users.edit', compact('user'));
     }

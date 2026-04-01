@@ -11,7 +11,7 @@
             <!-- Name -->
             <div>
                 <label for="name" class="block text-sm font-semibold text-slate-700 mb-1">Full Name</label>
-                <input id="name" class="block w-full px-4 py-2.5 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 transition-all duration-200 outline-none" type="text" name="name" value="{{ old('name') }}" required autofocus placeholder="John Doe" />
+                <input id="name" class="block w-full px-4 py-2.5 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 transition-all duration-200 outline-none" type="text" name="name" value="{{ old('name') }}" required autofocus placeholder="full Name" />
                 <x-input-error :messages="$errors->get('name')" class="mt-1" />
             </div>
 
@@ -26,9 +26,9 @@
             <div>
                 <label for="password" class="block text-sm font-semibold text-slate-700 mb-1">Password</label>
                 <input id="password" class="block w-full px-4 py-2.5 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 transition-all duration-200 outline-none"
-                                type="password"
-                                name="password"
-                                required placeholder="••••••••" />
+                    type="password"
+                    name="password"
+                    required placeholder="••••••••" />
                 <x-input-error :messages="$errors->get('password')" class="mt-1" />
             </div>
 
@@ -36,8 +36,8 @@
             <div>
                 <label for="password_confirmation" class="block text-sm font-semibold text-slate-700 mb-1">Confirm Password</label>
                 <input id="password_confirmation" class="block w-full px-4 py-2.5 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 transition-all duration-200 outline-none"
-                                type="password"
-                                name="password_confirmation" required placeholder="••••••••" />
+                    type="password"
+                    name="password_confirmation" required placeholder="••••••••" />
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-1" />
             </div>
         </div>
@@ -50,7 +50,7 @@
 
         <div class="pt-4 text-center">
             <p class="text-sm text-slate-500 font-medium">
-                Already registered? 
+                Already registered?
                 <a href="{{ route('login') }}" class="text-emerald-700 font-bold hover:text-emerald-600 underline-offset-4 hover:underline">Log in instead</a>
             </p>
         </div>

@@ -54,9 +54,9 @@
             <!-- Logo -->
             <a href="{{ route('frontend.index') }}" class="flex items-center">
                 <img src="{{ asset('assets/logo.png') }}" alt="Dar-ul-uloom Logo" class="h-10 md:h-12 w-auto mr-3 rounded-full shadow-sm">
-                <div>
-                    <span class="text-xl md:text-2xl font-bold text-gray-800 tracking-wider">DAR-UL-ULOOM</span>
-                    <p class="text-[10px] md:text-[12px] text-gray-500 uppercase tracking-[2px] md:tracking-[4px] -mt-1">Anwaar-e-Mustafa BOR</p>
+                 <div>
+                    <span class="text-xl md:text-2xl font-bold text-gray-800 tracking-wider">Anwaar-e-Mustafa BOR</span>
+                    <p class="text-[10px] md:text-[12px] text-gray-500 uppercase tracking-[2px] md:tracking-[4px] -mt-1 whitespace-normal break-words">Tahfeez-Ul Quran Institute</p>
                 </div>
             </a>
     

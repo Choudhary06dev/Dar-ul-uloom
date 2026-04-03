@@ -37,12 +37,22 @@
 
             <div class="col-12 col-md-6">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" id="password" name="password" class="form-control" required>
+                <div class="input-group">
+                    <input type="password" id="password" name="password" class="form-control" required style="border-right: 0;">
+                    <span class="input-group-text bg-white border-start-0" style="cursor: pointer;" onclick="togglePassword('password')">
+                        <i class="fa-solid fa-eye text-muted" id="password-icon"></i>
+                    </span>
+                </div>
             </div>
 
             <div class="col-12 col-md-6">
                 <label for="password_confirmation" class="form-label">Confirm Password</label>
-                <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" required>
+                <div class="input-group">
+                    <input type="password" id="password_confirmation" name="password_confirmation" class="form-control" required style="border-right: 0;">
+                    <span class="input-group-text bg-white border-start-0" style="cursor: pointer;" onclick="togglePassword('password_confirmation')">
+                        <i class="fa-solid fa-eye text-muted" id="password_confirmation-icon"></i>
+                    </span>
+                </div>
             </div>
 
             <div class="col-12">

@@ -12,8 +12,18 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->redirectTo(
-            guests: '/admin/login',
-            users: '/admin/dashboard'
+            guests: function ($request) {
+                if ($request->is('admin/*') || $request->is('admin')) {
+                    return route('admin.login');
+                }
+                return route('login');
+            },
+            users: function ($request) {
+                if ($request->is('admin/*') || $request->is('admin')) {
+                    return route('admin.dashboard');
+                }
+                return route('frontend.index');
+            }
         );
     })
     ->withExceptions(function (Exceptions $exceptions): void {

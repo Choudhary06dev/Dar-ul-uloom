@@ -146,10 +146,10 @@
     <!-- Sidebar -->
     <nav id="sidebar">
         <div class="sidebar-header">
-            <!-- <h4 class="fw-bold mb-0 tracking-tight" style="color: var(--accent-gold)">Dar-ul-uloom</h4>
+            <!-- <h4 class="fw-bold mb-0 tracking-tight" style="color: var(--accent-gold)">Anwaar-e-Mustafa</h4>
             <small class="text-white opacity-50 text-uppercase tracking-widest font-monospace" style="font-size: 10px">Admin Portal</small> -->
             <a href="{{ route('admin.dashboard') }}">
-                <img src="{{ asset('images/admin-logo.png') }}" alt="Dar-ul-uloom" class="img-fluid" style="max-height: 60px;">
+                <img src="{{ asset('images/admin-logo.png') }}" alt="Anwaar-e-Mustafa" class="img-fluid" style="max-height: 60px;">
             </a>
         </div>
         
@@ -226,6 +226,22 @@
             sidebarToggle.addEventListener('click', () => {
                 sidebar.classList.toggle('active');
             });
+        }
+    </script>
+    <script>
+        function togglePassword(inputId) {
+            const passwordInput = document.getElementById(inputId);
+            const icon = document.getElementById(inputId + '-icon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                passwordInput.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
         }
     </script>
     @stack('scripts')

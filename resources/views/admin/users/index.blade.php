@@ -209,7 +209,10 @@
                         <label class="form-label text-muted small text-uppercase fw-bold mb-1 d-block">New Password (optional)</label>
                         <div class="input-group input-group-lg border rounded-3 overflow-hidden">
                             <span class="input-group-text border-0 bg-transparent text-muted"><i class="fa-solid fa-key"></i></span>
-                            <input type="password" name="password" class="form-control border-0 px-2" placeholder="Leave blank to keep current">
+                            <input type="password" name="password" id="edit_password" class="form-control border-0 px-2" placeholder="Leave blank to keep current">
+                            <span class="input-group-text border-0 bg-transparent text-muted" style="cursor: pointer;" onclick="togglePassword('edit_password')">
+                                <i class="fa-solid fa-eye" id="edit_password-icon"></i>
+                            </span>
                         </div>
                     </div>
                 </div>
@@ -219,7 +222,10 @@
                         <label class="form-label text-muted small text-uppercase fw-bold mb-1 d-block">Confirm Password</label>
                         <div class="input-group input-group-lg border rounded-3 overflow-hidden">
                             <span class="input-group-text border-0 bg-transparent text-muted"><i class="fa-solid fa-lock"></i></span>
-                            <input type="password" name="password_confirmation" class="form-control border-0 px-2" placeholder="Repeat new password">
+                            <input type="password" name="password_confirmation" id="edit_password_confirmation" class="form-control border-0 px-2" placeholder="Repeat new password">
+                            <span class="input-group-text border-0 bg-transparent text-muted" style="cursor: pointer;" onclick="togglePassword('edit_password_confirmation')">
+                                <i class="fa-solid fa-eye" id="edit_password_confirmation-icon"></i>
+                            </span>
                         </div>
                     </div>
                 </div>

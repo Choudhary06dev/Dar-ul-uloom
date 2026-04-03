@@ -107,8 +107,8 @@
         <div class="auth-container">
             <div class="mb-6 text-center"> <!-- Reduced margin -->
                 <a href="/" class="flex flex-col items-center">
-                    <span class="text-2xl md:text-3xl brand-text uppercase md:tracking-widest tracking-wider leading-none">Dar-ul-uloom</span>
-                    <span class="text-[9px] md:text-[10px] font-bold gold-accent tracking-[0.2em] md:tracking-[0.4em] mt-1">ANWAAR-E-MUSTAFA</span>
+                    <span class="text-2xl md:text-3xl brand-text uppercase md:tracking-widest tracking-wider leading-none">Anwaar-e-Mustafa</span>
+                    <span class="text-[9px] md:text-[10px] font-bold gold-accent tracking-[0.2em] md:tracking-[0.4em] mt-1">TAHFEEZ-UL QURAN INSTITUTE</span>
                 </a>
             </div>
 
@@ -124,5 +124,6 @@
         @unless(request()->routeIs('admin.*'))
             @include('layouts.partials.footer')
         @endunless
+        @stack('scripts')
     </body>
 </html>

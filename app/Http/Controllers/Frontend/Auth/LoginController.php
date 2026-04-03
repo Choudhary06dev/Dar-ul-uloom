@@ -24,7 +24,7 @@ class LoginController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate('web', false);
+        $request->authenticate('web', null);
 
         $request->session()->regenerate();
 
@@ -37,10 +37,6 @@ class LoginController extends Controller
     public function destroy(Request $request): RedirectResponse
     {
         Auth::guard('web')->logout();
-
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
 
         return redirect(route('frontend.index'));
     }

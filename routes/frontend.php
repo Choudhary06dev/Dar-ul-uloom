@@ -9,22 +9,36 @@ use App\Http\Controllers\Frontend\Auth\RegisterController;
 
 use App\Http\Controllers\Frontend\ProfileController;
 
+use App\Http\Controllers\Frontend\ContactController;
+
 Route::prefix('/')->name('frontend.')->group(function () {
     Route::get('/', [FrontendController::class, 'index'])->name('index');
     Route::get('/about', [FrontendController::class, 'about'])->name('about');
     Route::get('/blog', [FrontendController::class, 'blog'])->name('blog');
     Route::get('/blog/details', [FrontendController::class, 'blogDetails'])->name('blog.details');
     Route::get('/contact', [FrontendController::class, 'contact'])->name('contact');
+    Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
     
-    Route::get('/admission', [AdmissionController::class, 'create'])->name('admission.create');
-    Route::post('/admission', [AdmissionController::class, 'store'])->name('admission.store');
+
 
     // Profile routes (frontend namespace)
     Route::middleware('auth:web')->group(function () {
+        Route::get('/admission', [AdmissionController::class, 'create'])->name('admission.create');
+        Route::post('/admission', [AdmissionController::class, 'store'])->name('admission.store');
+        
+        Route::get('/dashboard', [ProfileController::class, 'dashboard'])->name('profile.dashboard');
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
         Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
+
+        // Management Routes (Access restricted to is_admin in controller)
+        Route::get('/management/admissions', [AdmissionController::class, 'managementIndex'])->name('management.admissions.index');
+        Route::get('/management/admissions/{admission}', [AdmissionController::class, 'managementShow'])->name('management.admissions.show');
+        Route::put('/management/admissions/{admission}', [AdmissionController::class, 'managementUpdate'])->name('management.admissions.update');
+
+        // Printing
+        Route::get('/admissions/{admission}/print', [AdmissionController::class, 'print'])->name('admission.print');
     });
 });
 

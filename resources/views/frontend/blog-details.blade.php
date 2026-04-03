@@ -19,7 +19,7 @@
 <!-- Blog Body Section -->
 <section class="py-12 md:py-16 bg-white">
     <div class="container mx-auto px-4 max-w-4xl">
-        <img src="{{ asset('assets/images/about.png') }}" alt="Blog Image" class="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg mb-10">
+        <img src="{{ asset('assets/images/masjid.jpeg') }}" alt="Blog Image" class="w-full h-64 md:h-96 object-cover rounded-lg shadow-lg mb-10">
         
         <div class="prose prose-lg max-w-none text-gray-700">
             <p class="mb-6 leading-relaxed">

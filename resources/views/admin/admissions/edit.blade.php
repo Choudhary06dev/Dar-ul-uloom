@@ -197,7 +197,7 @@
 
                     <div class="mb-4">
                         <label class="form-label small fw-bold text-uppercase text-muted">Application Status</label>
-                        <select name="status" class="form-select border-0 bg-light py-3 rounded-3 shadow-none">
+                        <select name="status" class="form-select border bg-light py-3 rounded-3 shadow-none">
                             <option value="Pending" {{ $admission->status === 'Pending' ? 'selected' : '' }}>🕒 Pending Review</option>
                             <option value="Approved" {{ $admission->status === 'Approved' ? 'selected' : '' }}>✅ Approve Admission</option>
                             <option value="Rejected" {{ $admission->status === 'Rejected' ? 'selected' : '' }}>❌ Reject Application</option>
@@ -206,22 +206,22 @@
 
                     <div class="mb-3">
                         <label class="form-label small fw-bold text-uppercase text-muted">Admission No.</label>
-                        <input type="text" name="admission_no" value="{{ old('admission_no', $admission->admission_no) }}" class="form-control border-0 bg-light py-3 rounded-3 shadow-none" placeholder="DAR-2024-xxx">
+                        <input type="text" name="admission_no" value="{{ old('admission_no', $admission->admission_no) }}" class="form-control border bg-light py-3 rounded-3 shadow-none" placeholder="DAR-2024-xxx">
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label small fw-bold text-uppercase text-muted">Class / Section</label>
-                        <input type="text" name="class_assigned" value="{{ old('class_assigned', $admission->class_assigned) }}" class="form-control border-0 bg-light py-3 rounded-3 shadow-none" placeholder="e.g. Hifz Grade 1">
+                        <input type="text" name="class_assigned" value="{{ old('class_assigned', $admission->class_assigned) }}" class="form-control border bg-light py-3 rounded-3 shadow-none" placeholder="e.g. Hifz Grade 1">
                     </div>
 
                     <div class="mb-4">
                         <label class="form-label small fw-bold text-uppercase text-muted">Monthly Fee (PKR)</label>
-                        <input type="number" name="fee" value="{{ old('fee', $admission->fee) }}" class="form-control border-0 bg-light py-3 rounded-3 shadow-none" placeholder="5000">
+                        <input type="number" name="fee" value="{{ old('fee', $admission->fee) }}" class="form-control border bg-light py-3 rounded-3 shadow-none" placeholder="5000">
                     </div>
 
                     <div class="mb-4">
                         <label class="form-label small fw-bold text-uppercase text-muted">Internal Remarks</label>
-                        <textarea name="remarks" class="form-control border-0 bg-light py-3 rounded-3 shadow-none" rows="3" placeholder="Office notes...">{{ old('remarks', $admission->remarks) }}</textarea>
+                        <textarea name="remarks" class="form-control border bg-light py-3 rounded-3 shadow-none" rows="3" placeholder="Office notes...">{{ old('remarks', $admission->remarks) }}</textarea>
                     </div>
 
                     <div class="d-grid gap-2">

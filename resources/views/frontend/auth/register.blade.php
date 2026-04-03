@@ -1,7 +1,7 @@
 <x-guest-layout>
     <div class="mb-6 text-center">
         <h2 class="text-3xl font-extrabold text-slate-900 tracking-tight">Create an account</h2>
-        <p class="text-slate-500 mt-1 font-medium">Join Dar-ul-uloom for Admission & More</p>
+        <p class="text-slate-500 mt-1 font-medium">Join Anwaar-e-Mustafa for Admission & More</p>
     </div>
 
     <form method="POST" action="{{ route('register') }}" class="space-y-4">
@@ -25,22 +25,51 @@
             <!-- Password -->
             <div>
                 <label for="password" class="block text-sm font-semibold text-slate-700 mb-1">Password</label>
-                <input id="password" class="block w-full px-4 py-2.5 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 transition-all duration-200 outline-none"
-                    type="password"
-                    name="password"
-                    required placeholder="••••••••" />
+                <div class="relative">
+                    <input id="password" class="block w-full px-4 py-2.5 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 transition-all duration-200 outline-none pr-12"
+                        type="password"
+                        name="password"
+                        required placeholder="••••••••" />
+                    <button type="button" onclick="togglePassword('password')" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-emerald-600 transition-colors focus:outline-none">
+                        <i class="fa-solid fa-eye" id="password-icon"></i>
+                    </button>
+                </div>
                 <x-input-error :messages="$errors->get('password')" class="mt-1" />
             </div>
 
             <!-- Confirm Password -->
             <div>
                 <label for="password_confirmation" class="block text-sm font-semibold text-slate-700 mb-1">Confirm Password</label>
-                <input id="password_confirmation" class="block w-full px-4 py-2.5 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 transition-all duration-200 outline-none"
-                    type="password"
-                    name="password_confirmation" required placeholder="••••••••" />
+                <div class="relative">
+                    <input id="password_confirmation" class="block w-full px-4 py-2.5 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 transition-all duration-200 outline-none pr-12"
+                        type="password"
+                        name="password_confirmation" required placeholder="••••••••" />
+                    <button type="button" onclick="togglePassword('password_confirmation')" class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-emerald-600 transition-colors focus:outline-none">
+                        <i class="fa-solid fa-eye" id="password_confirmation-icon"></i>
+                    </button>
+                </div>
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-1" />
             </div>
         </div>
+
+        @push('scripts')
+        <script>
+            function togglePassword(inputId) {
+                const passwordInput = document.getElementById(inputId);
+                const icon = document.getElementById(inputId + '-icon');
+                
+                if (passwordInput.type === 'password') {
+                    passwordInput.type = 'text';
+                    icon.classList.remove('fa-eye');
+                    icon.classList.add('fa-eye-slash');
+                } else {
+                    passwordInput.type = 'password';
+                    icon.classList.remove('fa-eye-slash');
+                    icon.classList.add('fa-eye');
+                }
+            }
+        </script>
+        @endpush
 
         <div>
             <button type="submit" class="w-full flex justify-center items-center px-6 py-4 rounded-xl primary-btn text-sm font-bold shadow-xl active:scale-[0.98]">

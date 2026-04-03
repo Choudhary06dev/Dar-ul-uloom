@@ -1,1 +1,1 @@
-<img src="{{ asset('assets/logo.png') }}" alt="Dar-ul-uloom Logo" {{ $attributes->merge(['class' => 'rounded-full']) }}>
+<img src="{{ asset('assets/logo.png') }}" alt="Anwaar-e-Mustafa Logo" {{ $attributes->merge(['class' => 'rounded-full']) }}>

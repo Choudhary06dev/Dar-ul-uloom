@@ -59,7 +59,7 @@ body {
     font-weight: 600;
     position: relative;
     padding-bottom: 5px;
-    transition: color 0.3s ease;
+    transition: all 0.2s;
 }
 
 .nav-link-custom::after {
@@ -97,4 +97,63 @@ body {
     width: 40px;
     height: 2px;
     background-color: var(--primary-gold);
+}
+
+/* Admission Badge Styles */
+.admission-badge {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(212, 175, 55, 0.15);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 6px 16px;
+    border-radius: 50px;
+    color: var(--primary-gold);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #10b981; /* Live green */
+    border-radius: 50%;
+    margin-right: 10px;
+    position: relative;
+}
+
+.pulse-dot::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #10b981;
+    border-radius: 50%;
+    animation: pulse-animation 2s infinite;
+}
+
+@keyframes pulse-animation {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

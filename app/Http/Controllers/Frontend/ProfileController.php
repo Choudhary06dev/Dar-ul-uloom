@@ -12,6 +12,20 @@ use Illuminate\Validation\Rules\Password;
 class ProfileController extends Controller
 {
     /**
+     * Display the user's profile dashboard.
+     */
+    public function dashboard(Request $request)
+    {
+        $user = $request->user();
+        $latest_admission = $user->admissions()->latest()->first();
+
+        return view('frontend.profile.dashboard', [
+            'user' => $user,
+            'admission' => $latest_admission,
+        ]);
+    }
+
+    /**
      * Display the user's profile form.
      */
     public function edit(Request $request)

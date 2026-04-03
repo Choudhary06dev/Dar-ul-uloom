@@ -19,7 +19,7 @@
             <!-- Blog Post 1 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden group">
                 <div class="relative overflow-hidden">
-                    <img src="{{ asset('assets/images/about.png') }}" alt="Blog" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+                    <img src="{{ asset('assets/images/masjid.jpeg') }}" alt="Blog" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
                     <div class="absolute top-4 left-4 bg-gold text-white px-4 py-1 rounded-sm text-sm font-bold shadow-lg">25 MAR</div>
                 </div>
                 <div class="p-6">
@@ -49,7 +49,7 @@
             <!-- Blog Post 3 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden group">
                 <div class="relative overflow-hidden">
-                    <img src="{{ asset('assets/images/about.png') }}" alt="Blog" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+                    <img src="{{ asset('assets/images/anware.jpg') }}" alt="Blog" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
                     <div class="absolute top-4 left-4 bg-gold text-white px-4 py-1 rounded-sm text-sm font-bold shadow-lg">10 MAR</div>
                 </div>
                 <div class="p-6">
@@ -64,7 +64,7 @@
              <!-- Blog Post 4 -->
             <div class="bg-white rounded-lg shadow-md overflow-hidden group">
                 <div class="relative overflow-hidden">
-                    <img src="{{ asset('assets/images/hero.png') }}" alt="Blog" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+                    <img src="{{ asset('assets/images/about_boys.png') }}" alt="Blog" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
                     <div class="absolute top-4 left-4 bg-gold text-white px-4 py-1 rounded-sm text-sm font-bold shadow-lg">05 MAR</div>
                 </div>
                 <div class="p-6">

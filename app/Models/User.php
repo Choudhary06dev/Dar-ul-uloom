@@ -50,4 +50,9 @@ class User extends Authenticatable
             'is_admin' => 'boolean',
         ];
     }
+
+    public function admissions()
+    {
+        return $this->hasMany(Admission::class);
+    }
 }

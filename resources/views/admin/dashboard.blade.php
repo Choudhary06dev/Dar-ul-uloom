@@ -8,7 +8,7 @@
     <div class="col-12">
         <div class="card border-0 bg-transparent mb-2">
             <h2 class="fw-bold text-slate-900">Assalam-o-Alaikum, {{ Auth::guard('admin')->user()->name }}! 👋</h2>
-            <p class="text-muted">Here is what's happening with Dar-ul-uloom today.</p>
+            <p class="text-muted">Here is what's happening with Anwaar-e-Mustafa today.</p>
         </div>
     </div>
 
@@ -92,7 +92,7 @@
                 <a href="{{ route('admin.users') }}" class="btn btn-brand px-4 py-3">
                     <i class="fa-solid fa-user-plus me-2"></i> Add New User
                 </a>
-                <button class="btn btn-outline-dark px-4 py-3 rounded-3" style="border-radius: 12px !important">
+                <a href="#" class="btn btn-outline-dark px-4 py-3 rounded-3" style="border-radius: 12px !important">
                     <i class="fa-solid fa-file-export me-2"></i> Export Reports
                 </a>
                 <a href="{{ route('frontend.index') }}" target="_blank" class="btn btn-outline-secondary px-4 py-3" style="border-radius: 12px !important">
@@ -102,4 +102,12 @@
         </div>
     </div>
 </div>
+
+@push('styles')
+<style>
+    .transition-hover:hover { transform: translateY(-5px); transition: 0.3s ease; box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important; }
+    .hover-white:hover { background-color: white !important; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    .hover-border-gold:hover { border-color: rgba(197, 160, 89, 0.3) !important; }
+</style>
+@endpush
 @endsection

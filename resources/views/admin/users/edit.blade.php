@@ -37,7 +37,12 @@
                     <div class="row gx-3">
                         <div class="col-md-6 mb-4">
                             <label for="password" class="form-label fw-bold text-slate-700">New Password</label>
-                            <input type="password" name="password" id="password" class="form-control p-3 border-0 bg-light rounded-3" placeholder="Leave empty to keep current password">
+                            <div class="input-group">
+                                <input type="password" name="password" id="password" class="form-control p-3 bg-light" placeholder="Leave empty to keep current password" style="border-right: 0;">
+                                <span class="input-group-text bg-light border-start-0" style="cursor: pointer; border-color: #ced4da;" onclick="togglePassword('password')">
+                                    <i class="fa-solid fa-eye text-slate-400" id="password-icon"></i>
+                                </span>
+                            </div>
                             @error('password')
                             <div class="text-danger small mt-1">{{ $message }}</div>
                             @enderror
@@ -45,7 +50,12 @@
 
                         <div class="col-md-6 mb-4">
                             <label for="password_confirmation" class="form-label fw-bold text-slate-700">Confirm New Password</label>
-                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control p-3 border-0 bg-light rounded-3" placeholder="Repeat new password">
+                            <div class="input-group">
+                                <input type="password" name="password_confirmation" id="password_confirmation" class="form-control p-3 bg-light" placeholder="Repeat new password" style="border-right: 0;">
+                                <span class="input-group-text bg-light border-start-0" style="cursor: pointer; border-color: #ced4da;" onclick="togglePassword('password_confirmation')">
+                                    <i class="fa-solid fa-eye text-slate-400" id="password_confirmation-icon"></i>
+                                </span>
+                            </div>
                         </div>
                     </div>
 

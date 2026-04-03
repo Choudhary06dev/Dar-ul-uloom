@@ -6,10 +6,15 @@
 <!-- Hero Section -->
 <section class="relative h-[600px] md:h-[600px] overflow-hidden">
     <div class="absolute inset-0 bg-black/40 z-10"></div>
-    <img src="{{ asset('assets/images/hero.png') }}" alt="Islamic Center" class="absolute inset-0 w-full h-full object-cover">
+    <img src="{{ asset('assets/images/banner.jpeg') }}" alt="Islamic Center" class="absolute inset-0 w-full h-full object-cover">
     <div class="container mx-auto px-4 h-full flex flex-col justify-center items-center relative z-20 text-center text-white">
+        
         <p class="text-gold text-lg md:text-xl font-medium mb-4 italic tracking-widest">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
-        <h1 class="text-3xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight">Welcome to <span class="text-gold">Dar-ul-uloom</span></h1>
+        <div class="admission-badge shadow-sm">
+            <span class="pulse-dot"></span>
+            Admissions Open Now
+        </div>
+        <h1 class="text-3xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight">Welcome to <span class="text-gold">Anwaar-e-Mustafa BOR</span></h1>
         <p class="text-base md:text-lg lg:text-xl max-w-2xl mb-10 text-gray-200">
             A center of excellence for Islamic learning, community service, and spiritual growth. Join us in our journey towards enlightenment.
         </p>
@@ -25,27 +30,27 @@
     <div class="container px-8 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div class="relative">
             <div class="absolute -top-6 -left-6 w-32 h-32 border-t-4 border-l-4 border-gold"></div>
-            <img src="{{ asset('assets/images/about_boys.png') }}" alt="About Dar-ul-uloom" class="rounded-lg shadow-2xl relative z-10">
+            <img src="{{ asset('assets/images/about_boys.png') }}" alt="About Anwaar-e-Mustafa" class="rounded-lg shadow-2xl relative z-10">
             <div class="absolute -bottom-6 -right-6 w-32 h-32 border-b-4 border-r-4 border-gold"></div>
         </div>
         <div>
-            <h4 class="text-gold font-semibold tracking-widest uppercase mb-4">About Our Center</h4>
-            <h2 class="text-4xl font-bold text-navy mb-8 leading-tight">Empowering the Ummah Through Traditional Knowledge</h2>
+            <h4 class="text-gold font-semibold tracking-widest uppercase mb-4">About Our Masjid</h4>
+            <h2 class="text-4xl font-bold text-navy mb-8 leading-tight">Jamia Masjid Anwaar-e-Mustafa BOR</h2>
             <p class="text-gray-600 mb-6 leading-relaxed">
-                Dar-ul-uloom is a premier Islamic institution dedicated to the preservation and dissemination of classical Islamic knowledge. Founded with a vision to build a strong community based on Quranic values and the Sunnah.
+                Jamia Masjid Anwaar-e-Mustafa BOR is a blessed place where the community has shared beautiful religious memories for over 23 years. The mosque is known for its punctuality in Azan and Jamaat, maintaining discipline and consistency in congregational prayers since its establishment.
             </p>
             <p class="text-gray-600 mb-10 leading-relaxed">
-                We offer a wide range of programs including Hifz-ul-Quran, Dars-e-Nizami, and various short courses for adults and children, all designed to foster a deep connection with Allah SWT.
+                It serves as a spiritual center for the local community, providing a peaceful and welcoming environment for worship and learning. Special religious nights and Mehfils are beautifully managed, creating spiritually uplifting experiences.
             </p>
             <ul class="space-y-4 mb-10">
                 <li class="flex items-center text-gray-700 font-medium">
-                    <i class="fas fa-check-circle text-gold mr-3"></i> Expert Islamic Scholars
+                    <i class="fas fa-check-circle text-gold mr-3"></i> Punctual Azan & 5 Daily Jamaats
                 </li>
                 <li class="flex items-center text-gray-700 font-medium">
-                    <i class="fas fa-check-circle text-gold mr-3"></i> Traditional Learning Methods
+                    <i class="fas fa-check-circle text-gold mr-3"></i> 23+ Years of Blessed Service
                 </li>
                 <li class="flex items-center text-gray-700 font-medium">
-                    <i class="fas fa-check-circle text-gold mr-3"></i> Modern Community Facilities
+                    <i class="fas fa-check-circle text-gold mr-3"></i> Dars-e-Quran & Religious Mehfils
                 </li>
             </ul>
             <a href="{{ route('frontend.about') }}" class="btn-gold">DISCOVER MORE</a>
@@ -88,7 +93,7 @@
             <!-- Scholar Card -->
             <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:-translate-y-2 transition duration-300">
                 <div class="relative overflow-hidden">
-                    <img src="{{ asset('assets/images/scholar.png') }}" alt="Scholar" class="w-full h-80 object-cover group-hover:scale-110 transition duration-500">
+                    <img src="{{ asset('assets/images/qari ashraf.jpeg') }}" alt="Scholar" class="w-full h-80 object-cover group-hover:scale-110 transition duration-500">
                     <div class="absolute inset-0 bg-gold/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                         <div class="flex space-x-4 text-white text-xl">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -98,7 +103,7 @@
                     </div>
                 </div>
                 <div class="p-8 text-center">
-                    <h3 class="text-2xl font-bold text-navy mb-2">Sheikh Abdullah</h3>
+                    <h3 class="text-2xl font-bold text-navy mb-2">Alama Muhammad Asraf</h3>
                     <p class="text-gold font-medium uppercase text-sm tracking-wider">Principal Scholar</p>
                 </div>
             </div>
@@ -116,7 +121,7 @@
                     </div>
                 </div>
                 <div class="p-8 text-center">
-                    <h3 class="text-2xl font-bold text-navy mb-2">Mufti Muhammad</h3>
+                    <h3 class="text-2xl font-bold text-navy mb-2">Qari Muhammad Abid</h3>
                     <p class="text-gold font-medium uppercase text-sm tracking-wider">Senior Instructor</p>
                 </div>
             </div>
@@ -124,7 +129,7 @@
             <!-- Scholar Card 3 -->
             <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:-translate-y-2 transition duration-300">
                 <div class="relative overflow-hidden">
-                    <img src="{{ asset('assets/images/scholar3.png') }}" alt="Scholar" class="w-full h-80 object-cover group-hover:scale-110 transition duration-500">
+                    <img src="{{ asset('assets/images/scholar.png') }}" alt="Scholar" class="w-full h-80 object-cover group-hover:scale-110 transition duration-500">
                     <div class="absolute inset-0 bg-gold/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                         <div class="flex space-x-4 text-white text-xl">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -134,8 +139,8 @@
                     </div>
                 </div>
                 <div class="p-8 text-center">
-                    <h3 class="text-2xl font-bold text-navy mb-2">Ustadha Fatima</h3>
-                    <p class="text-gold font-medium uppercase text-sm tracking-wider">Female Education Head</p>
+                    <h3 class="text-2xl font-bold text-navy mb-2">Qari Muhammad Saeed</h3>
+                    <p class="text-gold font-medium uppercase text-sm tracking-wider">Head</p>
                 </div>
             </div>
         </div>
@@ -188,7 +193,7 @@
             <!-- Blog Post 2 -->
             <div class="group">
                 <div class="relative overflow-hidden rounded-lg mb-6">
-                    <img src="{{ asset('assets/images/hero.png') }}" alt="Blog" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+                    <img src="{{ asset('assets/images/masjid.jpeg') }}" alt="Blog" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
                     <div class="absolute top-4 left-4 bg-gold text-white px-4 py-1 rounded-sm text-sm font-bold">18 MAR</div>
                 </div>
                 <h3 class="text-xl font-bold text-navy mb-4 group-hover:text-gold transition cursor-pointer">Preparing for the Blessed Month of Ramadan</h3>
@@ -201,7 +206,7 @@
             <!-- Blog Post 3 -->
             <div class="group">
                 <div class="relative overflow-hidden rounded-lg mb-6">
-                    <img src="{{ asset('assets/images/about.png') }}" alt="Blog" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+                    <img src="{{ asset('assets/images/Anware.jpg') }}" alt="Blog" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
                     <div class="absolute top-4 left-4 bg-gold text-white px-4 py-1 rounded-sm text-sm font-bold">10 MAR</div>
                 </div>
                 <h3 class="text-xl font-bold text-navy mb-4 group-hover:text-gold transition cursor-pointer">Teaching Children the Meaning of Gratitude</h3>

@@ -24,13 +24,13 @@ class LoginController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        // Try student authentication first
+        // Try web (admin) authentication first to prevent overlap issues
         try {
-            $request->authenticate('student');
+            $request->authenticate('web', true);
         } catch (\Illuminate\Validation\ValidationException $e) {
-            // If student login fails, try web (admin/staff) login
+            // If admin login fails, try student login
             try {
-                $request->authenticate('web');
+                $request->authenticate('student');
             } catch (\Illuminate\Validation\ValidationException $innerE) {
                 // If both fail, throw the original exception
                 throw $e;

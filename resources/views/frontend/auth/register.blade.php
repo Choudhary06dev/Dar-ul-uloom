@@ -15,12 +15,7 @@
                 <x-input-error :messages="$errors->get('name')" class="mt-1" />
             </div>
 
-            <!-- Father's Name -->
-            <!-- <div>
-                <label for="father_name" class="block text-sm font-semibold text-slate-700 mb-1">Father's Name</label>
-                <input id="father_name" class="block w-full px-4 py-2.5 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 transition-all duration-200 outline-none" type="text" name="father_name" value="{{ old('father_name') }}" required placeholder="Father's Name" />
-                <x-input-error :messages="$errors->get('father_name')" class="mt-1" />
-            </div> -->
+          
 
             <!-- Date of Birth -->
             <div>

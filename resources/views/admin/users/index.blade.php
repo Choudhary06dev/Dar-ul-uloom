@@ -11,21 +11,30 @@
         border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 20px;
     }
+
     .modal-backdrop.show {
         opacity: 0.15;
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px);
         background-color: var(--primary-green);
     }
+
     .modal.fade .modal-dialog {
         transform: scale(0.9);
         transition: transform 0.3s ease-out;
     }
+
     .modal.show .modal-dialog {
         transform: scale(1);
     }
-    .bg-soft-success { background: rgba(25, 135, 84, 0.1); }
-    .bg-light-subtle { background: #f8fafc; }
+
+    .bg-soft-success {
+        background: rgba(25, 135, 84, 0.1);
+    }
+
+    .bg-light-subtle {
+        background: #f8fafc;
+    }
 </style>
 @endpush
 
@@ -40,17 +49,17 @@
         </div>
 
         @if (session('status'))
-            <div class="alert alert-success alert-dismissible fade show border-0 rounded-3 shadow-sm mb-4" role="alert">
-                <i class="fa-solid fa-check-circle me-2"></i> {{ session('status') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>
+        <div class="alert alert-success alert-dismissible fade show border-0 rounded-3 shadow-sm mb-4" role="alert">
+            <i class="fa-solid fa-check-circle me-2"></i> {{ session('status') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
         @endif
 
         @if (session('error'))
-            <div class="alert alert-danger alert-dismissible fade show border-0 rounded-3 shadow-sm mb-4" role="alert">
-                <i class="fa-solid fa-triangle-exclamation me-2"></i> {{ session('error') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-            </div>
+        <div class="alert alert-danger alert-dismissible fade show border-0 rounded-3 shadow-sm mb-4" role="alert">
+            <i class="fa-solid fa-triangle-exclamation me-2"></i> {{ session('error') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
         @endif
 
         <div class="table-responsive">
@@ -65,49 +74,52 @@
                 </thead>
                 <tbody class="border-0">
                     @forelse ($users as $user)
-                        <tr>
-                            <td class="px-4 font-monospace small text-muted">#{{ str_pad($user->id, 4, '0', STR_PAD_LEFT) }}</td>
-                            <td class="px-4">
-                                <div class="fw-bold text-slate-700">{{ $user->name }}</div>
-                            </td>
-                            <td class="px-4 text-muted">{{ $user->email }}</td>
-                            <td class="px-4 text-end">
-                                <div class="d-flex justify-content-end gap-2">
-                                    <button type="button" class="btn btn-sm btn-light p-2 px-3 border rounded-3 btn-user-modal-instant" 
-                                            data-type="show"
-                                            data-id="{{ str_pad($user->id, 4, '0', STR_PAD_LEFT) }}"
-                                            data-name="{{ $user->name }}"
-                                            data-email="{{ $user->email }}"
-                                            data-joined="{{ $user->created_at->format('M d, Y') }}"
-                                            title="View Profile">
-                                        <i class="fa-solid fa-eye text-success"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-sm btn-light p-2 px-3 border rounded-3 btn-user-modal-instant" 
-                                            data-type="edit"
-                                            data-id="{{ $user->id }}"
-                                            data-name="{{ $user->name }}"
-                                            data-email="{{ $user->email }}"
-                                            data-admin="{{ $user->is_admin ? '1' : '0' }}"
-                                            data-self="{{ auth()->id() === $user->id ? '1' : '0' }}"
-                                            data-action="{{ route('admin.users.update', $user) }}"
-                                            title="Edit User">
-                                        <i class="fa-solid fa-pen-to-square text-primary"></i>
-                                    </button>
+                    <tr>
+                        <td class="px-4 font-monospace small text-muted">#{{ str_pad($user->id, 4, '0', STR_PAD_LEFT) }}</td>
+                        <td class="px-4">
+                            <div class="fw-bold text-slate-700">{{ $user->name }}</div>
+                        </td>
+                        <td class="px-4 text-muted">{{ $user->email }}</td>
+                        <td class="px-4 text-end">
+                            <div class="d-flex justify-content-end gap-2">
+                                <button type="button" class="btn btn-sm btn-light p-2 px-3 border rounded-3 btn-user-modal-instant"
+                                    data-type="show"
+                                    data-id="{{ str_pad($user->id, 4, '0', STR_PAD_LEFT) }}"
+                                    data-name="{{ $user->name }}"
+                                    data-email="{{ $user->email }}"
+                                    data-joined="{{ $user->created_at->format('M d, Y') }}"
+                                    title="View Profile">
+                                    <i class="fa-solid fa-eye text-success"></i>
+                                </button>
+                                <button type="button" class="btn btn-sm btn-light p-2 px-3 border rounded-3 btn-user-modal-instant"
+                                    data-type="edit"
+                                    data-id="{{ $user->id }}"
+                                    data-name="{{ $user->name }}"
+                                    data-father-name="{{ $user->father_name }}"
+                                    data-email="{{ $user->email }}"
+                                    data-phone="{{ $user->phone }}"
+                                    data-address="{{ $user->address }}"
+                                    data-admin="{{ $user->is_admin ? '1' : '0' }}"
+                                    data-self="{{ auth()->id() === $user->id ? '1' : '0' }}"
+                                    data-action="{{ route('admin.users.update', $user) }}"
+                                    title="Edit User">
+                                    <i class="fa-solid fa-pen-to-square text-primary"></i>
+                                </button>
 
-                                    <form action="{{ route('admin.users.destroy', $user) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-light p-2 px-3 border rounded-3" title="Delete User" {{ auth()->id() === $user->id ? 'disabled opacity-50' : '' }}>
-                                            <i class="fa-solid fa-trash-can text-danger"></i>
-                                        </button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
+                                <form action="{{ route('admin.users.destroy', $user) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this user?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-light p-2 px-3 border rounded-3" title="Delete User" {{ auth()->id() === $user->id ? 'disabled opacity-50' : '' }}>
+                                        <i class="fa-solid fa-trash-can text-danger"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
                     @empty
-                        <tr>
-                            <td colspan="4" class="text-center py-5 text-muted">No users found in the system.</td>
-                        </tr>
+                    <tr>
+                        <td colspan="4" class="text-center py-5 text-muted">No users found in the system.</td>
+                    </tr>
                     @endforelse
                 </tbody>
             </table>
@@ -121,7 +133,7 @@
 
 <!-- Dynamic Modal -->
 <div class="modal fade" id="userDynamicModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content modal-content-blur shadow-lg">
             <div class="modal-header border-0 pb-0">
                 <h5 class="modal-title fw-bold" id="userDynamicModalTitle">User Information</h5>
@@ -181,35 +193,57 @@
     <form method="POST" id="editUserForm">
         @csrf
         @method('PATCH')
-        
+
         <div class="user-edit-content p-2">
             <div class="row g-3 text-start">
-                <div class="col-12">
-                    <div class="p-3 rounded-4 border bg-white shadow-sm">
+                <div class="col-12 col-md-6">
+                    <div class="p-2 rounded-4 border bg-white shadow-sm">
                         <label class="form-label text-muted small text-uppercase fw-bold mb-1 d-block">Full Name</label>
-                        <div class="input-group input-group-lg border rounded-3 overflow-hidden">
+                        <div class="input-group border rounded-3 overflow-hidden">
                             <span class="input-group-text border-0 bg-transparent text-muted"><i class="fa-solid fa-user-tag"></i></span>
                             <input type="text" name="name" class="form-control border-0 px-2 edit-name" required>
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-12">
-                    <div class="p-3 rounded-4 border bg-white shadow-sm">
+
+                <div class="col-12 col-md-6">
+                    <div class="p-2 rounded-4 border bg-white shadow-sm">
+                        <label class="form-label text-muted small text-uppercase fw-bold mb-1 d-block">Father's Name</label>
+                        <div class="input-group border rounded-3 overflow-hidden">
+                            <span class="input-group-text border-0 bg-transparent text-muted"><i class="fa-solid fa-user-tie"></i></span>
+                            <input type="text" name="father_name" class="form-control border-0 px-2 edit-father-name" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-6">
+                    <div class="p-2 rounded-4 border bg-white shadow-sm">
                         <label class="form-label text-muted small text-uppercase fw-bold mb-1 d-block">Email Address</label>
-                        <div class="input-group input-group-lg border rounded-3 overflow-hidden">
+                        <div class="input-group border rounded-3 overflow-hidden">
                             <span class="input-group-text border-0 bg-transparent text-muted"><i class="fa-solid fa-envelope"></i></span>
                             <input type="email" name="email" class="form-control border-0 px-2 edit-email" required>
                         </div>
                     </div>
                 </div>
-                
-                <div class="col-12">
-                    <div class="p-3 rounded-4 border bg-white shadow-sm">
-                        <label class="form-label text-muted small text-uppercase fw-bold mb-1 d-block">New Password (optional)</label>
-                        <div class="input-group input-group-lg border rounded-3 overflow-hidden">
+
+                <div class="col-12 col-md-6">
+                    <div class="p-2 rounded-4 border bg-white shadow-sm">
+                        <label class="form-label text-muted small text-uppercase fw-bold mb-1 d-block">Phone Number</label>
+                        <div class="input-group border rounded-3 overflow-hidden">
+                            <span class="input-group-text border-0 bg-transparent text-muted"><i class="fa-solid fa-phone"></i></span>
+                            <input type="text" name="phone" class="form-control border-0 px-2 edit-phone" required>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="col-12 col-md-6">
+                    <div class="p-2 rounded-4 border bg-white shadow-sm">
+                        <label class="form-label text-muted small text-uppercase fw-bold mb-1 d-block">New Pass (optional)</label>
+                        <div class="input-group border rounded-3 overflow-hidden">
                             <span class="input-group-text border-0 bg-transparent text-muted"><i class="fa-solid fa-key"></i></span>
-                            <input type="password" name="password" id="edit_password" class="form-control border-0 px-2" placeholder="Leave blank to keep current">
+                            <input type="password" name="password" id="edit_password" class="form-control border-0 px-2" placeholder="Leave blank">
                             <span class="input-group-text border-0 bg-transparent text-muted" style="cursor: pointer;" onclick="togglePassword('edit_password')">
                                 <i class="fa-solid fa-eye" id="edit_password-icon"></i>
                             </span>
@@ -217,27 +251,35 @@
                     </div>
                 </div>
 
-                <div class="col-12">
-                    <div class="p-3 rounded-4 border bg-white shadow-sm">
+                <div class="col-12 col-md-6">
+                    <div class="p-2 rounded-4 border bg-white shadow-sm">
                         <label class="form-label text-muted small text-uppercase fw-bold mb-1 d-block">Confirm Password</label>
-                        <div class="input-group input-group-lg border rounded-3 overflow-hidden">
+                        <div class="input-group border rounded-3 overflow-hidden">
                             <span class="input-group-text border-0 bg-transparent text-muted"><i class="fa-solid fa-lock"></i></span>
-                            <input type="password" name="password_confirmation" id="edit_password_confirmation" class="form-control border-0 px-2" placeholder="Repeat new password">
+                            <input type="password" name="password_confirmation" id="edit_password_confirmation" class="form-control border-0 px-2" placeholder="Repeat password">
                             <span class="input-group-text border-0 bg-transparent text-muted" style="cursor: pointer;" onclick="togglePassword('edit_password_confirmation')">
                                 <i class="fa-solid fa-eye" id="edit_password_confirmation-icon"></i>
                             </span>
                         </div>
                     </div>
                 </div>
-
+                <div class="col-12">
+                    <div class="p-2 rounded-4 border bg-white shadow-sm">
+                        <label class="form-label text-muted small text-uppercase fw-bold mb-1 d-block">Full Address</label>
+                        <div class="input-group border rounded-3 overflow-hidden">
+                            <span class="input-group-text border-0 bg-transparent text-muted"><i class="fa-solid fa-map-location-dot"></i></span>
+                            <textarea name="address" rows="1" class="form-control border-0 px-2 edit-address" placeholder="Address (Optional)"></textarea>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-12 is-admin-wrapper">
-                    <div class="form-check form-switch p-3 border rounded-4 bg-light bg-opacity-50">
-                        <input class="form-check-input ms-0 me-3 edit-admin" type="checkbox" name="is_admin" value="1" id="edit_is_admin">
-                        <label class="form-check-label fw-bold text-slate-700" for="edit_is_admin">Admin Privileges</label>
+                    <div class="form-check form-switch p-2 border rounded-4 bg-light bg-opacity-50 ps-5 ms-0">
+                        <input class="form-check-input me-3 ms-2 edit-admin" type="checkbox" name="is_admin" value="1" id="edit_is_admin" style="margin-left:-2rem;">
+                        <label class="form-check-label fw-bold text-slate-700 ms-1" for="edit_is_admin">Admin Privileges</label>
                     </div>
                 </div>
             </div>
-            
+
             <div class="d-grid mt-4">
                 <button type="submit" class="btn btn-brand py-3 rounded-3 fw-bold">
                     <i class="fa-solid fa-save me-2"></i> Update User
@@ -261,11 +303,14 @@
             button.addEventListener('click', function() {
                 const type = this.getAttribute('data-type');
                 const name = this.getAttribute('data-name');
+                const fatherName = this.getAttribute('data-father-name');
                 const email = this.getAttribute('data-email');
+                const phone = this.getAttribute('data-phone');
+                const address = this.getAttribute('data-address');
                 const id = this.getAttribute('data-id');
                 const joined = this.getAttribute('data-joined');
                 const action = this.getAttribute('data-action');
-                
+
                 if (type === 'show') {
                     modalTitle.innerText = 'User Details';
                     const template = document.getElementById('template-show').content.cloneNode(true);
@@ -274,7 +319,7 @@
                     template.querySelector('.user-email').innerText = email;
                     template.querySelector('.user-id').innerText = '#' + id;
                     template.querySelector('.user-joined').innerText = joined;
-                    
+
                     modalBody.innerHTML = '';
                     modalBody.appendChild(template);
                 } else {
@@ -282,22 +327,25 @@
                     const template = document.getElementById('template-edit').content.cloneNode(true);
                     const isAdmin = this.getAttribute('data-admin');
                     const isSelf = this.getAttribute('data-self');
-                    
+
                     modalBody.innerHTML = '';
                     modalBody.appendChild(template);
-                    
+
                     const editForm = modalBody.querySelector('#editUserForm');
                     editForm.action = action;
                     editForm.querySelector('.edit-name').value = name;
+                    editForm.querySelector('.edit-father-name').value = fatherName;
                     editForm.querySelector('.edit-email').value = email;
-                    
+                    editForm.querySelector('.edit-phone').value = phone;
+                    editForm.querySelector('.edit-address').value = address;
+
                     if (isSelf === '1') {
                         editForm.querySelector('.is-admin-wrapper').style.display = 'none';
                     } else {
                         editForm.querySelector('.edit-admin').checked = (isAdmin === '1');
                     }
                 }
-                
+
                 userModal.show();
             });
         });

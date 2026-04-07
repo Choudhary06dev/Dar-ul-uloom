@@ -37,7 +37,7 @@ class AdmissionController extends Controller
 
         $validated['nazra_completed'] = $request->has('nazra_completed');
         $validated['hifz_completed'] = $request->has('hifz_completed');
-        $validated['user_id'] = auth()->id();
+        $validated['student_id'] = auth('student')->id();
 
         Admission::create($validated);
 
@@ -49,11 +49,11 @@ class AdmissionController extends Controller
      */
     public function managementIndex(Request $request)
     {
-        if (!auth()->user()->is_admin) {
+        if (!auth('web')->check()) {
             abort(403, 'Unauthorized access.');
         }
 
-        $admissions = Admission::with('user')->latest()->paginate(15);
+        $admissions = Admission::with('student')->latest()->paginate(15);
         
         $stats = [
             'total' => Admission::count(),
@@ -69,7 +69,7 @@ class AdmissionController extends Controller
      */
     public function managementShow(Admission $admission)
     {
-        if (!auth()->user()->is_admin) {
+        if (!auth('web')->check()) {
             abort(403, 'Unauthorized access.');
         }
 
@@ -81,7 +81,7 @@ class AdmissionController extends Controller
      */
     public function managementUpdate(Request $request, Admission $admission)
     {
-        if (!auth()->user()->is_admin) {
+        if (!auth('web')->check()) {
             abort(403, 'Unauthorized access.');
         }
 
@@ -103,8 +103,10 @@ class AdmissionController extends Controller
      */
     public function print(Admission $admission)
     {
-        // Manager can print anything, student only their own
-        if (!auth()->user()->is_admin && $admission->user_id !== auth()->id()) {
+        $isAdmin = auth('web')->check() && auth('web')->user()->is_admin;
+        $isOwner = auth('student')->check() && $admission->student_id === auth('student')->id();
+
+        if (!$isAdmin && !$isOwner) {
             abort(403, 'Unauthorized access.');
         }
 

@@ -86,6 +86,22 @@
                             </div>
                         </div>
 
+                    <!-- Admission Status Tracker -->
+                    <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8 space-y-2 sm:space-y-0">
+                            <h3 class="text-xl font-bold text-navy flex items-center">
+                                <i class="fas fa-graduation-cap mr-3 text-gold"></i> Admission Status
+                            </h3>
+                            <div class="flex items-center space-x-3">
+                                @if($admission->status == 'Approved')
+                                <a href="{{ route('frontend.admission.print', $admission) }}" target="_blank" class="px-4 py-1.5 bg-navy text-white rounded-xl shadow-lg shadow-navy/20 text-[10px] font-bold hover:bg-gold transition-all flex items-center">
+                                    <i class="fas fa-print mr-2 text-gold"></i> PRINT SLIP
+                                </a>
+                                @endif
+                                <span class="text-[11px] bg-gray-100 px-3 py-1 rounded-full text-gray-500 font-bold uppercase tracking-wider">Application ID: #ADM-{{ str_pad($admission->id, 5, '0', STR_PAD_LEFT) }}</span>
+                            </div>
+                        </div>
+
                         <!-- Status Timeline -->
                         <div class="relative pb-10">
                             <div class="absolute top-5 left-0 w-full h-1 bg-gray-100 rounded-full"></div>

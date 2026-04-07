@@ -51,14 +51,20 @@ class AdminController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'father_name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
+            'phone' => 'required|string|max:20',
+            'address' => 'nullable|string|max:500',
             'password' => 'required|string|min:8|confirmed',
             'is_admin' => 'sometimes|boolean',
         ]);
 
         User::create([
             'name' => $request->name,
+            'father_name' => $request->father_name,
             'email' => $request->email,
+            'phone' => $request->phone,
+            'address' => $request->address,
             'password' => bcrypt($request->password),
             'is_admin' => $request->has('is_admin') ? (bool) $request->is_admin : false,
         ]);
@@ -89,12 +95,15 @@ class AdminController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
+            'father_name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email,' . $user->id,
+            'phone' => 'required|string|max:20',
+            'address' => 'nullable|string|max:500',
             'password' => 'nullable|string|min:8|confirmed',
             'is_admin' => 'sometimes|boolean',
         ]);
 
-        $data = $request->only('name', 'email');
+        $data = $request->only('name', 'father_name', 'email', 'phone', 'address');
 
         if ($request->filled('password')) {
             $data['password'] = bcrypt($request->password);

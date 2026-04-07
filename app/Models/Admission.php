@@ -10,15 +10,15 @@ class Admission extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'student_name', 'father_name', 'dob', 'age', 'gender', 'b_form',
+        'student_id', 'student_name', 'father_name', 'dob', 'age', 'gender', 'b_form',
         'parent_name', 'contact_number', 'alternate_number', 'address', 'city',
         'previous_school', 'last_class_passed', 'nazra_completed', 'hifz_completed',
         'course_selection', 'other_course', 'medical_condition', 'emergency_contact',
         'admission_no', 'class_assigned', 'fee', 'remarks', 'status'
     ];
 
-    public function user()
+    public function student()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Student::class);
     }
 }

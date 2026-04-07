@@ -8,20 +8,20 @@
     <div class="absolute inset-0 bg-black/40 z-10"></div>
     <img src="{{ asset('assets/images/banner.jpeg') }}" alt="Islamic Center" class="absolute inset-0 w-full h-full object-cover">
     <div class="container mx-auto px-4 h-full flex flex-col justify-center items-center relative z-20 text-center text-white">
-        
+
         <p class="text-gold text-lg md:text-xl font-medium mb-4 italic tracking-widest">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
         <div class="admission-badge shadow-sm">
             <span class="pulse-dot"></span>
             Admissions Open Now
         </div>
-        <h1 class="text-3xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight">Welcome to <span class="text-gold">Anwaar-e-Mustafa BOR</span></h1>
+        <!-- <h1 class="text-3xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight"> <span class="text-gold">Anwaar-e-Mustafa BOR</span></h1>
         <p class="text-base md:text-lg lg:text-xl max-w-2xl mb-10 text-gray-200">
             A center of excellence for Islamic learning, community service, and spiritual growth. Join us in our journey towards enlightenment.
         </p>
         <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
             <a href="#" class="btn-gold">LEARN MORE</a>
             <a href="#" class="px-8 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-md hover:bg-white/20 transition uppercase font-semibold">OUR COURSES</a>
-        </div>
+        </div> -->
     </div>
 </section>
 
@@ -88,7 +88,7 @@
             <h2 class="text-4xl font-bold text-navy mb-6">Learn From Expert Islamic Teachers</h2>
             <div class="w-20 h-1 bg-gold mx-auto"></div>
         </div>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             <!-- Scholar Card -->
             <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:-translate-y-2 transition duration-300">
@@ -175,7 +175,7 @@
             </div>
             <a href="{{ route('frontend.blog') }}" class="text-navy font-bold hover:text-gold transition hidden md:block border-b-2 border-gold pb-1 text-sm uppercase">View All Posts</a>
         </div>
-        
+
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             <!-- Blog Post 1 -->
             <div class="group">

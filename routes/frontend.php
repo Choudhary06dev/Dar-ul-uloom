@@ -22,7 +22,7 @@ Route::prefix('/')->name('frontend.')->group(function () {
 
 
     // Profile routes (frontend namespace)
-    Route::middleware('auth:web')->group(function () {
+    Route::middleware('auth:student,web')->group(function () {
         Route::get('/admission', [AdmissionController::class, 'create'])->name('admission.create');
         Route::post('/admission', [AdmissionController::class, 'store'])->name('admission.store');
         
@@ -31,13 +31,17 @@ Route::prefix('/')->name('frontend.')->group(function () {
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
         Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
+    });
 
-        // Management Routes (Access restricted to is_admin in controller)
+    // Management Routes (Access restricted to admins)
+    Route::middleware('auth:web')->group(function () {
         Route::get('/management/admissions', [AdmissionController::class, 'managementIndex'])->name('management.admissions.index');
         Route::get('/management/admissions/{admission}', [AdmissionController::class, 'managementShow'])->name('management.admissions.show');
         Route::put('/management/admissions/{admission}', [AdmissionController::class, 'managementUpdate'])->name('management.admissions.update');
+    });
 
-        // Printing
+    // Printing
+    Route::middleware('auth:student,web')->group(function () {
         Route::get('/admissions/{admission}/print', [AdmissionController::class, 'print'])->name('admission.print');
     });
 });
@@ -50,6 +54,6 @@ Route::middleware('guest')->group(function () {
     Route::post('/register', [RegisterController::class, 'store']);
 });
 
-Route::middleware('auth:web')->group(function () {
+Route::middleware('auth:student,web')->group(function () {
     Route::post('/logout', [LoginController::class, 'destroy'])->name('logout');
 });

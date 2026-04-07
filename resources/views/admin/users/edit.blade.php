@@ -15,12 +15,19 @@
                 <form action="{{ route('admin.users.update', $user) }}" method="POST" id="user-edit-form">
                     @csrf
                     @method('PATCH')
-
                     <div class="row gx-3">
                         <div class="col-md-6 mb-4">
                             <label for="name" class="form-label fw-bold text-slate-700">Full Name</label>
                             <input type="text" name="name" id="name" class="form-control p-3 border-0 bg-light rounded-3" value="{{ old('name', $user->name) }}" required>
                             @error('name')
+                            <div class="text-danger small mt-1">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <label for="father_name" class="form-label fw-bold text-slate-700">Father's Name</label>
+                            <input type="text" name="father_name" id="father_name" class="form-control p-3 border-0 bg-light rounded-3" value="{{ old('father_name', $user->father_name) }}" required>
+                            @error('father_name')
                             <div class="text-danger small mt-1">{{ $message }}</div>
                             @enderror
                         </div>
@@ -32,6 +39,16 @@
                             <div class="text-danger small mt-1">{{ $message }}</div>
                             @enderror
                         </div>
+
+                        <div class="col-md-6 mb-4">
+                            <label for="phone" class="form-label fw-bold text-slate-700">Phone Number</label>
+                            <input type="text" name="phone" id="phone" class="form-control p-3 border-0 bg-light rounded-3" value="{{ old('phone', $user->phone) }}" required>
+                            @error('phone')
+                            <div class="text-danger small mt-1">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                       
                     </div>
 
                     <div class="row gx-3">
@@ -56,6 +73,14 @@
                                     <i class="fa-solid fa-eye text-slate-400" id="password_confirmation-icon"></i>
                                 </span>
                             </div>
+                        </div>
+
+                         <div class="col-12 mb-4">
+                            <label for="address" class="form-label fw-bold text-slate-700">Full Address (Optional)</label>
+                            <textarea name="address" id="address" class="form-control p-3 border-0 bg-light rounded-3" rows="2">{{ old('address', $user->address) }}</textarea>
+                            @error('address')
+                            <div class="text-danger small mt-1">{{ $message }}</div>
+                            @enderror
                         </div>
                     </div>
 

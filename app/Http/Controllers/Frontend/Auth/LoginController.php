@@ -24,11 +24,26 @@ class LoginController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate('web', null);
+        // Try student authentication first
+        try {
+            $request->authenticate('student');
+        } catch (\Illuminate\Validation\ValidationException $e) {
+            // If student login fails, try web (admin/staff) login
+            try {
+                $request->authenticate('web');
+            } catch (\Illuminate\Validation\ValidationException $innerE) {
+                // If both fail, throw the original exception
+                throw $e;
+            }
+        }
 
         $request->session()->regenerate();
 
-        return redirect()->intended(route('frontend.index', absolute: false));
+        if (Auth::guard('web')->check()) {
+            return redirect()->route('frontend.management.admissions.index');
+        }
+
+        return redirect()->intended(route('frontend.profile.dashboard', absolute: false));
     }
 
     /**
@@ -36,7 +51,13 @@ class LoginController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        // Logout of all possible frontend guards
+        Auth::guard('student')->logout();
         Auth::guard('web')->logout();
+        Auth::guard('admin')->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
         return redirect(route('frontend.index'));
     }

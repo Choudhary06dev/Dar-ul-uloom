@@ -21,15 +21,19 @@
                     <div class="absolute right-0 mt-0 w-56 bg-white rounded-xl shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transform origin-top-right border border-gray-100 -translate-y-2 group-hover:translate-y-0 z-[110] pointer-events-none group-hover:pointer-events-auto" style="top: 100%;">
                         <div class="absolute inset-x-0 -top-4 h-4 bg-transparent"></div> <!-- Hover bridge -->
                         <div class="p-3">
-                            @auth
+                            @if(auth('student')->check() || auth('web')->check())
+                                @php
+                                    $currentUser = auth('student')->check() ? auth('student')->user() : auth('web')->user();
+                                    $isWebUser = auth('web')->check();
+                                @endphp
                                 <div class="px-4 py-3 border-b border-gray-50 mb-2">
                                     <div class="text-xs text-gray-500 uppercase tracking-wider mb-1">Welcome</div>
-                                    <div class="text-sm font-bold text-navy truncate">{{ auth()->user()->name }}</div>
+                                    <div class="text-sm font-bold text-navy truncate">{{ $currentUser->name }}</div>
                                 </div>
-                                <a href="{{ route('frontend.profile.dashboard') }}" class="flex items-center px-4 py-2.5 text-sm text-gray-600 hover:bg-gold/10 hover:text-gold rounded-lg transition active:scale-95">
-                                    <i class="fas fa-th-large mr-3 w-4 text-center"></i> My Dashboard
+                                <a href="{{ $isWebUser ? route('frontend.management.admissions.index') : route('frontend.profile.dashboard') }}" class="flex items-center px-4 py-2.5 text-sm text-gray-600 hover:bg-gold/10 hover:text-gold rounded-lg transition active:scale-95">
+                                    <i class="fas fa-th-large mr-3 w-4 text-center"></i> {{ $isWebUser ? 'Management' : 'My Dashboard' }}
                                 </a>
-                                @if(auth()->user()->is_admin)
+                                @if($isWebUser)
                                 <a href="{{ route('frontend.management.admissions.index') }}" class="flex items-center px-4 py-2.5 text-sm text-amber-600 bg-amber-50/50 hover:bg-amber-100/50 rounded-lg transition active:scale-95 font-bold">
                                     <i class="fas fa-tasks mr-3 w-4 text-center"></i> Management
                                 </a>
@@ -50,7 +54,7 @@
                                         <i class="fas fa-user-plus mr-2"></i> REGISTER
                                     </a>
                                 </div>
-                            @endauth
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -75,9 +79,9 @@
                 <a href="{{ route('frontend.index') }}" class="nav-link-custom {{ Route::is('frontend.index') ? 'active' : '' }}">HOME</a>
                 <a href="{{ route('frontend.about') }}" class="nav-link-custom {{ Route::is('frontend.about') ? 'active' : '' }}">ABOUT</a>
                 <a href="{{ route('frontend.blog') }}" class="nav-link-custom {{ Route::is('frontend.blog*') ? 'active' : '' }}">BLOG</a>
-                @auth
+                @if(auth('student')->check() || auth('web')->check())
                     <a href="{{ route('frontend.admission.create') }}" class="nav-link-custom {{ Route::is('frontend.admission*') ? 'active' : '' }}">ADMISSION</a>
-                @endauth
+                @endif
                 <a href="{{ route('frontend.contact') }}" class="nav-link-custom {{ Route::is('frontend.contact') ? 'active' : '' }}">CONTACT</a>
             </div>
     
@@ -94,25 +98,29 @@
     <a href="{{ route('frontend.index') }}" class="block text-gray-800 font-bold border-b border-gray-50 py-3 {{ Route::is('frontend.index') ? 'text-gold' : '' }}">HOME</a>
     <a href="{{ route('frontend.about') }}" class="block text-gray-800 font-bold border-b border-gray-50 py-3 {{ Route::is('frontend.about') ? 'text-gold' : '' }}">ABOUT</a>
     <a href="{{ route('frontend.blog') }}" class="block text-gray-800 font-bold border-b border-gray-50 py-3 {{ Route::is('frontend.blog*') ? 'text-gold' : '' }}">BLOG</a>
-    @auth
+    @if(auth('student')->check() || auth('web')->check())
         <a href="{{ route('frontend.admission.create') }}" class="block text-gray-800 font-bold border-b border-gray-50 py-3 {{ Route::is('frontend.admission*') ? 'text-gold' : '' }}">ADMISSION</a>
-    @endauth
+    @endif
     <a href="{{ route('frontend.contact') }}" class="block text-gray-800 font-bold border-b border-gray-50 py-3 {{ Route::is('frontend.contact') ? 'text-gold' : '' }}">CONTACT</a>
     
     <!-- Mobile Account Links -->
     <div class="pt-4 border-t border-gray-100">
-        @auth
+        @if(auth('student')->check() || auth('web')->check())
+            @php
+                $currentUser = auth('student')->check() ? auth('student')->user() : auth('web')->user();
+                $isWebUser = auth('web')->check();
+            @endphp
             <div class="flex items-center mb-4 px-2">
                 <div class="w-10 h-10 rounded-full bg-gold/10 flex items-center justify-center text-gold mr-3">
                     <i class="fas fa-user"></i>
                 </div>
                 <div>
-                    <div class="text-sm font-bold text-gray-800">{{ auth()->user()->name }}</div>
-                    <div class="text-xs text-gray-500">Student Account</div>
+                    <div class="text-sm font-bold text-gray-800">{{ $currentUser->name }}</div>
+                    <div class="text-xs text-gray-500">{{ $isWebUser ? (auth('web')->user()->is_admin ? 'Admin' : 'Staff') : 'Student' }} Account</div>
                 </div>
             </div>
-            <a href="{{ route('frontend.profile.dashboard') }}" class="block text-gray-700 font-medium py-3 border-b border-gray-50 hover:text-gold transition"><i class="fas fa-th-large mr-3 text-gold"></i> My Dashboard</a>
-            @if(auth()->user()->is_admin)
+            <a href="{{ $isWebUser ? route('frontend.management.admissions.index') : route('frontend.profile.dashboard') }}" class="block text-gray-700 font-medium py-3 border-b border-gray-50 hover:text-gold transition"><i class="fas fa-th-large mr-3 text-gold"></i> {{ $isWebUser ? 'Management' : 'My Dashboard' }}</a>
+            @if($isWebUser)
             <a href="{{ route('frontend.management.admissions.index') }}" class="block text-amber-600 font-bold py-3 border-b border-gray-50 hover:text-amber-700 transition font-bold"><i class="fas fa-tasks mr-3 text-amber-600"></i> Management</a>
             @endif
             <a href="{{ route('frontend.profile.edit') }}" class="block text-gray-700 font-medium py-3 border-b border-gray-50 hover:text-gold transition"><i class="fas fa-user-edit mr-3 text-gold"></i> Edit Profile</a>
@@ -125,7 +133,7 @@
                 <a href="{{ route('login') }}" class="text-center py-2 border border-gold text-gold font-bold rounded-lg hover:bg-gold hover:text-white transition">LOGIN</a>
                 <a href="{{ route('register') }}" class="text-center py-2 bg-gold text-white font-bold rounded-lg hover:bg-navy transition shadow-sm">REGISTER</a>
             </div>
-        @endauth
+        @endif
     </div>
 
     <a href="#" class="block btn-gold text-center py-4 mt-6 rounded-xl shadow-lg">VISIT US</a>

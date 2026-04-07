@@ -16,8 +16,13 @@ class ProfileController extends Controller
      */
     public function dashboard(Request $request)
     {
-        $user = $request->user();
-        $latest_admission = $user->admissions()->latest()->first();
+        if (auth('web')->check()) {
+            return redirect()->route('frontend.management.admissions.index');
+        }
+
+        /** @var \App\Models\Student $user */
+        $user = auth('student')->user();
+        $latest_admission = $user ? $user->admissions()->latest()->first() : null;
 
         return view('frontend.profile.dashboard', [
             'user' => $user,
@@ -30,8 +35,9 @@ class ProfileController extends Controller
      */
     public function edit(Request $request)
     {
+        $user = auth('student')->user() ?? auth('web')->user();
         return view('frontend.profile.edit', [
-            'user' => $request->user(),
+            'user' => $user,
         ]);
     }
 
@@ -40,18 +46,22 @@ class ProfileController extends Controller
      */
     public function update(Request $request)
     {
+        $guard = auth('student')->check() ? 'student' : 'web';
+        $user = auth($guard)->user();
+        $table = $guard === 'student' ? 'students' : 'users';
+
         $validated = $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:users,email,' . $request->user()->id],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . $table . ',email,' . $user->id],
         ]);
 
-        $request->user()->fill($validated);
+        $user->fill($validated);
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
         }
 
-        $request->user()->save();
+        $user->save();
 
         return redirect()->route('frontend.profile.edit')->with('status', 'profile-updated');
     }
@@ -65,9 +75,10 @@ class ProfileController extends Controller
             'password' => ['required', 'current_password'],
         ]);
 
-        $user = $request->user();
+        $guard = auth('student')->check() ? 'student' : 'web';
+        $user = auth($guard)->user();
 
-        Auth::logout();
+        Auth::guard($guard)->logout();
 
         $user->delete();
 
@@ -87,7 +98,10 @@ class ProfileController extends Controller
             'password' => ['required', Password::defaults(), 'confirmed'],
         ]);
 
-        $request->user()->update([
+        $guard = auth('student')->check() ? 'student' : 'web';
+        $user = auth($guard)->user();
+
+        $user->update([
             'password' => Hash::make($validated['password']),
         ]);
 

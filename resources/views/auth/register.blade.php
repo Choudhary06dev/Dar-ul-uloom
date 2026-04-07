@@ -11,16 +11,32 @@
             <!-- Name -->
             <div>
                 <label for="name" class="block text-sm font-semibold text-slate-700 mb-1">Full Name</label>
-                <input id="name" class="block w-full px-4 py-2.5 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 transition-all duration-200 outline-none" type="text" name="name" value="{{ old('name') }}" required autofocus placeholder=" full name" />
+                <input id="name" class="block w-full px-4 py-2.5 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 transition-all duration-200 outline-none" type="text" name="name" value="{{ old('name') }}" required autofocus placeholder="Your Full Name" />
                 <x-input-error :messages="$errors->get('name')" class="mt-1" />
+            </div>
+
+            <!-- Father's Name -->
+            <div>
+                <label for="father_name" class="block text-sm font-semibold text-slate-700 mb-1">Father's Name</label>
+                <input id="father_name" class="block w-full px-4 py-2.5 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 transition-all duration-200 outline-none" type="text" name="father_name" value="{{ old('father_name') }}" required placeholder="Father's Name" />
+                <x-input-error :messages="$errors->get('father_name')" class="mt-1" />
             </div>
 
             <!-- Email Address -->
             <div>
                 <label for="email" class="block text-sm font-semibold text-slate-700 mb-1">Email Address</label>
-                <input id="email" class="block w-full px-4 py-2.5 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 transition-all duration-200 outline-none" type="email" name="email" value="{{ old('email') }}" required placeholder="name@company.com" />
+                <input id="email" class="block w-full px-4 py-2.5 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 transition-all duration-200 outline-none" type="email" name="email" value="{{ old('email') }}" required placeholder="name@email.com" />
                 <x-input-error :messages="$errors->get('email')" class="mt-1" />
             </div>
+
+            <!-- Phone -->
+            <div>
+                <label for="phone" class="block text-sm font-semibold text-slate-700 mb-1">Phone Number</label>
+                <input id="phone" class="block w-full px-4 py-2.5 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 transition-all duration-200 outline-none" type="text" name="phone" value="{{ old('phone') }}" placeholder="03XXXXXXXXX" />
+                <x-input-error :messages="$errors->get('phone')" class="mt-1" />
+            </div>
+
+          
 
             <!-- Password -->
             <div>
@@ -51,6 +67,12 @@
                 <x-input-error :messages="$errors->get('password_confirmation')" class="mt-1" />
             </div>
         </div>
+          <!-- Address -->
+            <div class="md:col-span-2">
+                <label for="address" class="block text-sm font-semibold text-slate-700 mb-1">Address (Optional)</label>
+                <textarea id="address" rows="2" class="block w-full px-4 py-2.5 rounded-xl border-slate-200 bg-slate-50/50 focus:bg-white focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 transition-all duration-200 outline-none resize-none" name="address" placeholder="Your current home address">{{ old('address') }}</textarea>
+                <x-input-error :messages="$errors->get('address')" class="mt-1" />
+            </div>
 
         @push('scripts')
         <script>

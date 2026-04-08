@@ -72,11 +72,17 @@
                 <textarea id="address" name="address" rows="2" class="form-control px-4 py-2.5 rounded-3 border-slate-200" placeholder="Street, City, Country">{{ old('address') }}</textarea>
             </div>
 
-            <div class="col-12">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="1" id="is_admin" name="is_admin" {{ old('is_admin') ? 'checked' : '' }}>
-                    <label class="form-check-label" for="is_admin">Admin Privileges</label>
-                </div>
+            <div class="col-12 col-md-6">
+                <label for="role_id" class="form-label font-semibold">User Role</label>
+                <select id="role_id" name="role_id" class="form-select px-4 py-2.5 rounded-3 border-slate-200" required>
+                    <option value="">Select Role</option>
+                    @foreach($roles as $role)
+                        <option value="{{ $role->id }}" {{ old('role_id') == $role->id ? 'selected' : '' }}>
+                            {{ $role->name }}
+                        </option>
+                    @endforeach
+                </select>
+                <div class="form-text mt-2">Roles define what parts of the system this user can access.</div>
             </div>
 
             <div class="col-12">

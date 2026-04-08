@@ -69,6 +69,7 @@
                         <th class="px-4 py-3">ID</th>
                         <th class="px-4 py-3">Name</th>
                         <th class="px-4 py-3">Email Address</th>
+                        <th class="px-4 py-3">Role</th>
                         <th class="px-4 py-3 text-end">Actions</th>
                     </tr>
                 </thead>
@@ -80,6 +81,11 @@
                             <div class="fw-bold text-slate-700">{{ $user->name }}</div>
                         </td>
                         <td class="px-4 text-muted">{{ $user->email }}</td>
+                        <td class="px-4">
+                            <span class="badge bg-soft-success text-success px-2 py-1 rounded-pill" style="font-size: 0.7rem">
+                                {{ $user->role->name ?? 'No Role' }}
+                            </span>
+                        </td>
                         <td class="px-4 text-end">
                             <div class="d-flex justify-content-end gap-2">
                                 <button type="button" class="btn btn-sm btn-light p-2 px-3 border rounded-3 btn-user-modal-instant"
@@ -99,7 +105,8 @@
                                     data-email="{{ $user->email }}"
                                     data-phone="{{ $user->phone }}"
                                     data-address="{{ $user->address }}"
-                                    data-admin="{{ $user->is_admin ? '1' : '0' }}"
+                                    data-role-id="{{ $user->role_id }}"
+                                    data-role-name="{{ $user->role->name ?? 'User' }}"
                                     data-self="{{ auth()->id() === $user->id ? '1' : '0' }}"
                                     data-action="{{ route('admin.users.update', $user) }}"
                                     title="Edit User">
@@ -154,8 +161,8 @@
                 <span class="user-initial"></span>
             </div>
             <h4 class="fw-bold mb-1 user-name"></h4>
-            <span class="badge bg-soft-success text-success px-3 py-2 rounded-pill">
-                <i class="fa-solid fa-shield-halved me-1"></i> Administrator
+            <span class="badge bg-soft-success text-success px-3 py-2 rounded-pill user-role">
+                <i class="fa-solid fa-shield-halved me-1"></i> 
             </span>
         </div>
 
@@ -272,10 +279,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-12 is-admin-wrapper">
-                    <div class="form-check form-switch p-2 border rounded-4 bg-light bg-opacity-50 ps-5 ms-0">
-                        <input class="form-check-input me-3 ms-2 edit-admin" type="checkbox" name="is_admin" value="1" id="edit_is_admin" style="margin-left:-2rem;">
-                        <label class="form-check-label fw-bold text-slate-700 ms-1" for="edit_is_admin">Admin Privileges</label>
+                <div class="col-12 edit-role-wrapper">
+                    <div class="p-2 rounded-4 border bg-white shadow-sm">
+                        <label class="form-label text-muted small text-uppercase fw-bold mb-1 d-block">User Role</label>
+                        <select name="role_id" class="form-select border-0 px-2 edit-role" required>
+                            @foreach($roles as $role)
+                                <option value="{{ $role->id }}">{{ $role->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
             </div>
@@ -314,18 +325,21 @@
                 if (type === 'show') {
                     modalTitle.innerText = 'User Details';
                     const template = document.getElementById('template-show').content.cloneNode(true);
+                    const roleName = this.getAttribute('data-role-name');
+                    
                     template.querySelector('.user-initial').innerText = name.substring(0, 1);
                     template.querySelectorAll('.user-name').forEach(el => el.innerText = name);
                     template.querySelector('.user-email').innerText = email;
                     template.querySelector('.user-id').innerText = '#' + id;
                     template.querySelector('.user-joined').innerText = joined;
+                    template.querySelector('.user-role').innerHTML += roleName;
 
                     modalBody.innerHTML = '';
                     modalBody.appendChild(template);
                 } else {
                     modalTitle.innerText = 'Edit User Info';
                     const template = document.getElementById('template-edit').content.cloneNode(true);
-                    const isAdmin = this.getAttribute('data-admin');
+                    const roleId = this.getAttribute('data-role-id');
                     const isSelf = this.getAttribute('data-self');
 
                     modalBody.innerHTML = '';
@@ -340,9 +354,9 @@
                     editForm.querySelector('.edit-address').value = address;
 
                     if (isSelf === '1') {
-                        editForm.querySelector('.is-admin-wrapper').style.display = 'none';
+                        editForm.querySelector('.edit-role-wrapper').style.display = 'none';
                     } else {
-                        editForm.querySelector('.edit-admin').checked = (isAdmin === '1');
+                        editForm.querySelector('.edit-role').value = roleId;
                     }
                 }
 

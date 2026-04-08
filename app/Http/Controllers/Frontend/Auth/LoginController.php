@@ -26,7 +26,7 @@ class LoginController extends Controller
     {
         // Try web (admin) authentication first to prevent overlap issues
         try {
-            $request->authenticate('web', true);
+            $request->authenticate('web', null);
         } catch (\Illuminate\Validation\ValidationException $e) {
             // If admin login fails, try student login
             try {
@@ -40,10 +40,21 @@ class LoginController extends Controller
         $request->session()->regenerate();
 
         if (Auth::guard('web')->check()) {
-            return redirect()->route('frontend.management.admissions.index');
+            $user = Auth::guard('web')->user();
+
+            // Only allow 'Shared-Access' role on the frontend. 
+            // All other roles (Admin-Only, Staff, Editor, etc.) are restricted to the Admin panel.
+            if ($user->role && $user->role->slug !== 'shared-access') {
+                Auth::guard('web')->logout();
+                return back()->withErrors(['email' => 'Your account (' . $user->role->name . ') only has access to the Admin panel.']);
+            }
+
+            // All permitted web users (Admin/Staff/Shared) go to the new Frontend Dashboard
+            return redirect()->intended(route('frontend.profile.dashboard', absolute: false));
         }
 
-        return redirect()->intended(route('frontend.profile.dashboard', absolute: false));
+        // Redirect individual students directly to the admission page
+        return redirect()->intended(route('frontend.admission.create', absolute: false));
     }
 
     /**
@@ -51,12 +62,14 @@ class LoginController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
-        // Logout of all possible frontend guards
-        Auth::guard('student')->logout();
-        Auth::guard('web')->logout();
-        Auth::guard('admin')->logout();
+        // Detect which guard to logout
+        if (Auth::guard('student')->check()) {
+            Auth::guard('student')->logout();
+        } elseif (Auth::guard('web')->check()) {
+            Auth::guard('web')->logout();
+        }
 
-        $request->session()->invalidate();
+        // Avoid session()->invalidate() to keep other guard sessions alive
         $request->session()->regenerateToken();
 
         return redirect(route('frontend.index'));

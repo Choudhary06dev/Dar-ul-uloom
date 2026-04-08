@@ -7,21 +7,58 @@
 <section class="relative h-[600px] md:h-[600px] overflow-hidden">
     <div class="absolute inset-0 bg-black/40 z-10"></div>
     <img src="{{ asset('assets/images/banner.jpeg') }}" alt="Islamic Center" class="absolute inset-0 w-full h-full object-cover">
-    <div class="container mx-auto px-4 h-full flex flex-col justify-center items-center relative z-20 text-center text-white">
-
-        <p class="text-gold text-lg md:text-xl font-medium mb-4 italic tracking-widest">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
-        <div class="admission-badge shadow-sm">
-            <span class="pulse-dot"></span>
-            Admissions Open Now
+    <div class="container mx-auto px-4 h-full flex flex-col justify-start pt-24 md:pt-16 items-center relative z-20 text-center text-white">
+        <!-- Main Content -->
+        <div class="flex flex-col items-center">
+            <p class="text-gold text-lg md:text-xl font-medium mb-4 italic tracking-widest">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+            <div class="admission-badge shadow-sm">
+                <span class="pulse-dot"></span>
+                Admissions Open Now
+            </div>
         </div>
-        <!-- <h1 class="text-3xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight"> <span class="text-gold">Anwaar-e-Mustafa BOR</span></h1>
-        <p class="text-base md:text-lg lg:text-xl max-w-2xl mb-10 text-gray-200">
-            A center of excellence for Islamic learning, community service, and spiritual growth. Join us in our journey towards enlightenment.
-        </p>
-        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-            <a href="#" class="btn-gold">LEARN MORE</a>
-            <a href="#" class="px-8 py-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-md hover:bg-white/20 transition uppercase font-semibold">OUR COURSES</a>
-        </div> -->
+
+        <!-- Prayer Times Widget (Floating on the right) -->
+        <div class="lg:absolute lg:right-4 lg:top-1/2 lg:-translate-y-1/2 w-full lg:w-auto mt-12 lg:mt-0">
+            <div class="prayer-time-card bg-black/40 backdrop-blur-xl border border-white/20 rounded-3xl p-6 shadow-2xl w-full sm:w-80 animate-fade-in-right">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-bold text-white flex items-center">
+                        <i class="fas fa-clock text-gold mr-3"></i> Prayer Times
+                    </h3>
+                    <div class="flex flex-col items-end">
+                        <span id="current-city" class="text-[10px] uppercase tracking-widest text-gold font-bold">Lahore, PK</span>
+                        <span id="islamic-date" class="text-[10px] text-gray-300">Loading Date...</span>
+                    </div>
+                </div>
+
+                <div class="space-y-3" id="prayer-times-list">
+                    <!-- Individual Prayer Time Item -->
+                    <div class="flex justify-between items-center bg-white/5 hover:bg-gold/20 p-3 rounded-xl transition-all duration-300 group border border-transparent hover:border-gold/30">
+                        <span class="text-sm font-medium text-gray-300 group-hover:text-white">Fajr</span>
+                        <span class="prayer-time text-sm font-bold text-gold group-hover:text-white" data-prayer="Fajr">--:--</span>
+                    </div>
+                    <div class="flex justify-between items-center bg-white/5 hover:bg-gold/20 p-3 rounded-xl transition-all duration-300 group border border-transparent hover:border-gold/30">
+                        <span class="text-sm font-medium text-gray-300 group-hover:text-white">Dhuhr</span>
+                        <span class="prayer-time text-sm font-bold text-gold group-hover:text-white" data-prayer="Dhuhr">--:--</span>
+                    </div>
+                    <div class="flex justify-between items-center bg-white/5 hover:bg-gold/20 p-3 rounded-xl transition-all duration-300 group border border-transparent hover:border-gold/30">
+                        <span class="text-sm font-medium text-gray-300 group-hover:text-white">Asr</span>
+                        <span class="prayer-time text-sm font-bold text-gold group-hover:text-white" data-prayer="Asr">--:--</span>
+                    </div>
+                    <div class="flex justify-between items-center bg-white/5 hover:bg-gold/20 p-3 rounded-xl transition-all duration-300 group border border-transparent hover:border-gold/30">
+                        <span class="text-sm font-medium text-gray-300 group-hover:text-white">Maghrib</span>
+                        <span class="prayer-time text-sm font-bold text-gold group-hover:text-white" data-prayer="Maghrib">--:--</span>
+                    </div>
+                    <div class="flex justify-between items-center bg-white/5 hover:bg-gold/20 p-3 rounded-xl transition-all duration-300 group border border-transparent hover:border-gold/30">
+                        <span class="text-sm font-medium text-gray-300 group-hover:text-white">Isha</span>
+                        <span class="prayer-time text-sm font-bold text-gold group-hover:text-white" data-prayer="Isha">--:--</span>
+                    </div>
+                </div>
+
+                <div class="mt-6 pt-4 border-t border-white/10 text-center">
+                    <p class="text-[10px] text-gray-400 italic">"Indeed, prayer has been decreed upon the believers at specified times."</p>
+                </div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -219,3 +256,65 @@
     </div>
 </section>
 @endsection
+
+@push('styles')
+<style>
+    @keyframes fade-in-right {
+        0% { opacity: 0; transform: translateX(30px); }
+        100% { opacity: 1; transform: translateX(0); }
+    }
+    .animate-fade-in-right { animation: fade-in-right 1s cubic-bezier(0.16, 1, 0.3, 1); }
+    
+    .prayer-time-card {
+        border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+</style>
+@endpush
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const city = 'Lahore';
+        const country = 'Pakistan';
+        const apiUrl = `https://api.aladhan.com/v1/timingsByCity?city=${city}&country=${country}&method=1`;
+
+        const prayerElements = {
+            Fajr: document.querySelector('[data-prayer="Fajr"]'),
+            Dhuhr: document.querySelector('[data-prayer="Dhuhr"]'),
+            Asr: document.querySelector('[data-prayer="Asr"]'),
+            Maghrib: document.querySelector('[data-prayer="Maghrib"]'),
+            Isha: document.querySelector('[data-prayer="Isha"]')
+        };
+
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                if (data.code === 200) {
+                    const timings = data.data.timings;
+                    const dateInfo = data.data.date;
+
+                    Object.keys(prayerElements).forEach(key => {
+                        if (prayerElements[key]) {
+                            prayerElements[key].textContent = formatTime(timings[key]);
+                        }
+                    });
+
+                    const hijriDate = `${dateInfo.hijri.day} ${dateInfo.hijri.month.en} ${dateInfo.hijri.year} AH`;
+                    const dateEl = document.getElementById('islamic-date');
+                    if (dateEl) dateEl.textContent = hijriDate;
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching prayer times:', error);
+            });
+
+        function formatTime(time24) {
+            const [hours, minutes] = time24.split(':');
+            const h = parseInt(hours);
+            const ampm = h >= 12 ? 'PM' : 'AM';
+            const h12 = h % 12 || 12;
+            return `${h12}:${minutes} ${ampm}`;
+        }
+    });
+</script>
+@endpush

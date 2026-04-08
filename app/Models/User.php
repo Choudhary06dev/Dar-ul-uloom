@@ -28,6 +28,7 @@ class User extends Authenticatable
         'address',
         'password',
         'is_admin',
+        'role_id',
     ];
 
     /**
@@ -57,5 +58,10 @@ class User extends Authenticatable
     public function admissions()
     {
         return $this->hasMany(Admission::class);
+    }
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class);
     }
 }

@@ -85,12 +85,19 @@
                     </div>
 
                     @if(auth()->id() !== $user->id)
-                    <div class="mb-4">
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="1" id="is_admin" name="is_admin" {{ old('is_admin', $user->is_admin) ? 'checked' : '' }}>
-                            <label class="form-check-label fw-bold text-slate-700" for="is_admin">Admin Privileges</label>
-                        </div>
+                    <div class="col-md-6 mb-4">
+                        <label for="role_id" class="form-label fw-bold text-slate-700">User Role</label>
+                        <select name="role_id" id="role_id" class="form-select p-3 border-0 bg-light rounded-3" required>
+                            @foreach($roles as $role)
+                                <option value="{{ $role->id }}" {{ old('role_id', $user->role_id) == $role->id ? 'selected' : '' }}>
+                                    {{ $role->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                        <div class="form-text mt-2">Roles define what parts of the system this user can access.</div>
                     </div>
+                    @else
+                        <input type="hidden" name="role_id" value="{{ $user->role_id }}">
                     @endif
                 </form>
                 <div class="d-flex justify-content-end gap-3">

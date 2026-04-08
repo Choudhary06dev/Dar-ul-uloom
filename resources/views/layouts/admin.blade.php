@@ -159,16 +159,34 @@
                     <i class="fa-solid fa-gauge-high"></i> Dashboard
                 </a>
             </li>
+            @if(auth('admin')->user()->role->hasPermission('manage_users'))
             <li class="nav-item">
                 <a class="nav-link {{ Route::is('admin.users') ? 'active' : '' }}" href="{{ route('admin.users') }}">
                     <i class="fa-solid fa-users"></i> Manage Users
                 </a>
             </li>
+            @endif
+            @if(auth('admin')->user()->role->hasPermission('manage_students'))
+            <li class="nav-item">
+                <a class="nav-link {{ Route::is('admin.students.*') ? 'active' : '' }}" href="{{ route('admin.students.index') }}">
+                    <i class="fa-solid fa-user-graduate"></i> Manage Students
+                </a>
+            </li>
+            @endif
+            @if(auth('admin')->user()->role->hasPermission('manage_roles'))
+            <li class="nav-item">
+                <a class="nav-link {{ Route::is('admin.roles.*') ? 'active' : '' }}" href="{{ route('admin.roles.index') }}">
+                    <i class="fa-solid fa-user-shield"></i> System Roles
+                </a>
+            </li>
+            @endif
+            @if(auth('admin')->user()->role->hasPermission('manage_admissions'))
             <li class="nav-item">
                 <a class="nav-link {{ Route::is('admin.admissions.*') ? 'active' : '' }}" href="{{ route('admin.admissions.index') }}">
                     <i class="fa-solid fa-file-signature"></i> Admissions
                 </a>
             </li>
+            @endif
             <li class="nav-item mt-auto mb-4">
                 <a class="nav-link" href="{{ route('frontend.index') }}" target="_blank">
                     <i class="fa-solid fa-globe"></i> Visit Website

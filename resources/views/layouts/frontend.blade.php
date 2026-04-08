@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @stack('styles')
 </head>
 <body class="bg-gray-50 overflow-x-hidden w-full max-w-full font-sans">
 
@@ -32,5 +33,6 @@
             menu.classList.toggle('hidden');
         }
     </script>
+    @stack('scripts')
 </body>
 </html>

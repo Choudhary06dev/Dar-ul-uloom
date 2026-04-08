@@ -17,7 +17,14 @@ class ProfileController extends Controller
     public function dashboard(Request $request)
     {
         if (auth('web')->check()) {
-            return redirect()->route('frontend.management.admissions.index');
+            $user = auth('web')->user();
+            $stats = [
+                'users' => \App\Models\User::count(),
+                'admissions' => \App\Models\Admission::count(),
+                'pending_admissions' => \App\Models\Admission::where('status', 'Pending')->count(),
+                'approved_admissions' => \App\Models\Admission::where('status', 'Approved')->count(),
+            ];
+            return view('frontend.admin.dashboard', compact('user', 'stats'));
         }
 
         /** @var \App\Models\Student $user */

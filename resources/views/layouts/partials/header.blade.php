@@ -30,12 +30,12 @@
                                     <div class="text-xs text-gray-500 uppercase tracking-wider mb-1">Welcome</div>
                                     <div class="text-sm font-bold text-navy truncate">{{ $currentUser->name }}</div>
                                 </div>
-                                <a href="{{ $isWebUser ? route('frontend.management.admissions.index') : route('frontend.profile.dashboard') }}" class="flex items-center px-4 py-2.5 text-sm text-gray-600 hover:bg-gold/10 hover:text-gold rounded-lg transition active:scale-95">
-                                    <i class="fas fa-th-large mr-3 w-4 text-center"></i> {{ $isWebUser ? 'Management' : 'My Dashboard' }}
+                                <a href="{{ route('frontend.profile.dashboard') }}" class="flex items-center px-4 py-2.5 text-sm text-white bg-navy hover:bg-gold rounded-lg transition active:scale-95 font-bold mb-1 shadow-sm">
+                                    <i class="fas fa-chart-pie mr-3 w-4 text-center text-gold group-hover:text-white"></i> {{ $isWebUser ? 'Admin Dashboard' : 'My Dashboard' }}
                                 </a>
                                 @if($isWebUser)
-                                <a href="{{ route('frontend.management.admissions.index') }}" class="flex items-center px-4 py-2.5 text-sm text-amber-600 bg-amber-50/50 hover:bg-amber-100/50 rounded-lg transition active:scale-95 font-bold">
-                                    <i class="fas fa-tasks mr-3 w-4 text-center"></i> Management
+                                <a href="{{ route('frontend.management.admissions.index') }}" class="flex items-center px-4 py-2.5 text-sm text-amber-600 bg-amber-50/80 hover:bg-amber-100/80 rounded-lg transition active:scale-95 font-bold">
+                                    <i class="fas fa-sliders-h mr-3 w-4 text-center"></i> Admissions Mgmt
                                 </a>
                                 @endif
                                 <a href="{{ route('frontend.profile.edit') }}" class="flex items-center px-4 py-2.5 text-sm text-gray-600 hover:bg-gold/10 hover:text-gold rounded-lg transition active:scale-95">
@@ -119,9 +119,9 @@
                     <div class="text-xs text-gray-500">{{ $isWebUser ? (auth('web')->user()->is_admin ? 'Admin' : 'Staff') : 'Student' }} Account</div>
                 </div>
             </div>
-            <a href="{{ $isWebUser ? route('frontend.management.admissions.index') : route('frontend.profile.dashboard') }}" class="block text-gray-700 font-medium py-3 border-b border-gray-50 hover:text-gold transition"><i class="fas fa-th-large mr-3 text-gold"></i> {{ $isWebUser ? 'Management' : 'My Dashboard' }}</a>
+            <a href="{{ route('frontend.profile.dashboard') }}" class="block text-white bg-navy font-bold py-3 px-4 rounded-xl hover:bg-gold transition shadow-md mb-2"><i class="fas fa-chart-pie mr-3 text-gold"></i> {{ $isWebUser ? 'Admin Dashboard' : 'My Dashboard' }}</a>
             @if($isWebUser)
-            <a href="{{ route('frontend.management.admissions.index') }}" class="block text-amber-600 font-bold py-3 border-b border-gray-50 hover:text-amber-700 transition font-bold"><i class="fas fa-tasks mr-3 text-amber-600"></i> Management</a>
+            <a href="{{ route('frontend.management.admissions.index') }}" class="block text-amber-600 bg-amber-50 font-bold py-3 px-4 rounded-xl hover:bg-amber-100 transition font-bold"><i class="fas fa-sliders-h mr-3 text-amber-600"></i> Admissions Mgmt</a>
             @endif
             <a href="{{ route('frontend.profile.edit') }}" class="block text-gray-700 font-medium py-3 border-b border-gray-50 hover:text-gold transition"><i class="fas fa-user-edit mr-3 text-gold"></i> Edit Profile</a>
             <form method="POST" action="{{ route('logout') }}">

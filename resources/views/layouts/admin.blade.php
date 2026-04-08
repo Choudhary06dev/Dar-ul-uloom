@@ -6,9 +6,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title') - Admin Portal</title>
     
-    <!-- Google Fonts -->
+    <!-- Preconnect & DNS-Prefetch -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Bootstrap 5 -->
@@ -149,7 +153,7 @@
             <!-- <h4 class="fw-bold mb-0 tracking-tight" style="color: var(--accent-gold)">Anwaar-e-Mustafa</h4>
             <small class="text-white opacity-50 text-uppercase tracking-widest font-monospace" style="font-size: 10px">Admin Portal</small> -->
             <a href="{{ route('admin.dashboard') }}">
-                <img src="{{ asset('images/admin-logo.png') }}" alt="Anwaar-e-Mustafa" class="img-fluid" style="max-height: 60px;">
+                <img src="{{ asset('images/admin-logo.png') }}" alt="Anwaar-e-Mustafa" class="img-fluid" style="max-height: 60px;" loading="lazy">
             </a>
         </div>
         
@@ -187,11 +191,11 @@
                 </a>
             </li>
             @endif
-            <li class="nav-item mt-auto mb-4">
+            <!-- <li class="nav-item mt-auto mb-4">
                 <a class="nav-link" href="{{ route('frontend.index') }}" target="_blank">
                     <i class="fa-solid fa-globe"></i> Visit Website
                 </a>
-            </li>
+            </li> -->
         </ul>
     </nav>
     @endauth('admin')

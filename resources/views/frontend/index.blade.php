@@ -6,7 +6,7 @@
 <!-- Hero Section -->
 <section class="relative h-[600px] md:h-[600px] overflow-hidden">
     <div class="absolute inset-0 bg-black/40 z-10"></div>
-    <img src="{{ asset('assets/images/banner.jpeg') }}" alt="Islamic Center" class="absolute inset-0 w-full h-full object-cover">
+    <img src="{{ asset('assets/images/banner.jpeg') }}" alt="Islamic Center" class="absolute inset-0 w-full h-full object-cover" fetchpriority="high">
     <div class="container mx-auto px-4 h-full flex flex-col justify-start pt-24 md:pt-16 items-center relative z-20 text-center text-white">
         <!-- Main Content -->
         <div class="flex flex-col items-center">
@@ -67,7 +67,7 @@
     <div class="container px-8 md:px-12 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div class="relative">
             <div class="absolute -top-6 -left-6 w-32 h-32 border-t-4 border-l-4 border-gold"></div>
-            <img src="{{ asset('assets/images/about_boys.png') }}" alt="About Anwaar-e-Mustafa" class="rounded-lg shadow-2xl relative z-10">
+            <img src="{{ asset('assets/images/about_boys.png') }}" alt="About Anwaar-e-Mustafa" class="rounded-lg shadow-2xl relative z-10" loading="lazy">
             <div class="absolute -bottom-6 -right-6 w-32 h-32 border-b-4 border-r-4 border-gold"></div>
         </div>
         <div>
@@ -130,7 +130,7 @@
             <!-- Scholar Card -->
             <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:-translate-y-2 transition duration-300">
                 <div class="relative overflow-hidden">
-                    <img src="{{ asset('assets/images/qari ashraf.jpeg') }}" alt="Scholar" class="w-full h-80 object-cover group-hover:scale-110 transition duration-500">
+                    <img src="{{ asset('assets/images/qari ashraf.jpeg') }}" alt="Scholar" class="w-full h-80 object-cover group-hover:scale-110 transition duration-500" loading="lazy">
                     <div class="absolute inset-0 bg-gold/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                         <div class="flex space-x-4 text-white text-xl">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -148,7 +148,7 @@
             <!-- Scholar Card 2 -->
             <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:-translate-y-2 transition duration-300">
                 <div class="relative overflow-hidden">
-                    <img src="{{ asset('assets/images/scholar2.png') }}" alt="Scholar" class="w-full h-80 object-cover group-hover:scale-110 transition duration-500">
+                    <img src="{{ asset('assets/images/scholar2.png') }}" alt="Scholar" class="w-full h-80 object-cover group-hover:scale-110 transition duration-500" loading="lazy">
                     <div class="absolute inset-0 bg-gold/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                         <div class="flex space-x-4 text-white text-xl">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -166,7 +166,7 @@
             <!-- Scholar Card 3 -->
             <div class="bg-white rounded-xl shadow-lg overflow-hidden group hover:-translate-y-2 transition duration-300">
                 <div class="relative overflow-hidden">
-                    <img src="{{ asset('assets/images/scholar.png') }}" alt="Scholar" class="w-full h-80 object-cover group-hover:scale-110 transition duration-500">
+                    <img src="{{ asset('assets/images/scholar.png') }}" alt="Scholar" class="w-full h-80 object-cover group-hover:scale-110 transition duration-500" loading="lazy">
                     <div class="absolute inset-0 bg-gold/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
                         <div class="flex space-x-4 text-white text-xl">
                             <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -217,7 +217,7 @@
             <!-- Blog Post 1 -->
             <div class="group">
                 <div class="relative overflow-hidden rounded-lg mb-6">
-                    <img src="{{ asset('assets/images/about_boys.png') }}" alt="Blog" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+                    <img src="{{ asset('assets/images/about_boys.png') }}" alt="Blog" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500" loading="lazy">
                     <div class="absolute top-4 left-4 bg-gold text-white px-4 py-1 rounded-sm text-sm font-bold">25 MAR</div>
                 </div>
                 <h3 class="text-xl font-bold text-navy mb-4 group-hover:text-gold transition cursor-pointer">The Importance of Seeking Knowledge in Islam</h3>
@@ -230,7 +230,7 @@
             <!-- Blog Post 2 -->
             <div class="group">
                 <div class="relative overflow-hidden rounded-lg mb-6">
-                    <img src="{{ asset('assets/images/masjid.jpeg') }}" alt="Blog" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+                    <img src="{{ asset('assets/images/masjid.jpeg') }}" alt="Blog" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500" loading="lazy">
                     <div class="absolute top-4 left-4 bg-gold text-white px-4 py-1 rounded-sm text-sm font-bold">18 MAR</div>
                 </div>
                 <h3 class="text-xl font-bold text-navy mb-4 group-hover:text-gold transition cursor-pointer">Preparing for the Blessed Month of Ramadan</h3>
@@ -243,7 +243,7 @@
             <!-- Blog Post 3 -->
             <div class="group">
                 <div class="relative overflow-hidden rounded-lg mb-6">
-                    <img src="{{ asset('assets/images/Anware.jpg') }}" alt="Blog" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500">
+                    <img src="{{ asset('assets/images/Anware.jpg') }}" alt="Blog" class="w-full h-64 object-cover group-hover:scale-110 transition duration-500" loading="lazy">
                     <div class="absolute top-4 left-4 bg-gold text-white px-4 py-1 rounded-sm text-sm font-bold">10 MAR</div>
                 </div>
                 <h3 class="text-xl font-bold text-navy mb-4 group-hover:text-gold transition cursor-pointer">Teaching Children the Meaning of Gratitude</h3>

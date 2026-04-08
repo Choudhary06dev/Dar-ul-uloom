@@ -35,7 +35,7 @@ class AdminController extends Controller
      */
     public function users(): View
     {
-        $users = User::latest()->paginate(10);
+        $users = User::with('role')->latest()->paginate(10);
         $roles = Role::all();
         return view('admin.users.index', compact('users', 'roles'));
     }

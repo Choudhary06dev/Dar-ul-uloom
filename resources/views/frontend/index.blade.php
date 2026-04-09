@@ -4,10 +4,10 @@
 
 @section('content')
 <!-- Hero Section -->
-<section class="relative h-[600px] md:h-[600px] overflow-hidden">
+<section class="relative min-h-[600px] lg:h-[600px] overflow-hidden flex flex-col lg:block pb-12 lg:pb-0">
     <div class="absolute inset-0 bg-black/40 z-10"></div>
     <img src="{{ asset('assets/images/banner.jpeg') }}" alt="Islamic Center" class="absolute inset-0 w-full h-full object-cover" fetchpriority="high">
-    <div class="container mx-auto px-4 h-full flex flex-col justify-start pt-24 md:pt-16 items-center relative z-20 text-center text-white">
+    <div class="container mx-auto px-4 flex flex-col justify-start pt-16 sm:pt-24 lg:pt-20 items-center relative z-20 text-center text-white lg:h-full">
         <!-- Main Content -->
         <div class="flex flex-col items-center">
             <p class="text-gold text-lg md:text-xl font-medium mb-4 italic tracking-widest">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
@@ -19,16 +19,16 @@
 
     </div>
 
-    <!-- Prayer Times Widget (Full Right Screen Edge) -->
-    <div class="w-full lg:absolute lg:w-auto lg:right-4 xl:right-2 lg:top-1/2 lg:-translate-y-1/2 flex justify-center mt-12 lg:mt-0 z-30 px-4 md:px-0">
-        <div class="prayer-time-card custom-prayer-card p-7 w-full animate-fade-in-up">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-xl font-bold text-white flex items-center whitespace-nowrap">
-                    <i class="fas fa-clock text-gold mr-3"></i> Prayer Times
+    <!-- Prayer Times Widget (Responsive & Right Edge) -->
+    <div class="w-full lg:absolute lg:w-auto lg:right-4 xl:right-2 lg:top-1/2 lg:-translate-y-1/2 flex justify-center mt-12 lg:mt-0 z-30 px-3 sm:px-6 md:px-8 lg:px-0 mb-8 lg:mb-0">
+        <div class="prayer-time-card custom-prayer-card p-5 sm:p-7 w-full animate-fade-in-up">
+            <div class="flex flex-wrap justify-between items-center mb-5 gap-y-2 gap-x-2">
+                <h3 class="text-lg sm:text-xl font-bold text-white flex items-center max-w-full">
+                    <i class="fas fa-clock text-gold mr-2 sm:mr-3"></i> Prayer Times
                 </h3>
-                <div class="flex flex-col items-end shrink-0 ml-4">
-                    <span id="current-city" class="text-[10px] uppercase tracking-widest text-gold font-bold">Lahore, PK</span>
-                    <span id="islamic-date" class="text-[10px] text-gray-300">Loading...</span>
+                <div class="flex flex-col items-start xs:items-end w-full xs:w-auto mt-1 xs:mt-0">
+                    <span id="current-city" class="text-[9px] sm:text-[10px] uppercase tracking-[0.15em] sm:tracking-widest text-gold font-bold">Lahore, PK</span>
+                    <span id="islamic-date" class="text-[10px] text-gray-300 break-words">Loading...</span>
                 </div>
             </div>
 

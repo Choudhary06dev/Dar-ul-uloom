@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admission;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules\Password;
 
 class ProfileController extends Controller
@@ -43,9 +45,50 @@ class ProfileController extends Controller
     public function edit(Request $request)
     {
         $user = auth('student')->user() ?? auth('web')->user();
+
+        $latest_admission = null;
+        if (auth('student')->check()) {
+            /** @var \App\Models\Student $student */
+            $student = auth('student')->user();
+            $latest_admission = $student->admissions()->latest()->first();
+        }
+
         return view('frontend.profile.edit', [
             'user' => $user,
+            'admission' => $latest_admission,
         ]);
+    }
+
+    /**
+     * Update the student's profile picture via the admission record.
+     */
+    public function updateImage(Request $request)
+    {
+        if (!auth('student')->check()) {
+            return redirect()->route('frontend.profile.edit')->with('error', 'Unauthorized action.');
+        }
+
+        $request->validate([
+            'profile_image' => ['required', 'image', 'mimes:jpeg,png,jpg', 'max:2048'],
+        ]);
+
+        /** @var \App\Models\Student $student */
+        $student = auth('student')->user();
+        $admission = $student->admissions()->latest()->first();
+
+        if (!$admission) {
+            return redirect()->route('frontend.profile.edit')->with('error', 'No admission record found.');
+        }
+
+        // Delete old image if exists
+        if ($admission->image && Storage::disk('public')->exists($admission->image)) {
+            Storage::disk('public')->delete($admission->image);
+        }
+
+        $path = $request->file('profile_image')->store('admissions/images', 'public');
+        $admission->update(['image' => $path]);
+
+        return redirect()->route('frontend.profile.edit')->with('status', 'image-updated');
     }
 
     /**
@@ -54,6 +97,7 @@ class ProfileController extends Controller
     public function update(Request $request)
     {
         $guard = auth('student')->check() ? 'student' : 'web';
+        /** @var \Illuminate\Database\Eloquent\Model $user */
         $user = auth($guard)->user();
         $table = $guard === 'student' ? 'students' : 'users';
 
@@ -83,6 +127,7 @@ class ProfileController extends Controller
         ]);
 
         $guard = auth('student')->check() ? 'student' : 'web';
+        /** @var \Illuminate\Database\Eloquent\Model $user */
         $user = auth($guard)->user();
 
         Auth::guard($guard)->logout();
@@ -106,6 +151,7 @@ class ProfileController extends Controller
         ]);
 
         $guard = auth('student')->check() ? 'student' : 'web';
+        /** @var \Illuminate\Database\Eloquent\Model $user */
         $user = auth($guard)->user();
 
         $user->update([

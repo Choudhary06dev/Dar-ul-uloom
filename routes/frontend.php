@@ -29,6 +29,7 @@ Route::prefix('/')->name('frontend.')->group(function () {
         Route::get('/dashboard', [ProfileController::class, 'dashboard'])->name('profile.dashboard');
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::patch('/profile/image', [ProfileController::class, 'updateImage'])->name('profile.image');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
         Route::put('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
     });

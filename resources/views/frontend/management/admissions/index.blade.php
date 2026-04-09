@@ -71,9 +71,13 @@
                             <tr class="hover:bg-gray-50/50 transition-colors group">
                                 <td class="px-8 py-6">
                                     <div class="flex items-center">
-                                        <div class="w-10 h-10 bg-navy/5 rounded-full flex items-center justify-center text-navy font-bold mr-4 border border-navy/10">
-                                            {{ strtoupper(substr($admission->student_name, 0, 1)) }}
-                                        </div>
+                                        @if($admission->image)
+                                            <img src="{{ asset('storage/' . $admission->image) }}" alt="Student Picture" class="w-10 h-10 rounded-full object-cover mr-4 border border-navy/10" style="object-position: center 15%; flex-shrink: 0;">
+                                        @else
+                                            <div class="w-10 h-10 bg-navy/5 rounded-full flex items-center justify-center text-navy font-bold mr-4 border border-navy/10" style="flex-shrink: 0;">
+                                                {{ strtoupper(substr($admission->student_name, 0, 1)) }}
+                                            </div>
+                                        @endif
                                         <div>
                                             <div class="text-sm font-bold text-navy group-hover:text-gold transition">{{ $admission->student_name }}</div>
                                             <div class="text-[10px] text-gray-400 font-bold uppercase mt-0.5">#ADM-{{ str_pad($admission->id, 5, '0', STR_PAD_LEFT) }}</div>

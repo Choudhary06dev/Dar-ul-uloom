@@ -30,10 +30,14 @@
                 <div class="bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden">
                     <div class="h-24 bg-gradient-to-r from-navy to-slate-800"></div>
                     <div class="px-6 pb-8 text-center -mt-12">
-                        <div class="inline-flex p-1 bg-white rounded-full mb-4 shadow-lg">
-                            <div class="w-20 h-20 bg-gold/10 rounded-full flex items-center justify-center text-gold text-3xl font-bold border-2 border-gold/20">
-                                {{ strtoupper(substr($user->name, 0, 1)) }}
-                            </div>
+                        <div class="inline-flex p-1 bg-white rounded-full mb-4 shadow-lg relative z-10 transition-transform hover:scale-105">
+                            @if(isset($admission) && $admission->image)
+                                <img src="{{ asset('storage/' . $admission->image) }}" alt="Profile Picture" class="w-28 h-28 rounded-full object-cover border-2 border-gold/20" style="object-position: center 10%;">
+                            @else
+                                <div class="w-28 h-28 bg-gold/10 rounded-full flex items-center justify-center text-gold text-4xl font-bold border-2 border-gold/20">
+                                    {{ strtoupper(substr($user->name, 0, 1)) }}
+                                </div>
+                            @endif
                         </div>
                         <h2 class="text-xl font-bold text-navy">{{ $user->name }}</h2>
                         <p class="text-gray-500 text-sm mb-6">{{ $user->email }}</p>
@@ -70,38 +74,52 @@
             <div class="lg:col-span-2 space-y-8">
                 
                 @if($admission)
-                    <!-- Admission Status Tracker -->
-                    <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-8">
-                        <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-8 space-y-2 sm:space-y-0">
-                            <h3 class="text-xl font-bold text-navy flex items-center">
-                                <i class="fas fa-graduation-cap mr-3 text-gold"></i> Admission Status
-                            </h3>
+                    <!-- Application Roadmap Section -->
+                    <div class="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 lg:p-12">
+                        
+                        <div class="flex flex-col md:flex-row md:items-center justify-between mb-10 space-y-4 md:space-y-0">
+                            <div class="flex items-center space-x-4">
+                                <h3 class="text-2xl font-extrabold text-navy flex items-center">
+                                    <i class="fas fa-graduation-cap text-gold mr-3 text-3xl"></i> Admission Status
+                                </h3>
+                                @php
+                                    $badgeClass = 'bg-amber-50 text-amber-600 border border-amber-200';
+                                    if($admission->status == 'Approved') $badgeClass = 'bg-emerald-50 text-emerald-600 border border-emerald-200';
+                                    if($admission->status == 'Rejected') $badgeClass = 'bg-red-50 text-red-600 border border-red-200';
+                                @endphp
+                                <span class="px-3 py-1 text-[11px] uppercase font-bold tracking-widest rounded-full shadow-sm {{ $badgeClass }}">
+                                    {{ $admission->status }}
+                                </span>
+                            </div>
                             <div class="flex items-center space-x-3">
                                 @if($admission->status == 'Approved')
                                 <a href="{{ route('frontend.admission.print', $admission) }}" target="_blank" class="px-4 py-1.5 bg-navy text-white rounded-xl shadow-lg shadow-navy/20 text-[10px] font-bold hover:bg-gold transition-all flex items-center">
                                     <i class="fas fa-print mr-2 text-gold"></i> PRINT SLIP
                                 </a>
                                 @endif
-                                <span class="text-[11px] bg-gray-100 px-3 py-1 rounded-full text-gray-500 font-bold uppercase tracking-wider">Application ID: #ADM-{{ str_pad($admission->id, 5, '0', STR_PAD_LEFT) }}</span>
+                                <div class="bg-gray-100 text-gray-500 text-[11px] font-bold px-4 py-2 rounded-full tracking-wider border border-gray-200 shadow-inner">
+                                    APPLICATION ID: <span class="text-navy">#ADM-{{ str_pad($admission->id, 5, '0', STR_PAD_LEFT) }}</span>
+                                </div>
                             </div>
                         </div>
 
                         <!-- Status Timeline -->
-                        <div class="relative pb-10">
+                        <div class="relative max-w-2xl mx-auto py-4">
+                            <!-- Background line -->
                             <div class="absolute top-5 left-0 w-full h-1 bg-gray-100 rounded-full"></div>
                             
+                            <!-- Active Line -->
                             @php
-                                $status_width = '0%';
-                                if($admission->status == 'Pending') $status_width = '33%';
-                                if($admission->status == 'Approved') $status_width = '100%';
-                                if($admission->status == 'Rejected') $status_width = '100%';
+                                $status_width = '15%'; // just reaching the first dot
+                                if($admission->status == 'Pending') $status_width = '50%'; // reaches the second dot
+                                if(in_array($admission->status, ['Approved', 'Rejected'])) $status_width = '100%'; // reaches end
                             @endphp
-                            <div class="absolute top-5 left-0 h-1 bg-gold rounded-full transition-all duration-1000" style="width: {{ $status_width }}"></div>
+                            <div class="absolute top-5 left-0 h-1 bg-gold rounded-full transition-all duration-1000 shadow-[0_0_10px_rgba(202,165,70,0.5)]" style="width: {{ $status_width }}"></div>
 
                             <div class="relative flex justify-between">
                                 <!-- Step 1: Submitted -->
                                 <div class="text-center group w-1/3">
-                                    <div class="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3 border-2 transition-colors duration-300 bg-gold border-gold text-white shadow-lg">
+                                    <div class="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3 border-2 transition-colors duration-300 bg-gold border-gold text-white shadow-lg shadow-gold/30">
                                         <i class="fas fa-file-alt text-sm"></i>
                                     </div>
                                     <p class="text-xs font-bold text-navy">Submitted</p>
@@ -110,10 +128,13 @@
 
                                 <!-- Step 2: Processing (Review) -->
                                 <div class="text-center group w-1/3">
-                                    <div class="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3 border-2 transition-colors duration-300 {{ in_array($admission->status, ['Approved', 'Rejected']) ? 'bg-gold border-gold text-white shadow-lg' : 'bg-white border-gray-200 text-gray-400' }}">
-                                        <i class="fas fa-sync text-sm {{ in_array($admission->status, ['Approved', 'Rejected']) ? '' : 'fa-spin' }}"></i>
+                                    <div class="w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-3 border-2 transition-colors duration-300 {{ in_array($admission->status, ['Pending', 'Approved', 'Rejected']) ? 'bg-gold border-gold text-white shadow-lg shadow-gold/30' : 'bg-white border-gray-200 text-gray-400' }}">
+                                        <i class="fas fa-sync text-sm {{ $admission->status == 'Pending' ? 'fa-spin' : '' }}"></i>
                                     </div>
-                                    <p class="text-xs font-bold {{ in_array($admission->status, ['Approved', 'Rejected']) ? 'text-navy' : 'text-gray-400' }}">In Review</p>
+                                    <p class="text-xs font-bold {{ in_array($admission->status, ['Pending', 'Approved', 'Rejected']) ? 'text-navy' : 'text-gray-400' }}">In Review</p>
+                                    @if($admission->status == 'Pending')
+                                        <p class="text-[10px] text-amber-500 font-bold mt-1 tracking-wider uppercase">Current</p>
+                                    @endif
                                 </div>
 
                                 <!-- Step 3: Final Status -->
@@ -122,13 +143,13 @@
                                         @if($admission->status == 'Approved') bg-emerald-500 border-emerald-500 text-white shadow-emerald-200 shadow-lg
                                         @elseif($admission->status == 'Rejected') bg-red-500 border-red-500 text-white shadow-red-200 shadow-lg
                                         @else bg-white border-gray-200 text-gray-400 @endif">
-                                        <i class="fas {{ $admission->status == 'Rejected' ? 'fa-times' : 'fa-check' }} text-sm"></i>
+                                        <i class="fas {{ $admission->status == 'Rejected' ? 'fa-times' : ($admission->status == 'Approved' ? 'fa-check' : 'fa-flag-checkered') }} text-sm"></i>
                                     </div>
                                     <p class="text-xs font-bold 
                                         @if($admission->status == 'Approved') text-emerald-600
                                         @elseif($admission->status == 'Rejected') text-red-600
                                         @else text-gray-400 @endif">
-                                        {{ $admission->status }}
+                                        {{ in_array($admission->status, ['Approved', 'Rejected']) ? $admission->status : 'Decision' }}
                                     </p>
                                 </div>
                             </div>

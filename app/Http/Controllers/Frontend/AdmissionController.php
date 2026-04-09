@@ -10,11 +10,27 @@ class AdmissionController extends Controller
 {
     public function create()
     {
-        return view('frontend.admission');
+        $admission = null;
+        if (auth('student')->check()) {
+            /** @var \App\Models\Student $student */
+            $student = auth('student')->user();
+            $admission = $student->admissions()->latest()->first();
+        }
+        return view('frontend.admission', compact('admission'));
     }
 
     public function store(Request $request)
     {
+        // If student already has an admission, block new submission
+        if (auth('student')->check()) {
+            /** @var \App\Models\Student $student */
+            $student = auth('student')->user();
+            if ($student->admissions()->exists()) {
+                return redirect()->route('frontend.admission.create')
+                    ->with('error', 'You have already submitted an admission form. Please edit your existing application.');
+            }
+        }
+
         $validated = $request->validate([
             'student_name' => 'required|string|max:255',
             'father_name' => 'required|string|max:255',
@@ -47,7 +63,62 @@ class AdmissionController extends Controller
 
         Admission::create($validated);
 
-        return redirect()->back()->with('success', 'Your admission form has been submitted successfully! / آپ کا داخلہ فارم کامیابی کے ساتھ جمع ہو گیا ہے!');
+        return redirect()->route('frontend.admission.create')
+            ->with('success', 'Your admission form has been submitted successfully! / آپ کا داخلہ فارم کامیابی کے ساتھ جمع ہو گیا ہے!');
+    }
+
+    /**
+     * Student updates their own pending admission.
+     */
+    public function studentUpdate(Request $request, Admission $admission)
+    {
+        // Security: ensure student owns this admission
+        if (!auth('student')->check() || $admission->student_id !== auth('student')->id()) {
+            abort(403, 'Unauthorized.');
+        }
+
+        // Block editing if already approved/rejected
+        if (in_array($admission->status, ['Approved', 'Rejected'])) {
+            return redirect()->route('frontend.admission.create')
+                ->with('error', 'Your admission has been ' . $admission->status . ' and can no longer be edited.');
+        }
+
+        $validated = $request->validate([
+            'student_name' => 'required|string|max:255',
+            'father_name' => 'required|string|max:255',
+            'dob' => 'required|date',
+            'age' => 'required|integer',
+            'gender' => 'required|string',
+            'b_form' => 'nullable|string|max:255',
+            'parent_name' => 'required|string|max:255',
+            'contact_number' => 'required|string|max:255',
+            'alternate_number' => 'nullable|string|max:255',
+            'address' => 'required|string',
+            'city' => 'required|string|max:255',
+            'previous_school' => 'nullable|string|max:255',
+            'last_class_passed' => 'nullable|string|max:255',
+            'course_selection' => 'required|string|max:255',
+            'other_course' => 'nullable|string|max:255',
+            'medical_condition' => 'nullable|string',
+            'emergency_contact' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+        ]);
+
+        if ($request->hasFile('image')) {
+            // Delete old image if exists
+            if ($admission->image && \Illuminate\Support\Facades\Storage::disk('public')->exists($admission->image)) {
+                \Illuminate\Support\Facades\Storage::disk('public')->delete($admission->image);
+            }
+            $validated['image'] = $request->file('image')->store('admissions/images', 'public');
+        }
+
+        $validated['nazra_completed'] = $request->has('nazra_completed');
+        $validated['hifz_completed'] = $request->has('hifz_completed');
+
+        $admission->update($validated);
+
+        return redirect()->route('frontend.admission.create')
+            ->with('success', 'Your admission form has been updated successfully! / آپ کا فارم کامیابی سے اپ ڈیٹ ہو گیا!');
     }
 
     /**

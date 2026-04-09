@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- Hero Section -->
-<section class="relative min-h-[600px] lg:h-[600px] overflow-hidden flex flex-col lg:block pb-12 lg:pb-0">
+<section class="relative min-h-[650px] lg:h-[650px] overflow-hidden flex flex-col lg:block pb-12 lg:pb-0" style="min-height: 650px;">
     <div class="absolute inset-0 bg-black/40 z-10"></div>
     <img src="{{ asset('assets/images/banner.jpeg') }}" alt="Islamic Center" class="absolute inset-0 w-full h-full object-cover" fetchpriority="high">
     <div class="container mx-auto px-4 flex flex-col justify-start pt-16 sm:pt-24 lg:pt-20 items-center relative z-20 text-center text-white lg:h-full">

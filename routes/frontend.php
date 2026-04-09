@@ -25,6 +25,7 @@ Route::prefix('/')->name('frontend.')->group(function () {
     Route::middleware('auth:student,web')->group(function () {
         Route::get('/admission', [AdmissionController::class, 'create'])->name('admission.create');
         Route::post('/admission', [AdmissionController::class, 'store'])->name('admission.store');
+        Route::put('/admission/{admission}', [AdmissionController::class, 'studentUpdate'])->name('admission.update');
         
         Route::get('/dashboard', [ProfileController::class, 'dashboard'])->name('profile.dashboard');
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

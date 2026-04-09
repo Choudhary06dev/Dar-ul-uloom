@@ -35,7 +35,7 @@
             </div>
         @endif
 
-        <form action="{{ route('frontend.admission.store') }}" method="POST" class="bg-white p-5 md:p-12 rounded-xl shadow-lg border-t-4 border-gold">
+        <form action="{{ route('frontend.admission.store') }}" method="POST" enctype="multipart/form-data" class="bg-white p-5 md:p-12 rounded-xl shadow-lg border-t-4 border-gold">
             @csrf
             
             <!-- Section 1: Student Information -->
@@ -101,6 +101,14 @@
                             <span class="font-urdu text-sm" dir="rtl">ب فارم نمبر</span>
                         </label>
                         <input type="text" name="b_form" value="{{ old('b_form') }}" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-gold focus:border-gold outline-none transition" placeholder="Optional">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-700 font-medium mb-1 flex flex-wrap justify-between gap-1 leading-tight">
+                            <span>Student Image</span>
+                            <span class="font-urdu text-sm" dir="rtl">طالب علم کی تصویر</span>
+                        </label>
+                        <input type="file" name="image" accept="image/*" class="w-full px-4 py-2 border border-gray-300 rounded focus:ring-gold focus:border-gold outline-none transition bg-white file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-gold/10 file:text-gold hover:file:bg-gold/20">
                     </div>
                 </div>
             </div>

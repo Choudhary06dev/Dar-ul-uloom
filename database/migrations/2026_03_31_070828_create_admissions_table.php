@@ -17,6 +17,7 @@ return new class extends Migration
             
             // Student Info
             $table->string('student_name');
+            $table->string('image')->nullable();
             $table->string('father_name');
             $table->date('dob');
             $table->integer('age');

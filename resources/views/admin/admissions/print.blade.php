@@ -164,12 +164,23 @@
 
     <div class="container">
         <!-- Header -->
-        <div class="header">
+        <div class="header" style="position: relative;">
             <h1>Admission Form</h1>
             <h2 class="font-urdu" dir="rtl">مدرسہ طلباء داخلہ فارم</h2>
             <p style="font-weight: 700;">Dar-ul-Uloom Anwaar-e-Mustafa BOR</p>
             <p class="font-urdu" dir="rtl" style="font-size: 12pt;">وَلَقَدْ يَسَّرْنَا الْقُرْآنَ لِلذِّكْرِ فَهَلْ مِن مُّدَّکِرٍ</p>
             <p class="font-urdu" dir="rtl" style="font-size: 9pt;">اور بے شک ہم نے قرآن کو نصیحت کے لیے آسان بنا دیا ہے، تو ہے کوئی نصیحت حاصل کرنے والا؟</p>
+            
+            <!-- Passport Size Photo -->
+            @if($admission->image)
+            <div style="position: absolute; top: 0; left: 0; width: 110px; height: 140px; border: 2px solid #000; padding: 3px; background: #fff;">
+                <img src="{{ asset('storage/' . $admission->image) }}" alt="Student Picture" style="width: 100%; height: 100%; object-fit: cover; object-position: center 15%; display: block;">
+            </div>
+            @else
+            <div style="position: absolute; top: 0; left: 0; width: 110px; height: 140px; border: 1px dashed #666; padding: 3px; background: #fdfdfd; display: flex; align-items: center; justify-content: center;">
+                <span class="font-urdu" style="color: #ccc;">تصویر چسپاں کریں</span>
+            </div>
+            @endif
         </div>
 
         <!-- Section 1: Personal -->

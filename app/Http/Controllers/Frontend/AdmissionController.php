@@ -33,7 +33,13 @@ class AdmissionController extends Controller
             'other_course' => 'nullable|string|max:255',
             'medical_condition' => 'nullable|string',
             'emergency_contact' => 'required|string|max:255',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ]);
+
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('admissions/images', 'public');
+            $validated['image'] = $imagePath;
+        }
 
         $validated['nazra_completed'] = $request->has('nazra_completed');
         $validated['hifz_completed'] = $request->has('hifz_completed');

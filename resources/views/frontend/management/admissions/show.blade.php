@@ -60,6 +60,11 @@
                             <span class="font-urdu text-gray-400 text-sm font-normal" dir="rtl">طالب علم کی معلومات</span>
                         </h5>
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
+                            @if($admission->image)
+                            <div class="col-span-full flex items-center gap-4 mb-2">
+                                <img src="{{ asset('storage/' . $admission->image) }}" alt="Student Picture" class="w-32 h-32 object-cover rounded-xl shadow-sm border border-gray-100" style="object-position: center 15%;">
+                            </div>
+                            @endif
                             <div class="col-span-full md:col-span-1">
                                 <label class="text-gray-400 text-[10px] uppercase font-black tracking-widest block mb-1">Student Name</label>
                                 <div class="font-black text-gray-800 text-base">{{ $admission->student_name }}</div>

@@ -17,48 +17,50 @@
             </div>
         </div>
 
-        <!-- Prayer Times Widget (Right Adjusted) -->
-        <div class="w-full lg:absolute lg:w-auto lg:right-4 xl:right-10 lg:top-1/2 lg:-translate-y-1/2 flex justify-center mt-12 lg:mt-0">
-            <div class="prayer-time-card bg-black/70 backdrop-blur-xl border border-white/10 rounded-3xl p-7 shadow-2xl w-full sm:max-w-[350px] animate-fade-in-up">
-                <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-xl font-bold text-white flex items-center whitespace-nowrap">
-                        <i class="fas fa-clock text-gold mr-3"></i> Prayer Times
-                    </h3>
-                    <div class="flex flex-col items-end shrink-0 ml-4">
-                        <span id="current-city" class="text-[10px] uppercase tracking-widest text-gold font-bold">Lahore, PK</span>
-                        <span id="islamic-date" class="text-[10px] text-gray-300">Loading...</span>
-                    </div>
-                </div>
+    </div>
 
-                <div class="grid grid-cols-1 gap-3" id="prayer-times-list">
-                    <!-- Individual Prayer Time Item -->
-                    <div class="flex justify-between items-center bg-white/5 hover:bg-gold/20 px-4 py-3.5 rounded-2xl transition-all duration-300 group border border-white/5 hover:border-gold/30">
-                        <span class="text-sm font-semibold text-gray-300 group-hover:text-white uppercase tracking-wider">Fajr</span>
-                        <span class="prayer-time text-sm font-extrabold text-gold group-hover:text-white" data-prayer="Fajr">--:--</span>
-                    </div>
-                    <div class="flex justify-between items-center bg-white/5 hover:bg-gold/20 px-4 py-3.5 rounded-2xl transition-all duration-300 group border border-white/5 hover:border-gold/30">
-                        <span class="text-sm font-semibold text-gray-300 group-hover:text-white uppercase tracking-wider">Dhuhr</span>
-                        <span class="prayer-time text-sm font-extrabold text-gold group-hover:text-white" data-prayer="Dhuhr">--:--</span>
-                    </div>
-                    <div class="flex justify-between items-center bg-white/5 hover:bg-gold/20 px-4 py-3.5 rounded-2xl transition-all duration-300 group border border-white/5 hover:border-gold/30">
-                        <span class="text-sm font-semibold text-gray-300 group-hover:text-white uppercase tracking-wider">Asr</span>
-                        <span class="prayer-time text-sm font-extrabold text-gold group-hover:text-white" data-prayer="Asr">--:--</span>
-                    </div>
-                    <div class="flex justify-between items-center bg-white/5 hover:bg-gold/20 px-4 py-3.5 rounded-2xl transition-all duration-300 group border border-white/5 hover:border-gold/30">
-                        <span class="text-sm font-semibold text-gray-300 group-hover:text-white uppercase tracking-wider">Maghrib</span>
-                        <span class="prayer-time text-sm font-extrabold text-gold group-hover:text-white" data-prayer="Maghrib">--:--</span>
-                    </div>
-                    <div class="flex justify-between items-center bg-white/5 hover:bg-gold/20 px-4 py-3.5 rounded-2xl transition-all duration-300 group border border-white/5 hover:border-gold/30">
-                        <span class="text-sm font-semibold text-gray-300 group-hover:text-white uppercase tracking-wider">Isha</span>
-                        <span class="prayer-time text-sm font-extrabold text-gold group-hover:text-white" data-prayer="Isha">--:--</span>
-                    </div>
-                </div>
-
-                <div class="mt-6 pt-4 border-t border-white/10 text-center">
-                    <p class="text-[10px] text-gray-400 italic font-medium">"Indeed, prayer has been decreed upon the believers at specified times."</p>
+    <!-- Prayer Times Widget (Full Right Screen Edge) -->
+    <div class="w-full lg:absolute lg:w-auto lg:right-4 xl:right-2 lg:top-1/2 lg:-translate-y-1/2 flex justify-center mt-12 lg:mt-0 z-30 px-4 md:px-0">
+        <div class="prayer-time-card custom-prayer-card p-7 w-full animate-fade-in-up">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-white flex items-center whitespace-nowrap">
+                    <i class="fas fa-clock text-gold mr-3"></i> Prayer Times
+                </h3>
+                <div class="flex flex-col items-end shrink-0 ml-4">
+                    <span id="current-city" class="text-[10px] uppercase tracking-widest text-gold font-bold">Lahore, PK</span>
+                    <span id="islamic-date" class="text-[10px] text-gray-300">Loading...</span>
                 </div>
             </div>
+
+            <div class="grid grid-cols-1 gap-3" id="prayer-times-list">
+                <!-- Individual Prayer Time Item -->
+                <div class="flex justify-between items-center custom-prayer-item px-4 py-3.5 transition-all duration-300 group">
+                    <span class="text-sm font-semibold text-gray-300 group-hover:text-white uppercase tracking-wider">Fajr</span>
+                    <span class="prayer-time text-sm font-extrabold text-gold group-hover:text-white" data-prayer="Fajr">--:--</span>
+                </div>
+                <div class="flex justify-between items-center custom-prayer-item px-4 py-3.5 transition-all duration-300 group">
+                    <span class="text-sm font-semibold text-gray-300 group-hover:text-white uppercase tracking-wider">Dhuhr</span>
+                    <span class="prayer-time text-sm font-extrabold text-gold group-hover:text-white" data-prayer="Dhuhr">--:--</span>
+                </div>
+                <div class="flex justify-between items-center custom-prayer-item px-4 py-3.5 transition-all duration-300 group">
+                    <span class="text-sm font-semibold text-gray-300 group-hover:text-white uppercase tracking-wider">Asr</span>
+                    <span class="prayer-time text-sm font-extrabold text-gold group-hover:text-white" data-prayer="Asr">--:--</span>
+                </div>
+                <div class="flex justify-between items-center custom-prayer-item px-4 py-3.5 transition-all duration-300 group">
+                    <span class="text-sm font-semibold text-gray-300 group-hover:text-white uppercase tracking-wider">Maghrib</span>
+                    <span class="prayer-time text-sm font-extrabold text-gold group-hover:text-white" data-prayer="Maghrib">--:--</span>
+                </div>
+                <div class="flex justify-between items-center custom-prayer-item px-4 py-3.5 transition-all duration-300 group">
+                    <span class="text-sm font-semibold text-gray-300 group-hover:text-white uppercase tracking-wider">Isha</span>
+                    <span class="prayer-time text-sm font-extrabold text-gold group-hover:text-white" data-prayer="Isha">--:--</span>
+                </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-white/10 text-center">
+                <p class="text-[10px] text-gray-400 italic font-medium">"Indeed, prayer has been decreed upon the believers at specified times."</p>
+            </div>
         </div>
+    </div>
     </div>
 </section>
 
@@ -260,13 +262,45 @@
 @push('styles')
 <style>
     @keyframes fade-in-up {
-        0% { opacity: 0; transform: translateY(30px); }
-        100% { opacity: 1; transform: translateY(0); }
+        0% {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
-    .animate-fade-in-up { animation: fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1); }
-    
+
+    .animate-fade-in-up {
+        animation: fade-in-up 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
     .prayer-time-card {
         border: 1px solid rgba(212, 175, 55, 0.2);
+    }
+
+    /* Guaranteed Styles for Live Server Compatibility */
+    .custom-prayer-card {
+        background-color: rgba(0, 0, 0, 0.7) !important;
+        backdrop-filter: blur(24px) !important;
+        -webkit-backdrop-filter: blur(24px) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 1.5rem !important;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4) !important;
+        max-width: 350px !important;
+    }
+
+    .custom-prayer-item {
+        background-color: rgba(255, 255, 255, 0.05) !important;
+        border: 1px solid rgba(255, 255, 255, 0.05) !important;
+        border-radius: 1rem !important;
+    }
+
+    .custom-prayer-item:hover {
+        background-color: rgba(212, 175, 55, 0.2) !important;
+        border-color: rgba(212, 175, 55, 0.3) !important;
     }
 </style>
 @endpush

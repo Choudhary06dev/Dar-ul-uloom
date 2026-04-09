@@ -8,15 +8,24 @@
     <div class="col-12">
         <div class="p-4 bg-white border-bottom shadow-sm" style="border-radius: 16px;">
             <div class="row align-items-center">
-                <div class="col-md-8">
-                    <div class="d-flex align-items-center mb-2">
-                        <span class="badge bg-brand text-black rounded-pill px-3 py-2 me-3 shadow-sm border border-dark">
-                            ID: #{{ $admission->id }}
-                        </span>
-                        <span class="text-muted small">Submitted on {{ $admission->created_at->format('M d, Y') }}</span>
+                <div class="col-md-8 d-flex align-items-center gap-4">
+                    @if($admission->image)
+                        <img src="{{ asset('storage/' . $admission->image) }}" alt="Student Picture" class="rounded-circle shadow-sm border border-3 border-white" style="width: 100px; height: 100px; object-fit: cover; object-position: center 15%; flex-shrink: 0;">
+                    @else
+                        <div class="rounded-circle shadow-sm border border-3 border-white bg-light d-flex align-items-center justify-content-center" style="width: 100px; height: 100px; flex-shrink: 0;">
+                            <i class="fa-solid fa-user text-secondary fs-2"></i>
+                        </div>
+                    @endif
+                    <div>
+                        <div class="d-flex align-items-center mb-2">
+                            <span class="badge bg-brand text-black rounded-pill px-3 py-2 me-3 shadow-sm border border-dark">
+                                ID: #{{ $admission->id }}
+                            </span>
+                            <span class="text-muted small">Submitted on {{ $admission->created_at->format('M d, Y') }}</span>
+                        </div>
+                        <h2 class="fw-bold mb-1 text-brand">{{ $admission->student_name }}</h2>
+                        <p class="mb-0 text-muted fs-5">Applying for <span class="text-brand fw-bold">{{ $admission->course_selection }}</span></p>
                     </div>
-                    <h2 class="fw-bold mb-1 text-brand">{{ $admission->student_name }}</h2>
-                    <p class="mb-0 text-muted fs-5">Applying for <span class="text-brand fw-bold">{{ $admission->course_selection }}</span></p>
                 </div>
                 <div class="col-md-4 text-md-end mt-4 mt-md-0 d-flex flex-column align-items-md-end gap-3 px-3">
                     @php

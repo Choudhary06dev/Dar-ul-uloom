@@ -14,7 +14,7 @@ class Admission extends Model
         'parent_name', 'contact_number', 'alternate_number', 'address', 'city',
         'previous_school', 'last_class_passed', 'nazra_completed', 'hifz_completed',
         'course_selection', 'other_course', 'medical_condition', 'emergency_contact',
-        'admission_no', 'class_assigned', 'fee', 'remarks', 'status'
+        'admission_no', 'class_assigned', 'fee', 'remarks', 'status', 'image'
     ];
 
     public function student()

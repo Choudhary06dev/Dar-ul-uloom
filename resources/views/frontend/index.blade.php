@@ -17,8 +17,8 @@
             </div>
         </div>
 
-        <!-- Prayer Times Widget (Floating on the right) -->
-        <div class="lg:absolute lg:right-10 lg:top-1/2 lg:-translate-y-1/2 w-full lg:w-auto mt-12 lg:mt-0">
+        <!-- Prayer Times Widget (Right Adjusted) -->
+        <div class="w-full lg:absolute lg:w-auto lg:right-4 xl:right-10 lg:top-1/2 lg:-translate-y-1/2 flex justify-center mt-12 lg:mt-0">
             <div class="prayer-time-card bg-black/70 backdrop-blur-xl border border-white/10 rounded-3xl p-7 shadow-2xl w-full sm:max-w-[350px] animate-fade-in-up">
                 <div class="flex justify-between items-center mb-6">
                     <h3 class="text-xl font-bold text-white flex items-center whitespace-nowrap">

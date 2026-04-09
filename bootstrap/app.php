@@ -27,7 +27,7 @@ return Application::configure(basePath: dirname(__DIR__))
                 if ($request->is('admin/*') || $request->is('admin')) {
                     return route('admin.dashboard');
                 }
-                return route('frontend.index');
+                return route('frontend.profile.dashboard');
             }
         );
     })

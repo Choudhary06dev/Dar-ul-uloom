@@ -53,8 +53,8 @@ class LoginController extends Controller
             return redirect()->intended(route('frontend.profile.dashboard', absolute: false));
         }
 
-        // Redirect individual students directly to the admission page
-        return redirect()->intended(route('frontend.admission.create', absolute: false));
+        // Redirect everyone (including students) to the unified profile dashboard
+        return redirect()->intended(route('frontend.profile.dashboard', absolute: false));
     }
 
     /**

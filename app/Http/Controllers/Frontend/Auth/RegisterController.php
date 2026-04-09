@@ -51,6 +51,6 @@ class RegisterController extends Controller
 
         Auth::guard('student')->login($student);
 
-        return redirect(route('frontend.admission.create', absolute: false));
+        return redirect(route('frontend.profile.dashboard', absolute: false));
     }
 }

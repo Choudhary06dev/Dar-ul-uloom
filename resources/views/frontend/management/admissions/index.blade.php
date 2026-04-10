@@ -72,7 +72,7 @@
                                 <td class="px-8 py-6">
                                     <div class="flex items-center">
                                         @if($admission->image)
-                                            <img src="{{ asset('storage/' . $admission->image) }}" alt="Student Picture" class="w-10 h-10 rounded-full object-cover mr-4 border border-navy/10" style="object-position: center 15%; flex-shrink: 0;">
+                                            <img src="{{ asset('storage/app/public/' . $admission->image) }}" alt="Student Picture" class="w-10 h-10 rounded-full object-cover mr-4 border border-navy/10" style="object-position: center 15%; flex-shrink: 0;">
                                         @else
                                             <div class="w-10 h-10 bg-navy/5 rounded-full flex items-center justify-center text-navy font-bold mr-4 border border-navy/10" style="flex-shrink: 0;">
                                                 {{ strtoupper(substr($admission->student_name, 0, 1)) }}

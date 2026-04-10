@@ -62,7 +62,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
                             @if($admission->image)
                             <div class="col-span-full flex items-center gap-4 mb-2">
-                                <img src="{{ asset('storage/' . $admission->image) }}" alt="Student Picture" class="w-32 h-32 object-cover rounded-xl shadow-sm border border-gray-100" style="object-position: center 15%;">
+                                <img src="{{ asset('storage/app/public/' . $admission->image) }}" alt="Student Picture" class="w-32 h-32 object-cover rounded-xl shadow-sm border border-gray-100" style="object-position: center 15%;">
                             </div>
                             @endif
                             <div class="col-span-full md:col-span-1">

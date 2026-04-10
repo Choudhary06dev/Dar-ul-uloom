@@ -32,7 +32,7 @@
                     <div class="px-6 pb-8 text-center -mt-12">
                         <div class="inline-flex p-1 bg-white rounded-full mb-4 shadow-lg relative z-10 transition-transform hover:scale-105">
                             @if(isset($admission) && $admission->image)
-                                <img src="{{ asset('storage/' . $admission->image) }}" alt="Profile Picture" class="w-28 h-28 rounded-full object-cover border-2 border-gold/20" style="object-position: center 10%;">
+                                <img src="{{ asset('storage/app/public/' . $admission->image) }}" alt="Profile Picture" class="w-28 h-28 rounded-full object-cover border-2 border-gold/20" style="object-position: center 10%;">
                             @else
                                 <div class="w-28 h-28 bg-gold/10 rounded-full flex items-center justify-center text-gold text-4xl font-bold border-2 border-gold/20">
                                     {{ strtoupper(substr($user->name, 0, 1)) }}

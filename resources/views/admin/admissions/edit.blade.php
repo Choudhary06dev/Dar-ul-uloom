@@ -10,7 +10,7 @@
             <div class="row align-items-center">
                 <div class="col-md-8 d-flex align-items-center gap-4">
                     @if($admission->image)
-                        <img src="{{ asset('storage/' . $admission->image) }}" alt="Student Picture" class="rounded-circle shadow-sm border border-3 border-white" style="width: 100px; height: 100px; object-fit: cover; object-position: center 15%; flex-shrink: 0;">
+                        <img src="{{ asset('storage/app/public/' . $admission->image) }}" alt="Student Picture" class="rounded-circle shadow-sm border border-3 border-white" style="width: 100px; height: 100px; object-fit: cover; object-position: center 15%; flex-shrink: 0;">
                     @else
                         <div class="rounded-circle shadow-sm border border-3 border-white bg-light d-flex align-items-center justify-content-center" style="width: 100px; height: 100px; flex-shrink: 0;">
                             <i class="fa-solid fa-user text-secondary fs-2"></i>

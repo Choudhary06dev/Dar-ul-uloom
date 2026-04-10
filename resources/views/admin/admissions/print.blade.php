@@ -174,7 +174,7 @@
             <!-- Passport Size Photo -->
             @if($admission->image)
             <div style="position: absolute; top: 0; left: 0; width: 110px; height: 140px; border: 2px solid #000; padding: 3px; background: #fff;">
-                <img src="{{ asset('storage/' . $admission->image) }}" alt="Student Picture" style="width: 100%; height: 100%; object-fit: cover; object-position: center 15%; display: block;">
+                <img src="{{ asset('storage/app/public/' . $admission->image) }}" alt="Student Picture" style="width: 100%; height: 100%; object-fit: cover; object-position: center 15%; display: block;">
             </div>
             @else
             <div style="position: absolute; top: 0; left: 0; width: 110px; height: 140px; border: 1px dashed #666; padding: 3px; background: #fdfdfd; display: flex; align-items: center; justify-content: center;">

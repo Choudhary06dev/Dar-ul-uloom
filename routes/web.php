@@ -9,6 +9,17 @@ use App\Http\Controllers\Admin\AdminController;
 // Include Frontend Routes
 require __DIR__ . '/frontend.php';
 
+// Temporary Fix Route for Live Server (Delete after use)
+Route::get('/system-fix', function () {
+    try {
+        \Illuminate\Support\Facades\Artisan::call('storage:link');
+        \Illuminate\Support\Facades\Artisan::call('optimize:clear');
+        return "System Fixed: Storage linked and Cache cleared.";
+    } catch (\Exception $e) {
+        return "Error: " . $e->getMessage();
+    }
+});
+
 
 // Admin Routes with Authentication
 Route::prefix('admin')->name('admin.')->middleware(['auth:admin', \App\Http\Middleware\AdminMiddleware::class])->group(function () {

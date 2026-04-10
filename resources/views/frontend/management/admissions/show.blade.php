@@ -5,13 +5,13 @@
 @section('content')
 <div class="bg-gray-50 min-h-screen py-8">
     <div class="container mx-auto px-4">
-        
+
         <!-- Flash Messages -->
         @if(session('success'))
-            <div class="mb-6 p-4 bg-emerald-50 border-l-4 border-emerald-500 text-emerald-700 rounded-r-xl shadow-sm flex items-center">
-                <i class="fas fa-check-circle mr-3 text-emerald-500"></i>
-                <p class="font-bold">{{ session('success') }}</p>
-            </div>
+        <div class="mb-6 p-4 bg-emerald-50 border-l-4 border-emerald-500 text-emerald-700 rounded-r-xl shadow-sm flex items-center">
+            <i class="fas fa-check-circle mr-3 text-emerald-500"></i>
+            <p class="font-bold">{{ session('success') }}</p>
+        </div>
         @endif
 
         <div class="flex flex-col gap-6">
@@ -30,18 +30,18 @@
                     </div>
                     <div class="flex flex-col items-start md:items-end gap-4">
                         @php
-                            $statusColors = [
-                                'Pending' => 'bg-amber-400 text-black',
-                                'Approved' => 'bg-emerald-500 text-white',
-                                'Rejected' => 'bg-rose-500 text-white'
-                            ];
-                            $statusColor = $statusColors[$admission->status] ?? 'bg-gray-400 text-white';
+                        $statusColors = [
+                        'Pending' => 'bg-amber-400 text-black',
+                        'Approved' => 'bg-emerald-500 text-white',
+                        'Rejected' => 'bg-rose-500 text-white'
+                        ];
+                        $statusColor = $statusColors[$admission->status] ?? 'bg-gray-400 text-white';
                         @endphp
                         <div class="inline-flex items-center px-6 py-2.5 rounded-xl {{ $statusColor }} text-sm font-black uppercase tracking-widest shadow-lg shadow-black/5">
                             <i class="fa-solid fa-circle-dot me-2 animate-pulse"></i>
                             {{ $admission->status }}
                         </div>
-                        
+
                         <a href="{{ route('frontend.admission.print', $admission) }}" target="_blank" class="flex items-center px-6 py-3 bg-[#064e3b] text-white rounded-full font-bold text-sm shadow-xl shadow-[#064e3b]/20 hover:bg-[#043d2e] transition-all transform hover:-translate-y-1 active:scale-95">
                             <i class="fa-solid fa-print me-2 text-[#c5a059]"></i> Print Admission Slip
                         </a>
@@ -52,7 +52,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <!-- Main Content -->
                 <div class="lg:col-span-2 flex flex-col gap-6">
-                    
+
                     <!-- Section 1: Student Information -->
                     <div class="bg-white p-6 lg:p-8 rounded-[12px] shadow-sm border border-gray-200">
                         <h5 class="font-black mb-6 flex justify-between items-center border-b border-gray-200 pb-4">
@@ -62,7 +62,7 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
                             @if($admission->image)
                             <div class="col-span-full flex items-center gap-4 mb-2">
-                                <img src="{{ asset('storage/app/public/' . $admission->image) }}" alt="Student Picture" class="w-32 h-32 object-cover rounded-xl shadow-sm border border-gray-100" style="object-position: center 15%;">
+                                <img src="{{ asset('storage/' . $admission->image) }}" alt="Student Picture" class="w-32 h-32 object-cover rounded-xl shadow-sm border border-gray-100" style="object-position: center 15%;">
                             </div>
                             @endif
                             <div class="col-span-full md:col-span-1">
@@ -176,7 +176,7 @@
                                 <div>
                                     <label class="text-gray-400 text-[10px] uppercase font-black tracking-widest block mb-1">Selected Course</label>
                                     <div class="font-black text-xl text-[#064e3b]">{{ $admission->course_selection }}</div>
-                                <div class="mt-2 h-[1px] bg-black opacity-10"></div>
+                                    <div class="mt-2 h-[1px] bg-black opacity-10"></div>
                                 </div>
                                 <div class="bg-blue-50/50 p-4 rounded-xl border border-blue-100/50 text-blue-700 text-xs leading-relaxed">
                                     <div class="flex gap-3">
@@ -252,7 +252,7 @@
                                 </div>
                             </div>
                         </form>
-                        
+
                         <div class="p-6 bg-[#064e3b] rounded-[16px] text-white shadow-xl relative overflow-hidden">
                             <div class="absolute -right-8 -bottom-8 opacity-10 pointer-events-none transform rotate-12">
                                 <i class="fa-solid fa-graduation-cap text-8xl"></i>
@@ -275,7 +275,9 @@
 
 @push('styles')
 <style>
-    .font-urdu { font-family: 'Noto Nastaliq Urdu', serif !important; }
+    .font-urdu {
+        font-family: 'Noto Nastaliq Urdu', serif !important;
+    }
 </style>
 @endpush
 @endsection

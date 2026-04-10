@@ -66,11 +66,11 @@
                         <div class="shrink-0">
                             <div id="img-preview-wrapper" class="w-28 h-28 rounded-full overflow-hidden border-4 border-gold/20 shadow-lg relative group cursor-pointer" onclick="document.getElementById('profile_image_input').click()">
                                 @if($admission->image)
-                                    <img id="img-preview" src="{{ asset('storage/app/public/' . $admission->image) }}" alt="Profile" class="w-full h-full object-cover" style="object-position: center 10%;">
+                                <img id="img-preview" src="{{ asset('storage/' . $admission->image) }}" alt="Profile" class="w-full h-full object-cover" style="object-position: center 10%;">
                                 @else
-                                    <div id="img-preview" class="w-full h-full bg-gold/10 flex items-center justify-center text-gold text-4xl font-bold">
-                                        {{ strtoupper(substr($user->name, 0, 1)) }}
-                                    </div>
+                                <div id="img-preview" class="w-full h-full bg-gold/10 flex items-center justify-center text-gold text-4xl font-bold">
+                                    {{ strtoupper(substr($user->name, 0, 1)) }}
+                                </div>
                                 @endif
                                 <div class="absolute inset-0 bg-black/50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity rounded-full">
                                     <i class="fas fa-camera text-white text-xl"></i>

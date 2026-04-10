@@ -10,11 +10,11 @@
             <div class="row align-items-center">
                 <div class="col-md-8 d-flex align-items-center gap-4">
                     @if($admission->image)
-                        <img src="{{ asset('storage/app/public/' . $admission->image) }}" alt="Student Picture" class="rounded-circle shadow-sm border border-3 border-white" style="width: 100px; height: 100px; object-fit: cover; object-position: center 15%; flex-shrink: 0;">
+                    <img src="{{ asset('storage/' . $admission->image) }}" alt="Student Picture" class="rounded-circle shadow-sm border border-3 border-white" style="width: 100px; height: 100px; object-fit: cover; object-position: center 15%; flex-shrink: 0;">
                     @else
-                        <div class="rounded-circle shadow-sm border border-3 border-white bg-light d-flex align-items-center justify-content-center" style="width: 100px; height: 100px; flex-shrink: 0;">
-                            <i class="fa-solid fa-user text-secondary fs-2"></i>
-                        </div>
+                    <div class="rounded-circle shadow-sm border border-3 border-white bg-light d-flex align-items-center justify-content-center" style="width: 100px; height: 100px; flex-shrink: 0;">
+                        <i class="fa-solid fa-user text-secondary fs-2"></i>
+                    </div>
                     @endif
                     <div>
                         <div class="d-flex align-items-center mb-2">
@@ -29,12 +29,12 @@
                 </div>
                 <div class="col-md-4 text-md-end mt-4 mt-md-0 d-flex flex-column align-items-md-end gap-3 px-3">
                     @php
-                        $statusColors = [
-                            'Pending' => 'bg-warning text-dark',
-                            'Approved' => 'bg-success text-white',
-                            'Rejected' => 'bg-danger text-white'
-                        ];
-                        $statusColor = $statusColors[$admission->status] ?? 'bg-secondary';
+                    $statusColors = [
+                    'Pending' => 'bg-warning text-dark',
+                    'Approved' => 'bg-success text-white',
+                    'Rejected' => 'bg-danger text-white'
+                    ];
+                    $statusColor = $statusColors[$admission->status] ?? 'bg-secondary';
                     @endphp
                     <div class="d-inline-block">
                         <span class="badge {{ $statusColor }} fs-5 px-4 py-2 rounded-3">
@@ -240,7 +240,7 @@
                     </div>
                 </div>
             </form>
-            
+
             <div class="mt-4 p-4 bg-navy text-white" style="border-radius: 16px;">
                 <p class="small opacity-75 mb-0">
                     <i class="fa-solid fa-lightbulb me-2 text-warning"></i>
@@ -254,10 +254,29 @@
 
 @push('styles')
 <style>
-    .bg-navy { background-color: #064e3b; }
-    .text-brand { color: #064e3b !important; }
-    .btn-brand { background-color: #064e3b; color: white; border: none; transition: 0.3s; }
-    .btn-brand:hover { background-color: #043d2e; color: white; transform: translateY(-2px); }
-    .font-urdu { font-family: 'Noto Nastaliq Urdu', serif !important; }
+    .bg-navy {
+        background-color: #064e3b;
+    }
+
+    .text-brand {
+        color: #064e3b !important;
+    }
+
+    .btn-brand {
+        background-color: #064e3b;
+        color: white;
+        border: none;
+        transition: 0.3s;
+    }
+
+    .btn-brand:hover {
+        background-color: #043d2e;
+        color: white;
+        transform: translateY(-2px);
+    }
+
+    .font-urdu {
+        font-family: 'Noto Nastaliq Urdu', serif !important;
+    }
 </style>
 @endpush
